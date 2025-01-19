@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Python</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Explorando o Python: Do Básico à Aplicação Avançada</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/4-py/pag3.html">Próxima</a></li>
+                <li><a href="/4-py/pag1.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Python é uma linguagem que combina simplicidade com uma poderosa capacidade de expansão, tornando-a uma escolha ideal
+            para uma ampla gama de projetos. Desde a criação de scripts simples até o desenvolvimento de sistemas complexos,
+            Python oferece ferramentas e bibliotecas para resolver problemas de maneira eficiente. Este guia aborda conceitos
+            intermediários e avançados da linguagem, mostrando como aplicá-los para alcançar resultados profissionais.</p>
+        <h2>11. <strong>Objetos e Classes</strong></h2>
+        <p>Python é uma linguagem orientada a objetos, o que significa que você pode criar <strong>classes</strong> e
+            <strong>objetos</strong> para organizar e estruturar o código.</p>
+        <h3><strong>Criando uma Classe</strong></h3>
+        <p>Uma classe é uma espécie de molde para criar objetos. Ela define atributos e comportamentos para os objetos criados a
+            partir dela.</p>
+        <p>Exemplo:</p>
+        <pre><code class="language-python">class Carro:
+	def __init__(self, modelo, cor):
+		self.modelo = modelo  # Atributo
+		self.cor = cor        # Atributo
+        		
+	def dirigir(self):
+		print(f&quot;Dirigindo o {self.modelo} de cor {self.cor}.&quot;)
+        				
+# Criando um objeto da classe Carro
+meu_carro = Carro(&quot;Fusca&quot;, &quot;azul&quot;)
+meu_carro.dirigir()  # Saída: Dirigindo o Fusca de cor azul.</code></pre>
+        <h3><strong>Construtores e o método <code>__init__</code></strong></h3>
+        <p>O método <strong><code>__init__</code></strong> é o <strong>construtor</strong> da classe, que é chamado sempre que
+            você cria um objeto.</p>
+        <h3><strong>Herança</strong></h3>
+        <p>Python permite que você crie classes que herdam comportamentos e atributos de outras classes.</p>
+        <p>Exemplo de herança:</p>
+        <pre><code class="language-python">class Veiculo:
+	def __init__(self, modelo):
+		self.modelo = modelo
+        			
+	def andar(self):
+		print(f&quot;O {self.modelo} está andando.&quot;)
+        				
+class Carro(Veiculo):
+	def __init__(self, modelo, cor):
+		super().__init__(modelo)  # Chama o construtor da classe mãe
+		self.cor = cor
+        		
+	def buzinar(self):
+		print(&quot;Buzinando!&quot;)
+        		
+# Criando um objeto da classe Carro
+carro = Carro(&quot;Fusca&quot;, &quot;azul&quot;)
+carro.andar()  # Saída: O Fusca está andando.
+carro.buzinar()  # Saída: Buzinando!</code></pre>
+        <h3><strong>Encapsulamento e Atributos Privados</strong></h3>
+        <p>O encapsulamento permite esconder certos atributos de uma classe para que eles não sejam acessados diretamente.</p>
+        <p>Exemplo:</p>
+        <pre><code class="language-python">class ContaBancaria:
+	def __init__(self, saldo_inicial):
+		self.__saldo = saldo_inicial  # Atributo privado
+        			
+	def depositar(self, valor):
+		self.__saldo += valor
+        			
+	def consultar_saldo(self):
+		print(f&quot;Saldo atual: R${self.__saldo}&quot;)
+        		
+conta = ContaBancaria(1000)
+conta.depositar(500)
+conta.consultar_saldo()  # Saída: Saldo atual: R$1500</code></pre>
+        <h2>12. <strong>Bibliotecas para Análise de Dados</strong></h2>
+        <p>Python é amplamente utilizado em ciência de dados e análise de dados devido às suas bibliotecas poderosas, como
+            <strong>Pandas</strong>, <strong>NumPy</strong>, <strong>Matplotlib</strong> e <strong>Seaborn</strong>.</p>
+        <h3><strong>Pandas</strong></h3>
+        <p>O <strong>Pandas</strong> é uma biblioteca usada para manipulação e análise de dados, oferecendo estruturas de dados
+            rápidas e flexíveis.</p>
+        <p>Exemplo básico de uso do Pandas:</p>
+        <pre><code class="language-python">import pandas as pd
+        		
+# Criando um DataFrame (estrutura de dados bidimensional)
+dados = {&quot;Nome&quot;: [&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;], &quot;Idade&quot;: [25, 30, 35]}
+df = pd.DataFrame(dados)
+        		
+print(df)</code></pre>
+        <p>Saída:</p>
+        <pre><code class="language-python">      Nome  Idade
+0    Alice     25
+1      Bob     30
+2  Charlie     35</code></pre>
+        <h3><strong>Manipulação de Dados com Pandas</strong></h3>
+        <p>Você pode realizar operações como filtrar, agrupar, ordenar e calcular estatísticas de dados de forma simples:</p>
+        <pre><code class="language-python"># Filtrando dados
+df_filtrado = df[df[&quot;Idade&quot;] &gt; 25]
+print(df_filtrado)
+        		
+# Calculando a média de idade
+media_idade = df[&quot;Idade&quot;].mean()
+print(f&quot;Média de idade: {media_idade}&quot;)</code></pre>
+        <h3><strong>NumPy</strong></h3>
+        <p>O <strong>NumPy</strong> é uma biblioteca usada para computação numérica em Python, fornecendo suporte para arrays e
+            operações matemáticas avançadas.</p>
+        <p>Exemplo básico:</p>
+        <pre><code class="language-python">import numpy as np
+        		
+# Criando um array NumPy
+arr = np.array([1, 2, 3, 4, 5])
+print(arr + 10)  # Saída: [11 12 13 14 15]</code></pre>
+        <h3><strong>Matplotlib e Seaborn</strong></h3>
+        <p>O <strong>Matplotlib</strong> e o <strong>Seaborn</strong> são bibliotecas populares para visualização de dados.</p>
+        <p>Exemplo com Matplotlib:</p>
+        <pre><code class="language-python">import matplotlib.pyplot as plt
+        		
+# Criando um gráfico de linha simples
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+plt.plot(x, y)
+plt.title(&quot;Gráfico de Linha&quot;)
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;y&quot;)
+plt.show()</code></pre>
+        <p>Exemplo com Seaborn:</p>
+        <pre><code class="language-python">import seaborn as sns
+        		
+# Criando um gráfico de dispersão com Seaborn
+dados = sns.load_dataset(&quot;iris&quot;)
+sns.scatterplot(data=dados, x=&quot;sepal_length&quot;, y=&quot;sepal_width&quot;, hue=&quot;species&quot;)
+plt.show()</code></pre>
+        <h2>13. <strong>Manipulação de Strings</strong></h2>
+        <p>As strings são um dos tipos de dados mais comuns em Python. Elas podem ser manipuladas de diversas formas usando
+            métodos embutidos ou operadores.</p>
+        <h3><strong>Métodos Comuns para Manipulação de Strings</strong></h3>
+        <ul>
+            <li><strong><code>lower()</code></strong> e <strong><code>upper()</code></strong>: Convertem a string para
+                minúsculas ou maiúsculas.</li>
+        </ul>
+        <pre><code class="language-python">texto = &quot;Python é Legal&quot;
+print(texto.lower())  # Saída: python é legal
+print(texto.upper())  # Saída: PYTHON É LEGAL</code></pre>
+        <ul>
+            <li><strong><code>strip()</code></strong>: Remove espaços em branco no início e no final da string.</li>
+        </ul>
+        <pre><code class="language-python">texto = &quot;  Olá Mundo!  &quot;
+print(texto.strip())  # Saída: Olá Mundo!</code></pre>
+        <ul>
+            <li><strong><code>replace()</code></strong>: Substitui uma substring por outra.</li>
+        </ul>
+        <pre><code class="language-python">texto = &quot;Eu amo Python&quot;
+texto_substituido = texto.replace(&quot;Python&quot;, &quot;programar&quot;)
+print(texto_substituido)  # Saída: Eu amo programar</code></pre>
+        <ul>
+            <li><strong><code>split()</code></strong>: Divide uma string em uma lista de substrings.</li>
+        </ul>
+        <pre><code class="language-python">texto = &quot;Python, Java, C++&quot;
+linguagens = texto.split(&quot;, &quot;)
+print(linguagens)  # Saída: [&#39;Python&#39;, &#39;Java&#39;, &#39;C++&#39;]</code></pre>
+        <ul>
+            <li><strong><code>join()</code></strong>: Junta uma lista de strings em uma única string.</li>
+        </ul>
+        <pre><code class="language-python">linguagens = [&#39;Python&#39;, &#39;Java&#39;, &#39;C++&#39;]
+texto = &quot;, &quot;.join(linguagens)
+print(texto)  # Saída: Python, Java, C++</code></pre>
+        <h3><strong>F-strings (Interpolação de Strings)</strong></h3>
+        <p>As <strong>f-strings</strong> permitem inserir valores dentro de strings de maneira mais legível e eficiente:</p>
+        <pre><code class="language-python">nome = &quot;Alice&quot;
+idade = 30
+mensagem = f&quot;Meu nome é {nome} e tenho {idade} anos.&quot;
+print(mensagem)  # Saída: Meu nome é Alice e tenho 30 anos.</code></pre>
+        <h3><strong>Busca em Strings</strong></h3>
+        <p>Você pode buscar por substrings dentro de strings usando o método <code>find()</code> e outras alternativas:</p>
+        <pre><code class="language-python">texto = &quot;Python é uma linguagem poderosa&quot;
+posicao = texto.find(&quot;linguagem&quot;)
+print(posicao)  # Saída: 10 (posição da substring)</code></pre>
+        <h2>14. <strong>Funções Avançadas</strong></h2>
+        <p>Funções em Python não são limitadas aos exemplos básicos. Aqui estão alguns recursos mais avançados que podem ser
+            muito úteis.</p>
+        <h3><strong>Funções Anônimas (Lambda)</strong></h3>
+        <p>As <strong>funções lambda</strong> são funções pequenas e anônimas, criadas com a palavra-chave <code>lambda</code>:
+        </p>
+        <pre><code class="language-python">soma = lambda x, y: x + y
+print(soma(3, 5))  # Saída: 8</code></pre>
+        <p>Elas são frequentemente usadas com funções como <code>map()</code>, <code>filter()</code>, e <code>reduce()</code>.
+        </p>
+        <h3><strong>Função <code>map()</code></strong></h3>
+        <p>A função <strong><code>map()</code></strong> aplica uma função a todos os itens de uma lista ou qualquer iterável:
+        </p>
+        <pre><code class="language-python">numeros = [1, 2, 3, 4, 5]
+quadrados = list(map(lambda x: x**2, numeros))
+print(quadrados)  # Saída: [1, 4, 9, 16, 25]</code></pre>
+        <h3><strong>Função <code>filter()</code></strong></h3>
+        <p>A função <strong><code>filter()</code></strong> filtra os elementos de uma sequência com base em uma função:</p>
+        <pre><code class="language-python">numeros = [1, 2, 3, 4, 5, 6]
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+print(pares)  # Saída: [2, 4, 6]</code></pre>
+        <h3><strong>Função <code>reduce()</code></strong></h3>
+        <p>A função <strong><code>reduce()</code></strong> aplica uma função de forma acumulativa a todos os elementos de um
+            iterável. Ela está disponível no módulo <code>functools</code>:</p>
+        <pre><code class="language-python">from functools import reduce
+numeros = [1, 2, 3, 4]
+produto = reduce(lambda x, y: x * y, numeros)
+print(produto)  # Saída: 24 (1 * 2 * 3 * 4)</code></pre>
+        <h3><strong>Funções de Ordem Superior</strong></h3>
+        <p>Funções de ordem superior são aquelas que podem receber outras funções como argumentos ou retornar funções como
+            resultado. Por exemplo:</p>
+        <pre><code class="language-python">def operacao(func, a, b):
+	return func(a, b)
+        		
+soma = lambda x, y: x + y
+produto = lambda x, y: x * y
+        		
+print(operacao(soma, 3, 5))  # Saída: 8
+print(operacao(produto, 3, 5))  # Saída: 15</code></pre>
+        <h2>15. <strong>Expressões Regulares</strong></h2>
+        <p>As <strong>expressões regulares</strong> (regex) são usadas para encontrar padrões de texto em uma string. Python
+            oferece a biblioteca <code>re</code> para trabalhar com regex.</p>
+        <h3><strong>Fundamentos de Expressões Regulares</strong></h3>
+        <p>Uma expressão regular é uma sequência de caracteres que forma um padrão de busca. Por exemplo, <code>\d</code>
+            representa um dígito.</p>
+        <ul>
+            <li><strong>Buscar um padrão simples</strong>:</li>
+        </ul>
+        <pre><code class="language-python">import re
+texto = &quot;Meu número é 12345&quot;
+resultado = re.search(r&quot;\d+&quot;, texto)  # Procura por números
+if resultado:
+	print(resultado.group())  # Saída: 12345</code></pre>
+        <h3><strong>Funções Comuns de Regex</strong></h3>
+        <ul>
+            <li><strong><code>search()</code></strong>: Busca o padrão em qualquer lugar da string.</li>
+            <li><strong><code>match()</code></strong>: Verifica se o padrão está no início da string.</li>
+            <li><strong><code>findall()</code></strong>: Encontra todas as ocorrências do padrão em uma string.</li>
+        </ul>
+        <pre><code class="language-python">texto = &quot;Email: exemplo@dominio.com e contato@dominio.com&quot;
+emails = re.findall(r&#39;\b\w+@\w+\.\w+\b&#39;, texto)  # Busca por emails
+print(emails)  # Saída: [&#39;exemplo@dominio.com&#39;, &#39;contato@dominio.com&#39;]</code></pre>
+        <h3><strong>Substituição com <code>sub()</code></strong></h3>
+        <p>A função <strong><code>sub()</code></strong> substitui o padrão por uma string fornecida:</p>
+        <pre><code class="language-python">texto = &quot;Meu número de telefone é 12345&quot;
+novo_texto = re.sub(r&quot;\d+&quot;, &quot;#####&quot;, texto)
+print(novo_texto)  # Saída: Meu número de telefone é #####</code></pre>
+        <h3><strong>Padrões Comuns</strong></h3>
+        <ul>
+            <li><code>\d</code>: Um dígito.</li>
+            <li><code>\w</code>: Qualquer caractere alfanumérico.</li>
+            <li><code>.</code>: Qualquer caractere.</li>
+            <li><code>^</code>: Início da string.</li>
+            <li><code>$</code>: Fim da string.</li>
+        </ul>
+        <h2>16. <strong>Compreensão de Listas</strong></h2>
+        <p>A <strong>compreensão de listas</strong> é uma forma concisa de criar listas, aplicando uma expressão a cada item de
+            uma sequência.</p>
+        <h3><strong>Compreensão Básica</strong></h3>
+        <p>Você pode criar uma lista aplicando uma expressão a cada elemento de uma sequência:</p>
+        <pre><code class="language-python">quadrados = [x**2 for x in range(10)]
+print(quadrados)  # Saída: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
+        <h3><strong>Compreensão com Condições</strong></h3>
+        <p>Você também pode incluir condições para filtrar elementos:</p>
+        <pre><code class="language-python">pares = [x for x in range(10) if x % 2 == 0]
+print(pares)  # Saída: [0, 2, 4, 6, 8]</code></pre>
+        <h3><strong>Compreensão de Dicionários</strong></h3>
+        <p>Você pode criar dicionários de maneira semelhante às listas:</p>
+        <pre><code class="language-python">dicionario = {x: x**2 for x in range(5)}
+print(dicionario)  # Saída: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</code></pre>
+        <h3><strong>Compreensão de Conjuntos</strong></h3>
+        <p>Conjuntos também podem ser criados de maneira semelhante às listas:</p>
+        <pre><code class="language-python">quadrados = {x**2 for x in range(10)}
+print(quadrados)  # Saída: {0, 1, 4, 9, 16, 25, 36, 49, 64, 81}</code></pre>
+        <h2>17. <strong>Trabalhando com Banco de Dados</strong></h2>
+        <p>Python oferece diversas bibliotecas para interagir com bancos de dados, tanto relacionais quanto não relacionais.
+            Vamos ver um exemplo com <strong>SQLite</strong>, que é um banco de dados embutido no Python, e
+            <strong>SQLAlchemy</strong>, que é um ORM (Object-Relational Mapping).</p>
+        <h3><strong>Usando SQLite</strong></h3>
+        <p>SQLite é um banco de dados relacional embutido, o que significa que ele armazena dados em arquivos locais.</p>
+        <ul>
+            <li><strong>Conectando ao banco de dados e criando uma tabela</strong>:</li>
+        </ul>
+        <pre><code class="language-python">import sqlite3
+        		
+# Conectando ao banco de dados (será criado se não existir)
+conn = sqlite3.connect(&quot;meu_banco.db&quot;)
+c = conn.cursor()
+        		
+# Criando uma tabela
+c.execute(&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS clientes (
+				id INTEGER PRIMARY KEY,
+				nome TEXT,
+				idade INTEGER
+			)&#39;&#39;&#39;)
+conn.commit()</code></pre>
+        <ul>
+            <li><strong>Inserindo Dados</strong>:</li>
+        </ul>
+        <pre><code class="language-python">c.execute(&quot;INSERT INTO clientes (nome, idade) VALUES (?, ?)&quot;, (&quot;Alice&quot;, 30))
+conn.commit()</code></pre>
+        <ul>
+            <li><strong>Consultando Dados</strong>:</li>
+        </ul>
+        <pre><code class="language-python">c.execute(&quot;SELECT * FROM clientes&quot;)
+clientes = c.fetchall()
+print(clientes)  # Exemplo de saída: [(1, &#39;Alice&#39;, 30)]</code></pre>
+        <ul>
+            <li><strong>Fechando a Conexão</strong>:</li>
+        </ul>
+        <pre><code class="language-python">conn.close()</code></pre>
+        <h3><strong>Usando SQLAlchemy (ORM)</strong></h3>
+        <p>SQLAlchemy é uma biblioteca que facilita a interação com bancos de dados através de objetos Python, eliminando a
+            necessidade de escrever SQL diretamente.</p>
+        <ul>
+            <li><strong>Definindo um Modelo</strong>:</li>
+        </ul>
+        <pre><code class="language-python">from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+        		
+Base = declarative_base()
+        		
+class Cliente(Base):
+	__tablename__ = &#39;clientes&#39;
+	id = Column(Integer, primary_key=True)
+	nome = Column(String)
+	idade = Column(Integer)
+        		
+# Criando uma instância de engine para conectar ao banco
+engine = create_engine(&#39;sqlite:///meu_banco.db&#39;)
+        		
+# Criando as tabelas no banco
+Base.metadata.create_all(engine)
+        		
+# Criando uma sessão para manipulação de dados
+Session = sessionmaker(bind=engine)
+session = Session()
+        		
+# Adicionando um novo cliente
+novo_cliente = Cliente(nome=&quot;Bob&quot;, idade=28)
+session.add(novo_cliente)
+session.commit()</code></pre>
+        <h2>18. <strong>Programação Assíncrona</strong></h2>
+        <p>A programação assíncrona é importante para executar tarefas concorrentes sem bloquear o fluxo de execução do
+            programa, muito útil para aplicativos web, redes e outras tarefas que envolvem I/O (entrada/saída).</p>
+        <h3><strong>Biblioteca <code>asyncio</code></strong></h3>
+        <p>A biblioteca <code>asyncio</code> fornece um framework para programação assíncrona no Python, permitindo que funções
+            sejam executadas de forma não bloqueante.</p>
+        <ul>
+            <li><strong>Função Assíncrona</strong>:</li>
+        </ul>
+        <pre><code class="language-python">import asyncio
+        		
+async def minha_tarefa():
+	print(&quot;Iniciando tarefa&quot;)
+	await asyncio.sleep(2)  # Simula uma tarefa assíncrona
+	print(&quot;Tarefa concluída&quot;)
+        		
+# Executando a função assíncrona
+asyncio.run(minha_tarefa())</code></pre>
+        <h3><strong>Execução Concorrente com <code>asyncio.gather()</code></strong></h3>
+        <p>Se você precisar executar múltiplas tarefas assíncronas de forma concorrente:</p>
+        <pre><code class="language-python">async def tarefa_1():
+	print(&quot;Tarefa 1 iniciada&quot;)
+	await asyncio.sleep(1)
+	print(&quot;Tarefa 1 concluída&quot;)
+        		
+async def tarefa_2():
+	print(&quot;Tarefa 2 iniciada&quot;)
+	await asyncio.sleep(2)
+	print(&quot;Tarefa 2 concluída&quot;)
+        		
+# Executando as tarefas de forma concorrente
+async def main():
+	await asyncio.gather(tarefa_1(), tarefa_2())
+        		
+asyncio.run(main())</code></pre>
+        <h2>19. <strong>Trabalhando com Redes</strong></h2>
+        <p>Python possui diversas bibliotecas para lidar com redes, como o <strong>socket</strong> e o
+            <strong>requests</strong>, que são muito úteis para comunicação de rede e chamadas HTTP.</p>
+        <h3><strong>Biblioteca <code>socket</code></strong></h3>
+        <p>A biblioteca <strong><code>socket</code></strong> permite que você crie servidores e clientes de rede.</p>
+        <ul>
+            <li><strong>Servidor TCP simples</strong>:</li>
+        </ul>
+        <pre><code class="language-python">import socket
+        		
+# Criando o socket
+servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+servidor.bind((&quot;localhost&quot;, 12345))
+servidor.listen(1)
+        		
+print(&quot;Aguardando conexão...&quot;)
+cliente, endereco = servidor.accept()
+print(f&quot;Conectado a {endereco}&quot;)
+        		
+# Enviando dados ao cliente
+cliente.send(b&quot;Olá, cliente!&quot;)
+        		
+# Fechando a conexão
+cliente.close()</code></pre>
+        <ul>
+            <li><strong>Cliente TCP simples</strong>:</li>
+        </ul>
+        <pre><code class="language-python">import socket
+        		
+# Criando o socket
+cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+cliente.connect((&quot;localhost&quot;, 12345))
+        		
+# Recebendo dados do servidor
+dados = cliente.recv(1024)
+print(dados.decode())  # Exibe: Olá, cliente!
+        		
+# Fechando a conexão
+cliente.close()</code></pre>
+        <h3><strong>Biblioteca <code>requests</code></strong></h3>
+        <p>A biblioteca <strong><code>requests</code></strong> facilita o envio de requisições HTTP para servidores, muito usada
+            para trabalhar com APIs RESTful.</p>
+        <ul>
+            <li><strong>Enviando uma requisição GET</strong>:</li>
+        </ul>
+        <pre><code class="language-python">import requests
+        		
+response = requests.get(&quot;https://api.github.com&quot;)
+print(response.status_code)  # Código de status HTTP
+print(response.json())  # Resposta em formato JSON</code></pre>
+        <ul>
+            <li><strong>Enviando uma requisição POST</strong>:</li>
+        </ul>
+        <pre><code class="language-python">data = {&#39;name&#39;: &#39;Alice&#39;, &#39;age&#39;: 25}
+response = requests.post(&quot;https://api.exemplo.com&quot;, json=data)
+print(response.text)</code></pre>
+        <h2>20. <strong>Frameworks para Web</strong></h2>
+        <p>Python é amplamente usado para criar aplicações web, e alguns dos frameworks mais populares são
+            <strong>Flask</strong> e <strong>Django</strong>.</p>
+        <h3><strong>Flask</strong></h3>
+        <p>Flask é um microframework que é simples de aprender e usado para aplicações web menores e mais flexíveis.</p>
+        <ul>
+            <li><strong>Exemplo de uma aplicação simples com Flask</strong>:</li>
+        </ul>
+        <pre><code class="language-python">from flask import Flask
+        		
+app = Flask(__name__)
+        		
+@app.route(&#39;/&#39;)
+def home():
+	return &quot;Olá, Mundo!&quot;
+        		
+if __name__ == &quot;__main__&quot;:
+	app.run(debug=True)</code></pre>
+        <h3><strong>Django</strong></h3>
+        <p>Django é um framework web mais robusto, usado para construir aplicações mais complexas e escaláveis. Ele segue o
+            padrão MVC (Model-View-Controller).</p>
+        <ul>
+            <li><strong>Iniciando um Projeto Django</strong>:</li>
+        </ul>
+        <ol>
+            <li>Instalar o Django:</li>
+        </ol>
+        <pre><code class="language-bash">pip install django</code></pre>
+        <ol start="2">
+            <li>Criar um novo projeto:</li>
+        </ol>
+        <pre><code class="language-bash">django-admin startproject meu_site</code></pre>
+        <ol start="3">
+            <li>Rodar o servidor de desenvolvimento:</li>
+        </ol>
+        <pre><code class="language-bash">python manage.py runserver</code></pre>
+        <p>Django vem com muitas funcionalidades prontas, como autenticação de usuário, ORM, e painel administrativo.</p>
+        <hr>
+        <p>Este guia foi projetado para expandir seus conhecimentos de Python, introduzindo conceitos
+            que capacitam você a criar sistemas avançados e personalizados. À medida que mergulharmos em cada tópico,
+            você desenvolverá habilidades práticas para construir soluções robustas e modernas.
+            Prepare-se para explorar o próximo nível da programação com Python!</p>
+    </main>
+</body>
+</html>

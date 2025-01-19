@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de JavaScript: Programação Assíncrona</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag4.html">Próxima</a></li>
+                <li><a href="/3-js/pag2.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>JavaScript é single-threaded por natureza, o que significa que executa códigos linha por linha. No entanto, com a
+            programação assíncrona, podemos realizar tarefas que exigem mais tempo, como requisições de rede ou temporizadores,
+            sem bloquear a execução do restante do código.</p>
+        <h2><strong>1. Callbacks</strong></h2>
+        <p>Um callback é uma função passada como argumento para outra função, que será chamada após a conclusão de uma tarefa.
+        </p>
+        <h3><strong>1.1 Exemplo de Callback</strong></h3>
+        <pre><code class="language-javascript">function saudacao(nome, callback) {
+  console.log(`Olá, ${nome}!`);
+  callback();
+}
+
+saudacao(&quot;João&quot;, () =&gt; {
+  console.log(&quot;Bem-vindo!&quot;);
+});</code></pre>
+        <h3><strong>1.2 Problema com Callbacks: Callback Hell</strong></h3>
+        <p>Quando várias callbacks são aninhadas, o código pode se tornar difícil de entender e manter.</p>
+        <pre><code class="language-javascript">setTimeout(() =&gt; {
+  console.log(&quot;Tarefa 1&quot;);
+  setTimeout(() =&gt; {
+    console.log(&quot;Tarefa 2&quot;);
+    setTimeout(() =&gt; {
+      console.log(&quot;Tarefa 3&quot;);
+    }, 1000);
+  }, 1000);
+}, 1000);</code></pre>
+        <h2><strong>2. Promises</strong></h2>
+        <p>Uma <code>Promise</code> é um objeto que representa a eventual conclusão (ou falha) de uma operação assíncrona e seu
+            resultado.</p>
+        <h3><strong>2.1 Estados de uma Promise</strong></h3>
+        <ul>
+            <li><strong>Pending</strong>: Aguardando a execução.</li>
+            <li><strong>Fulfilled</strong>: Concluída com sucesso.</li>
+            <li><strong>Rejected</strong>: Falha na execução.</li>
+        </ul>
+        <h3><strong>2.2 Criando uma Promise</strong></h3>
+        <pre><code class="language-javascript">const minhaPromise = new Promise((resolve, reject) =&gt; {
+  let sucesso = true;
+        
+  if (sucesso) {
+    resolve(&quot;Operação bem-sucedida!&quot;);
+  } else {
+    reject(&quot;Erro na operação.&quot;);
+  }
+});
+
+minhaPromise
+  .then(resultado =&gt; console.log(resultado))
+  .catch(erro =&gt; console.error(erro));</code></pre>
+        <h3><strong>2.3 Encadeamento de Promises</strong></h3>
+        <pre><code class="language-javascript">new Promise((resolve) =&gt; {
+  resolve(10);
+})
+  .then(num =&gt; num * 2)
+  .then(num =&gt; num + 3)
+  .then(num =&gt; console.log(num)) // 23
+  .catch(erro =&gt; console.error(erro));</code></pre>
+        <h2><strong>3. Async/Await</strong></h2>
+        <p>O <code>async</code>/<code>await</code> é uma sintaxe mais limpa e legível para trabalhar com Promises.</p>
+        <h3><strong>3.1 Função Async</strong></h3>
+        <p>Uma função declarada com <code>async</code> sempre retorna uma Promise.</p>
+        <pre><code class="language-javascript">async function exemplo() {
+  return &quot;Olá, mundo!&quot;;
+}
+
+exemplo().then(console.log); // Olá, mundo!</code></pre>
+        <h3><strong>3.2 Usando Await</strong></h3>
+        <p>O <code>await</code> pausa a execução da função até que a Promise seja resolvida.</p>
+        <pre><code class="language-javascript">async function obterDados() {
+  try {
+    let resposta = await fetch(&quot;https://api.example.com/dados&quot;);
+    let dados = await resposta.json();
+    console.log(dados);
+  } catch (erro) {
+    console.error(&quot;Erro ao obter dados:&quot;, erro);
+  }
+}
+
+obterDados();</code></pre>
+        <h2><strong>4. Operações Assíncronas Comuns</strong></h2>
+        <h3><strong>4.1 Temporizadores</strong></h3>
+        <ul>
+            <li>
+                <p><strong><code>setTimeout</code></strong>: Executa uma função após um atraso.</p>
+                <pre><code class="language-javascript">setTimeout(() =&gt; console.log(&quot;Executado após 2 segundos&quot;), 2000);
+        </code></pre>
+            </li>
+            <li>
+                <p><strong><code>setInterval</code></strong>: Executa uma função repetidamente em intervalos.</p>
+                <pre><code class="language-javascript">let contador = 0;
+let intervalo = setInterval(() =&gt; {
+  contador++;
+  console.log(contador);
+        
+  if (contador === 5) clearInterval(intervalo);
+}, 1000);</code></pre>
+            </li>
+        </ul>
+        <h3><strong>4.2 Fetch API</strong></h3>
+        <p>A Fetch API realiza requisições HTTP de forma assíncrona.</p>
+        <ul>
+            <li>
+                <p><strong>Exemplo de Requisição GET</strong>:</p>
+                <pre><code class="language-javascript">fetch(&quot;https://api.example.com/dados&quot;)
+  .then(resposta =&gt; resposta.json())
+  .then(dados =&gt; console.log(dados))
+  .catch(erro =&gt; console.error(&quot;Erro:&quot;, erro));</code></pre>
+            </li>
+            <li>
+                <p><strong>Exemplo de Requisição POST</strong>:</p>
+                <pre><code class="language-javascript">fetch(&quot;https://api.example.com/usuarios&quot;, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Content-Type&quot;: &quot;application/json&quot;
+  },
+  body: JSON.stringify({ nome: &quot;João&quot;, idade: 30 })
+})
+  .then(resposta =&gt; resposta.json())
+  .then(dados =&gt; console.log(&quot;Usuário criado:&quot;, dados))
+  .catch(erro =&gt; console.error(&quot;Erro:&quot;, erro));</code></pre>
+            </li>
+        </ul>
+        <h2><strong>5. Gerenciamento de Concorrência</strong></h2>
+        <h3><strong>5.1 <code>Promise.all</code></strong></h3>
+        <p>Executa várias Promises simultaneamente e retorna os resultados quando todas forem resolvidas.</p>
+        <pre><code class="language-javascript">Promise.all([
+  fetch(&quot;https://api.example.com/dados1&quot;),
+  fetch(&quot;https://api.example.com/dados2&quot;)
+])
+  .then(respostas =&gt; Promise.all(respostas.map(res =&gt; res.json())))
+  .then(dados =&gt; console.log(dados))
+  .catch(erro =&gt; console.error(erro));</code></pre>
+        <h3><strong>5.2 <code>Promise.race</code></strong></h3>
+        <p>Retorna o resultado da primeira Promise que for resolvida ou rejeitada.</p>
+        <pre><code class="language-javascript">Promise.race([
+  fetch(&quot;https://api.example.com/rapido&quot;),
+  fetch(&quot;https://api.example.com/lento&quot;)
+])
+  .then(resposta =&gt; console.log(&quot;Primeira resolução:&quot;, resposta))
+  .catch(erro =&gt; console.error(erro));</code></pre>
+        <h3><strong>5.3 <code>Promise.allSettled</code></strong></h3>
+        <p>Retorna o estado de todas as Promises, independentemente de terem sido resolvidas ou rejeitadas.</p>
+        <pre><code class="language-javascript">Promise.allSettled([
+  fetch(&quot;https://api.example.com/dados1&quot;),
+  fetch(&quot;https://api.example.com/erro&quot;)
+])
+  .then(resultados =&gt; console.log(resultados));</code></pre>
+        <h2><strong>6. Web Workers</strong></h2>
+        <p>Web Workers permitem executar scripts em threads separadas, evitando o bloqueio da interface do usuário.</p>
+        <h3><strong>6.1 Criando um Worker</strong></h3>
+        <ol>
+            <li>
+                <p>Arquivo do Worker (<code>worker.js</code>):</p>
+                <pre><code class="language-javascript">self.onmessage = function (evento) {
+  let resultado = evento.data * 2;
+  self.postMessage(resultado);
+};</code></pre>
+            </li>
+            <li>
+                <p>Arquivo Principal:</p>
+                <pre><code class="language-javascript">let worker = new Worker(&quot;worker.js&quot;);
+                
+worker.onmessage = function (evento) {
+  console.log(&quot;Resultado do Worker:&quot;, evento.data);
+};
+
+worker.postMessage(5);</code></pre>
+            </li>
+        </ol>
+        <hr>
+        <p>Com esses conceitos e exemplos, você está preparado para trabalhar eficientemente com programação assíncrona em
+            JavaScript!</p>
+    </main>
+</body>
+</html>

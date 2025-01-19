@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Dart & Futtler</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Explorando o Dart: Fundamentos e Recursos Avançados</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/5-dart/pag3.html">Próxima</a></li>
+                <li><a href="/5-dart/pag1.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Dart é uma linguagem de programação moderna, desenvolvida pelo Google, que combina eficiência, simplicidade e
+            recursos avançados para criação de aplicações performáticas. Ela é amplamente utilizada no desenvolvimento de
+            aplicativos móveis com o Flutter, mas também é versátil para aplicações web e backend. Neste guia, exploraremos
+            desde os conc
+        <h2><strong>1. Tipos de Dados e Variáveis</strong></h2>
+        <p>Dart possui diferentes tipos de dados primitivos, como inteiros, números de ponto flutuante, strings e booleanos.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">void main() {
+int idade = 25;          // Inteiro
+double altura = 1.75;    // Ponto flutuante
+String nome = &quot;João&quot;;    // String
+bool isEstudante = true; // Booleano
+        		
+print(&#39;Nome: $nome, Idade: $idade, Altura: $altura, Estudante: $isEstudante&#39;);
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>int</code> para números inteiros.</li>
+            <li><code>double</code> para números com casas decimais.</li>
+            <li><code>String</code> para texto.</li>
+            <li><code>bool</code> para valores lógicos (verdadeiro ou falso).</li>
+        </ul>
+        <h2><strong>2. Classes e Objetos</strong></h2>
+        <p>Dart é uma linguagem orientada a objetos, o que significa que você pode criar <strong>classes</strong> e
+            <strong>objetos</strong>.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">class Carro {
+String modelo;
+int ano;
+        		
+// Construtor
+Carro(this.modelo, this.ano);
+        		
+// Método
+void ligar() {
+	print(&quot;O carro $modelo está ligado.&quot;);
+}
+}
+        		
+void main() {
+var meuCarro = Carro(&quot;Fusca&quot;, 1968);
+meuCarro.ligar();  // Saída: O carro Fusca está ligado.
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A classe <code>Carro</code> tem dois atributos: <code>modelo</code> e <code>ano</code>.</li>
+            <li>O construtor <code>Carro(this.modelo, this.ano)</code> inicializa os atributos da classe.</li>
+            <li>O método <code>ligar()</code> exibe uma mensagem.</li>
+        </ul>
+        <h2><strong>3. Herança e Polimorfismo</strong></h2>
+        <p>Dart permite herança, onde uma classe pode herdar comportamentos e propriedades de outra classe.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">class Animal {
+void falar() {
+	print(&quot;O animal faz um som.&quot;);
+}
+}
+        		
+class Cachorro extends Animal {
+@override
+void falar() {
+	print(&quot;O cachorro late.&quot;);
+}
+}
+        		
+void main() {
+var meuCachorro = Cachorro();
+meuCachorro.falar(); // Saída: O cachorro late.
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A classe <code>Cachorro</code> herda de <code>Animal</code>.</li>
+            <li>O método <code>falar()</code> é sobrescrito (polimorfismo) na classe <code>Cachorro</code>.</li>
+        </ul>
+        <h2><strong>4. Getters e Setters</strong></h2>
+        <p>Getters e setters permitem controlar o acesso aos atributos de uma classe.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">class Pessoa {
+String _nome;
+        		
+// Getter
+String get nome =&gt; _nome;
+        		
+// Setter
+set nome(String nome) {
+	if (nome.isNotEmpty) {
+	_nome = nome;
+	}
+}
+}
+        		
+void main() {
+var pessoa = Pessoa();
+pessoa.nome = &quot;João&quot;;  // Usando setter
+print(pessoa.nome);    // Usando getter
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>O getter <code>nome</code> permite acessar o valor de <code>_nome</code>.</li>
+            <li>O setter <code>nome</code> valida se o nome não está vazio antes de atribuir.</li>
+        </ul>
+        <h2><strong>5. Controle de Fluxo</strong></h2>
+        <p>Dart usa as estruturas condicionais tradicionais (<code>if</code>, <code>else</code>, <code>switch</code>) e laços de
+            repetição (<code>for</code>, <code>while</code>, <code>do-while</code>).</p>
+        <p><strong>Exemplo - Condicionais</strong>:</p>
+        <pre><code class="language-dart">void main() {
+int numero = 10;
+        		
+if (numero &gt; 5) {
+	print(&quot;O número é maior que 5&quot;);
+} else {
+	print(&quot;O número é menor ou igual a 5&quot;);
+}
+}</code></pre>
+        <p><strong>Exemplo - Laços</strong>:</p>
+        <pre><code class="language-dart">void main() {
+for (int i = 0; i &lt; 5; i++) {
+	print(&quot;Contagem: $i&quot;);
+}
+}</code></pre>
+        <h2><strong>6. Funções</strong></h2>
+        <p>Funções são blocos de código que podem ser reutilizados. Elas podem receber parâmetros e retornar valores.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">int somar(int a, int b) {
+return a + b;
+}
+        		
+void main() {
+int resultado = somar(5, 3);
+print(&#39;Resultado da soma: $resultado&#39;);
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>Função <code>somar</code> recebe dois parâmetros inteiros (<code>a</code> e <code>b</code>) e retorna a soma
+                deles.</li>
+            <li>A função é chamada com <code>somar(5, 3)</code>.</li>
+        </ul>
+        <h2><strong>7. Listas e Mapas</strong></h2>
+        <p>Dart possui coleções como listas e mapas, que são amplamente usadas para armazenar múltiplos valores.</p>
+        <p><strong>Exemplo de Lista</strong>:</p>
+        <pre><code class="language-dart">void main() {
+List&lt;String&gt; frutas = [&#39;Maçã&#39;, &#39;Banana&#39;, &#39;Laranja&#39;];
+        		
+// Acessando elementos da lista
+print(frutas[0]); // Saída: Maçã
+        		
+// Adicionando um novo elemento
+frutas.add(&#39;Uva&#39;);
+print(frutas);
+}</code></pre>
+        <p><strong>Exemplo de Mapa</strong>:</p>
+        <pre><code class="language-dart">void main() {
+Map&lt;String, int&gt; idades = {&#39;João&#39;: 25, &#39;Maria&#39;: 30};
+        		
+// Acessando valores no mapa
+print(idades[&#39;João&#39;]); // Saída: 25
+        		
+// Adicionando um novo par chave-valor
+idades[&#39;Pedro&#39;] = 20;
+print(idades);
+}</code></pre>
+        <h2><strong>8. Funções Anônimas (Lambdas)</strong></h2>
+        <p>Funções anônimas são aquelas que não têm um nome definido, e geralmente são passadas como argumentos para outras
+            funções ou usadas em expressões curtas.</p>
+        <p><strong>Exemplo - Função anônima</strong>:</p>
+        <pre><code class="language-dart">void main() {
+ar lista = [1, 2, 3, 4, 5];
+        		
+// Usando uma função anônima para dobrar os valores da lista
+var dobrados = lista.map((numero) =&gt; numero * 2).toList();
+        		
+print(dobrados);  // Saída: [2, 4, 6, 8, 10]
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>map()</code> é um método de lista que aplica uma função a cada item. A função anônima
+                <code>(numero) =&gt; numero * 2</code> é passada para <code>map()</code> para dobrar os números da lista.</li>
+        </ul>
+        <h2><strong>9. Operadores de Coleção (Set e List)</strong></h2>
+        <p>Dart fornece coleções poderosas, como <strong>Set</strong> e <strong>List</strong>, que permitem armazenar valores de
+            forma eficiente.</p>
+        <p><strong>Exemplo - Set (conjunto de valores únicos)</strong>:</p>
+        <pre><code class="language-dart">void main() {
+var numeros = {1, 2, 3, 4, 5};
+numeros.add(6);  // Adicionando um novo valor
+        		
+print(numeros);  // Saída: {1, 2, 3, 4, 5, 6}
+        		
+numeros.add(3);  // Tentando adicionar um valor duplicado
+print(numeros);  // Saída: {1, 2, 3, 4, 5, 6} (não adiciona o 3 novamente)
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>Set</code> não permite valores duplicados, ao contrário da <code>List</code> que permite repetições.</li>
+        </ul>
+        <h2><strong>10. Tratamento de Exceções</strong></h2>
+        <p>Em Dart, você pode usar <code>try</code>, <code>catch</code>, e <code>finally</code> para tratar exceções e erros
+            durante a execução.</p>
+        <p><strong>Exemplo - Tratando exceções</strong>:</p>
+        <pre><code class="language-dart">void main() {
+try {
+	var resultado = 10 ~/ 0;  // Divisão por zero
+	print(resultado);
+} catch (e) {
+	print(&#39;Erro: $e&#39;);  // Saída: Erro: IntegerDivisionByZeroException
+} finally {
+	print(&#39;Execução finalizada&#39;);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>try</code> executa o código que pode lançar uma exceção.</li>
+            <li><code>catch</code> captura a exceção e lida com ela.</li>
+            <li><code>finally</code> sempre é executado, independentemente de ter ocorrido ou não uma exceção.</li>
+        </ul>
+        <h2><strong>11. Generics</strong></h2>
+        <p>Generics permitem que você escreva funções e classes que podem trabalhar com diferentes tipos de dados sem perder a
+            segurança de tipo. Eles são especialmente úteis para coleções, como listas e mapas.</p>
+        <p><strong>Exemplo - Função genérica</strong>:</p>
+        <pre><code class="language-dart">T maior&lt;T extends Comparable&gt;(T a, T b) {
+return a.compareTo(b) &gt; 0 ? a : b;
+}
+        		
+void main() {
+print(maior(10, 20));   // Saída: 20
+print(maior(&quot;a&quot;, &quot;b&quot;)); // Saída: b
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A função <code>maior</code> recebe dois parâmetros do tipo genérico <code>T</code>, que deve estender
+                <code>Comparable</code>, permitindo a comparação.</li>
+            <li>O <code>T</code> pode ser qualquer tipo que implemente a interface <code>Comparable</code>.</li>
+        </ul>
+        <h2><strong>12. Async e Await (Programação Assíncrona)</strong></h2>
+        <p>A programação assíncrona é fundamental em Dart, especialmente ao trabalhar com I/O ou chamadas de rede. O Dart
+            utiliza <code>async</code> e <code>await</code> para lidar com operações assíncronas de maneira eficiente.</p>
+        <p><strong>Exemplo - Usando <code>async</code> e <code>await</code></strong>:</p>
+        <pre><code class="language-dart">Future&lt;void&gt; pegarDados() async {
+print(&#39;Iniciando...&#39;);
+await Future.delayed(Duration(seconds: 2)); // Simula uma operação assíncrona
+print(&#39;Dados recebidos!&#39;);
+}
+        		
+void main() {
+pegarDados();
+print(&#39;Esperando dados...&#39;);
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A função <code>pegarDados</code> é marcada como <code>async</code>, indicando que será assíncrona.</li>
+            <li><code>await</code> é usado para esperar a conclusão da operação <code>Future.delayed</code>.</li>
+            <li>A execução do programa continua sem bloquear a thread principal.</li>
+        </ul>
+        <h2><strong>13. Extensões</strong></h2>
+        <p>Extensões permitem que você adicione novos métodos a tipos existentes, sem modificar o código original da classe.
+            Isso é útil para adicionar funcionalidades sem alterar o código-fonte de bibliotecas externas.</p>
+        <p><strong>Exemplo - Usando extensões</strong>:</p>
+        <pre><code class="language-dart">extension StringReverso on String {
+String get inverter =&gt; this.split(&#39;&#39;).reversed.join();
+}
+        		
+void main() {
+String texto = &quot;Flutter&quot;;
+print(texto.inverter);  // Saída: rettulf
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A extensão <code>StringReverso</code> adiciona o método <code>inverter</code> à classe <code>String</code>, que
+                inverte a string.</li>
+            <li>Usamos <code>split(&#39;&#39;)</code> para dividir a string em uma lista de caracteres, <code>reversed</code>
+                para inverter e <code>join(&#39;&#39;)</code> para recompor a string.</li>
+        </ul>
+        <h2><strong>14. Isolados (Isolates)</strong></h2>
+        <p>Isolados são unidades de execução independentes no Dart que permitem a execução paralela. Eles são úteis para tarefas
+            pesadas, como processamento de dados em segundo plano, sem bloquear a UI.</p>
+        <p><strong>Exemplo - Usando Isolados</strong>:</p>
+        <pre><code class="language-dart">import &#39;dart:async&#39;;
+import &#39;dart:convert&#39;;
+import &#39;dart:isolate&#39;;
+        		
+void processamentoPesado(SendPort sendPort) {
+// Simulando um processamento longo
+String resultado = &#39;Processamento concluído!&#39;;
+sendPort.send(resultado);  // Envia o resultado de volta
+}
+        		
+void main() {
+final receivePort = ReceivePort();
+        		
+// Criação de um isolado
+Isolate.spawn(processamentoPesado, receivePort.sendPort);
+        		
+// Escutando o resultado do isolado
+receivePort.listen((message) {
+	print(message);  // Saída: Processamento concluído!
+});
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>O método <code>Isolate.spawn</code> cria um novo isolado que executa a função <code>processamentoPesado</code>.
+            </li>
+            <li><code>SendPort</code> e <code>ReceivePort</code> são usados para comunicação entre o isolado e o thread
+                principal.</li>
+        </ul>
+        <h2><strong>15. Reflexão</strong></h2>
+        <p>A reflexão em Dart permite que você examine e modifique a estrutura de objetos em tempo de execução. Ela é útil para
+            criar bibliotecas genéricas e dinâmicas.</p>
+        <p><strong>Exemplo - Usando Reflexão</strong>:</p>
+        <pre><code class="language-dart">import &#39;dart:mirrors&#39;;
+        		
+class Pessoa {
+String nome;
+int idade;
+        		
+Pessoa(this.nome, this.idade);
+        		
+void falar() {
+	print(&#39;Olá, meu nome é $nome e tenho $idade anos!&#39;);
+}
+}
+        		
+void main() {
+var pessoa = Pessoa(&#39;João&#39;, 30);
+        		
+// Usando reflexão para acessar os membros da classe
+var espejo = reflect(pessoa);
+        		
+// Invocando o método
+espejo.invoke(#falar, []);
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>reflect</code> é usado para obter uma instância de <code>Mirror</code> de um objeto.</li>
+            <li>O método <code>invoke</code> permite chamar métodos dinamicamente.</li>
+        </ul>
+        <h2><strong>16. Bibliotecas e Pacotes</strong></h2>
+        <p>Dart possui uma vasta quantidade de pacotes e bibliotecas que podem ser facilmente importadas e utilizadas em seus
+            projetos.</p>
+        <p><strong>Exemplo - Usando o pacote <code>http</code></strong>:</p>
+        <pre><code class="language-dart">import &#39;package:http/http.dart&#39; as http;
+        		
+Future&lt;void&gt; buscarDados() async {
+var resposta = await http.get(Uri.parse(&#39;https://jsonplaceholder.typicode.com/posts&#39;));
+print(resposta.body);  // Exibe a resposta da API
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>Dart possui um repositório chamado <strong>pub.dev</strong>, onde você pode buscar pacotes para adicionar ao seu
+                projeto.</li>
+            <li>Para usar um pacote, basta adicionar a dependência no <code>pubspec.yaml</code>.</li>
+        </ul>
+        <hr>
+        <p>Este guia aborda uma ampla gama de tópicos, mostrando como Dart é uma linguagem flexível e poderosa para diferentes
+            tipos de projetos. Desde a base sólida com variáveis e classes até conceitos avançados como isolados e reflexões,
+            você terá as ferramentas necessárias para dominar Dart e criar aplicações modernas e eficientes.</p>
+    </main>
+</body>
+</html>

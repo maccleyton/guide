@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Dart & Futtler</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Introdução ao Flutter: Criando Aplicações Móveis Modernas</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/5-dart/pag3.html">Próxima</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Flutter se tornou uma das ferramentas mais populares para o desenvolvimento de aplicativos móveis devido à sua
+            flexibilidade e performance. Ele permite que desenvolvedores criem aplicativos nativos para Android, iOS, web e até
+            desktop, tudo com uma única base de código. Além das funcionalidades básicas, Flutter oferece recursos avançados que
+            permitem aos desenvolvedores criar aplicativos altamente interativos, escaláveis e personalizáveis. Vamos explorar
+            alguns desses recursos essenciais que ampliam as possibilidades de desenvolvimento com Flutter.</p>
+        <h2><strong>1. Trabalhando com Animações Complexas</strong></h2>
+        <p>Flutter oferece um conjunto de widgets poderosos para criar animações mais complexas. Vamos explorar o uso de
+            <code>AnimationController</code> e <code>Tween</code> para animações personalizadas.</p>
+        <p><strong>Exemplo - Animação personalizada com <code>AnimationController</code></strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        		
+void main() =&gt; runApp(MeuApp());
+        		
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaAnimacao(),
+	);
+}
+}
+        		
+class TelaAnimacao extends StatefulWidget {
+@override
+_TelaAnimacaoState createState() =&gt; _TelaAnimacaoState();
+}
+        		
+class _TelaAnimacaoState extends State&lt;TelaAnimacao&gt; with SingleTickerProviderStateMixin {
+AnimationController? _controller;
+Animation&lt;double&gt;? _animacao;
+        		
+@override
+void initState() {
+	super.initState();
+	_controller = AnimationController(
+	duration: Duration(seconds: 2),
+	vsync: this,
+	);
+        		
+	_animacao = Tween&lt;double&gt;(begin: 0, end: 300).animate(
+	CurvedAnimation(parent: _controller!, curve: Curves.easeInOut),
+	);
+        		
+	_controller?.forward(); // Inicia a animação
+}
+        		
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&#39;Animação Personalizada&#39;)),
+	body: Center(
+		child: AnimatedBuilder(
+		animation: _animacao!,
+		builder: (context, child) {
+			return Container(
+			width: _animacao!.value,
+			height: _animacao!.value,
+			color: Colors.blue,
+			);
+		},
+		),
+	),
+	);
+}
+        		
+@override
+void dispose() {
+	_controller?.dispose();
+	super.dispose();
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>Usamos <code>AnimationController</code> para controlar o ciclo da animação.</li>
+            <li><code>Tween&lt;double&gt;(begin: 0, end: 300)</code> cria uma transição entre o valor 0 e 300.</li>
+            <li>A animação é aplicada a um <code>Container</code> com <code>AnimatedBuilder</code>, que reconstrói o widget
+                conforme a animação progride.</li>
+        </ul>
+        <h2><strong>2. Personalizando Widgets com <code>CustomPainter</code></strong></h2>
+        <p>O <code>CustomPainter</code> é uma poderosa ferramenta no Flutter para desenhar gráficos personalizados e formas
+            diretamente na tela.</p>
+        <p><strong>Exemplo - Usando <code>CustomPainter</code></strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        		
+void main() {
+runApp(MeuApp());
+}
+        		
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaCustomPainter(),
+	);
+}
+}
+        		
+class TelaCustomPainter extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Custom Painter&quot;)),
+	body: CustomPaint(
+		size: Size(300, 300),
+		painter: MeuPainter(),
+	),
+	);
+}
+}
+        		
+class MeuPainter extends CustomPainter {
+@override
+void paint(Canvas canvas, Size size) {
+	var paint = Paint()
+	..color = Colors.blue
+	..style = PaintingStyle.fill;
+        		
+	// Desenhando um círculo
+	canvas.drawCircle(Offset(size.width / 2, size.height / 2), 100, paint);
+}
+        		
+@override
+bool shouldRepaint(covariant CustomPainter oldDelegate) {
+	return false;
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>CustomPaint</code> é um widget que usa um <code>CustomPainter</code> para desenhar na tela.</li>
+            <li>O método <code>paint</code> desenha um círculo usando o <code>Canvas</code>.</li>
+            <li>O <code>CustomPainter</code> é reutilizado sempre que necessário, permitindo desenhar formas complexas.</li>
+        </ul>
+        <h2><strong>3. Gerenciamento de Estado com <code>Provider</code></strong></h2>
+        <p>O gerenciamento de estado é crucial em aplicativos Flutter complexos. O <code>Provider</code> é uma das bibliotecas
+            mais populares para gerenciar o estado de forma eficiente.</p>
+        <p><strong>Exemplo - Usando <code>Provider</code> para Gerenciar o Estado</strong>:</p>
+        <ol>
+            <li>Adicione a dependência no <code>pubspec.yaml</code>:</li>
+        </ol>
+        <pre><code class="language-yaml">dependencies:
+provider: latest_version</code></pre>
+        <ol start="2">
+            <li>Criando uma classe de modelo para o estado:</li>
+        </ol>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+import &#39;package:provider/provider.dart&#39;;
+        		
+void main() {
+runApp(MyApp());
+}
+        		
+class ContadorModel with ChangeNotifier {
+int _contador = 0;
+        		
+int get contador =&gt; _contador;
+        		
+void incrementar() {
+	_contador++;
+	notifyListeners();
+}
+}
+        		
+class MyApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return ChangeNotifierProvider(
+	create: (_) =&gt; ContadorModel(),
+	child: MaterialApp(
+		home: TelaContador(),
+	),
+	);
+}
+}
+        		
+class TelaContador extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	final contador = Provider.of&lt;ContadorModel&gt;(context);
+
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Contador com Provider&quot;)),
+	body: Center(
+		child: Column(
+		mainAxisAlignment: MainAxisAlignment.center,
+		children: &lt;Widget&gt;[
+			Text(&#39;Contagem: ${contador.contador}&#39;),
+			ElevatedButton(
+			onPressed: () {
+				contador.incrementar();
+			},
+			child: Text(&quot;Incrementar&quot;),
+			),
+		],
+		),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>ChangeNotifier</code> é usado para notificar os ouvintes quando o estado muda.</li>
+            <li><code>ChangeNotifierProvider</code> fornece o estado <code>ContadorModel</code> para os widgets filhos.</li>
+            <li><code>Provider.of&lt;ContadorModel&gt;(context)</code> acessa o estado e permite atualizá-lo com
+                <code>incrementar()</code>.</li>
+        </ul>
+        <h2><strong>4. Trabalhando com APIs (HTTP)</strong></h2>
+        <p>O Flutter facilita a integração com APIs externas usando a biblioteca <code>http</code>. Aqui está um exemplo de como
+            fazer uma requisição GET para buscar dados de uma API.</p>
+        <p><strong>Exemplo - Consumindo uma API com <code>http</code></strong>:</p>
+        <ol>
+            <li>Adicione a dependência no <code>pubspec.yaml</code>:</li>
+        </ol>
+        <pre><code class="language-yaml">dependencies:
+http: latest_version</code></pre>
+        <ol start="2">
+            <li>Realizando a requisição GET:</li>
+        </ol>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+import &#39;package:http/http.dart&#39; as http;
+import &#39;dart:convert&#39;;
+
+void main() {
+runApp(MyApp());
+}
+        		
+class MyApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaAPI(),
+	);
+}
+}
+        		
+class TelaAPI extends StatefulWidget {
+@override
+_TelaAPIState createState() =&gt; _TelaAPIState();
+}
+        		
+class _TelaAPIState extends State&lt;TelaAPI&gt; {
+String _dados = &#39;&#39;;
+        		
+Future&lt;void&gt; buscarDados() async {
+	final response = await http.get(Uri.parse(&#39;https://jsonplaceholder.typicode.com/posts/1&#39;));
+
+	if (response.statusCode == 200) {
+	var data = jsonDecode(response.body);
+	setState(() {
+		_dados = data[&#39;title&#39;];
+	});
+	} else {
+	throw Exception(&#39;Falha ao carregar dados&#39;);
+	}
+}
+        		
+@override
+void initState() {
+	super.initState();
+	buscarDados();
+}
+        		
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Consumindo API&quot;)),
+	body: Center(
+		child: Text(_dados.isEmpty ? &#39;Carregando...&#39; : _dados),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>Usamos a biblioteca <code>http</code> para fazer uma requisição GET.</li>
+            <li>A resposta é decodificada com <code>jsonDecode</code> e o título é exibido na tela.</li>
+        </ul>
+        <h2><strong>5. Flutter Web</strong></h2>
+        <p>Flutter Web permite que você crie aplicativos Flutter que rodam diretamente em navegadores. Isso é muito útil para
+            criar aplicativos multiplataforma com uma única base de código.</p>
+        <p><strong>Exemplo - Criando um App Flutter Web</strong>:</p>
+        <ol>
+            <li>
+                <p>Certifique-se de que o suporte a Flutter Web está ativado:</p>
+                <pre><code class="language-bash">flutter channel stable
+flutter upgrade
+flutter config --enable-web</code></pre>
+            </li>
+            <li>
+                <p>Crie um novo aplicativo Flutter e rode para o navegador:</p>
+                <pre><code class="language-bash">flutter create meu_app_web
+cd meu_app_web
+flutter run -d chrome</code></pre>
+            </li>
+        </ol>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A execução com <code>flutter run -d chrome</code> irá abrir o app em um navegador.</li>
+            <li>Flutter Web ainda está em evolução, mas já oferece a possibilidade de criar interfaces de usuário interativas
+                para a web.</li>
+        </ul>
+        <h2><strong>6. Flutter Desktop</strong></h2>
+        <p>Flutter também suporta a criação de aplicativos para desktop, como Windows, macOS e Linux. Isso permite que você use
+            o Flutter para criar aplicativos para várias plataformas com o mesmo código base.</p>
+        <p><strong>Exemplo - Criando um App Flutter Desktop</strong>:</p>
+        <ol>
+            <li>
+                <p>Ative o suporte a desktop no Flutter:</p>
+                <pre><code class="language-bash">flutter config --enable-windows-desktop
+flutter create meu_app_desktop
+cd meu_app_desktop
+flutter run -d windows</code></pre>
+            </li>
+        </ol>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>O Flutter permite criar aplicativos de desktop com um ciclo de desenvolvimento semelhante ao de aplicativos
+                móveis.</li>
+            <li>Para Windows, macOS e Linux, você pode rodar os apps nativos diretamente nas plataformas de destino.</li>
+        </ul>
+        <h2><strong>7. Flutter para Wearables (Tizen, Android Wear)</strong></h2>
+        <p>Flutter também pode ser utilizado para criar aplicativos para dispositivos vestíveis, como relógios inteligentes,
+            utilizando o sistema <strong>Tizen</strong> (Samsung) ou <strong>Android Wear</strong>.</p>
+        <p><strong>Exemplo - Criando um App para Wearables</strong>:</p>
+        <ol>
+            <li>
+                <p>Instale o SDK necessário para a plataforma de wearable desejada.</p>
+            </li>
+            <li>
+                <p>Crie um novo app e configure para a plataforma de wearable:</p>
+                <pre><code class="language-bash">flutter create meu_app_wearable
+flutter run -d &lt;dispositivo_destino&gt;</code></pre>
+            </li>
+        </ol>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A criação de apps para dispositivos vestíveis exige a configuração do ambiente e suporte para as APIs
+                específicas da plataforma de wearable.</li>
+            <li>Flutter oferece integração com sensores, notificações e outros recursos específicos desses dispositivos.</li>
+        </ul>
+        <h2><strong>8. Testes no Flutter</strong></h2>
+        <p>O Flutter fornece ferramentas integradas para testes unitários, de widgets e de integração, permitindo garantir que o
+            aplicativo funcione corretamente.</p>
+        <p><strong>Exemplo - Teste Unitário</strong>:</p>
+        <pre><code class="language-dart">import &#39;package:test/test.dart&#39;;
+        		
+int somar(int a, int b) {
+return a + b;
+}
+        		
+void main() {
+test(&#39;Teste de soma&#39;, () {
+	expect(somar(2, 3), equals(5));
+});
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>O Flutter usa o pacote <code>test</code> para criar testes unitários.</li>
+            <li>O método <code>expect</code> é usado para verificar se o valor esperado corresponde ao valor real retornado pela
+                função.</li>
+        </ul>
+        <h2><strong>9. Flutter para IoT (Internet das Coisas)</strong></h2>
+        <p>Você pode criar aplicativos Flutter para se comunicar com dispositivos IoT, como sensores e atuadores, usando
+            protocolos como MQTT ou HTTP para enviar e receber dados.</p>
+        <p><strong>Exemplo - Enviando Dados para um Dispositivo IoT via HTTP</strong>:</p>
+        <pre><code class="language-dart">import &#39;package:http/http.dart&#39; as http;
+        		
+void enviarDados(String url, Map&lt;String, String&gt; dados) async {
+var resposta = await http.post(Uri.parse(url), body: dados);
+print(resposta.body);
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>O Flutter pode enviar e receber dados de dispositivos IoT através de APIs REST ou MQTT.</li>
+            <li>Esse tipo de integração permite que você controle dispositivos em tempo real a partir do seu aplicativo Flutter.
+            </li>
+        </ul>
+        <hr>
+        <p>Flutter se destaca não apenas pela sua capacidade de desenvolver aplicativos móveis, mas também pela sua
+            versatilidade em atender a uma variedade de plataformas, incluindo web, desktop, wearables e IoT. As funcionalidades
+            avançadas, como animações complexas, personalização de widgets, gerenciamento de estado eficiente, integração com
+            APIs e testes robustos, tornam o Flutter uma excelente escolha para criar aplicativos de alto desempenho e com
+            grande foco na experiência do usuário. Ao explorar esses recursos avançados, os desenvolvedores podem criar soluções
+            inovadoras e escaláveis para atender às crescentes demandas do mercado.</p>
+    </main>
+</body>
+</html>

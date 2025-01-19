@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Programação WEB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Guia de Programação WEB</h1>
+            <ul class="glossario">
+                <li><a href="./1-html/pag1.html">HTML</a></li>
+                <li><a href="./2-css/pag1.html">CSS</a></li>
+                <li><a href="./3-js/pag1.html">JavaScript</a></li>
+                <li><a href="./4-py/pag1.html">Python</a></li>
+                <li><a href="./5-dart/pag1.html">Dart/Flutter</a></li>
+            </ul>
+        </div>
+        <hr>
+    </header>
+    <main class="main-content">
+        <h2>Introdução</h2>
+        <p>Neste conteúdo, exploraremos cinco tecnologias essenciais para o desenvolvimento web e de aplicativos móveis: HTML,
+            CSS, JavaScript, Python e Dart/Flutter. Cada uma dessas ferramentas desempenha um papel fundamental na criação de
+            soluções interativas, funcionais e de alto desempenho. HTML é responsável pela estruturação do conteúdo nas páginas
+            web, enquanto CSS cuida da sua aparência visual. JavaScript adiciona dinamismo e interatividade, tornando as páginas
+            mais envolventes. Python, por sua vez, se destaca pela sua versatilidade e é amplamente utilizado em áreas como
+            desenvolvimento de software, ciência de dados e automação. Finalmente, Dart, em conjunto com o framework Flutter,
+            oferece uma abordagem eficiente para o desenvolvimento de aplicativos móveis nativos. A seguir, detalharemos cada
+            uma dessas tecnologias, abordando suas origens, componentes principais, exemplos de uso e razões para utilizá-las em
+            projetos de desenvolvimento.</p>
+        <hr>
+        <h2>1. HTML</h2>
+        <ul>
+            <li>
+                <p><strong>Introdução</strong>:<br> HTML (HyperText Markup Language) é a linguagem fundamental para a criação de
+                    páginas web. Ele fornece a estrutura básica de conteúdo e permite que navegadores interpretem e exibam
+                    informações de forma organizada.</p>
+            </li>
+            <li>
+                <p><strong>Origem</strong>:<br> HTML foi criado por Tim Berners-Lee em 1991, com o objetivo de criar uma maneira
+                    simples de estruturar documentos para a web. A primeira versão permitia a criação de documentos com links e
+                    formatação básica.</p>
+            </li>
+            <li>
+                <p><strong>Definição</strong>:<br> HTML é uma linguagem de marcação que utiliza &quot;tags&quot; para definir e
+                    organizar o conteúdo da página web. Ele estrutura informações como textos, imagens, links e outros
+                    elementos, formando a espinha dorsal de qualquer site.</p>
+            </li>
+            <li>
+                <p><strong>Principais componentes</strong>:</p>
+                <ul>
+                    <li><strong>Tags</strong>: Elementos como <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>,
+                        <code>&lt;body&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>.</li>
+                    <li><strong>Atributos</strong>: Definem características de elementos, como <code>src</code> para imagens ou
+                        <code>href</code> para links.</li>
+                    <li><strong>Estrutura do documento</strong>: Definida por <code>&lt;html&gt;</code>,
+                        <code>&lt;head&gt;</code> (metadados), <code>&lt;body&gt;</code> (conteúdo visível).</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Exemplos de utilização</strong>:</p>
+                <ul>
+                    <li>Criar a estrutura de uma página web, como textos, listas e links.</li>
+                    <li>Incorporar imagens e vídeos em uma página.</li>
+                    <li>Organizar conteúdo em tabelas ou formulários.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Por que utilizar?</strong><br> HTML é essencial para a criação de qualquer página na web. Ele fornece
+                    a estrutura básica que permite que navegadores mostrem conteúdo de forma organizada e acessível aos
+                    usuários.</p>
+            </li>
+        </ul>
+        <hr>
+        <h2>2. CSS</h2>
+        <ul>
+            <li>
+                <p><strong>Introdução</strong>:<br> CSS (Cascading Style Sheets) é a linguagem responsável pela aparência e
+                    design das páginas web. Ele permite separar o conteúdo estruturado com HTML da sua apresentação visual.</p>
+            </li>
+            <li>
+                <p><strong>Origem</strong>:<br> CSS foi criado em 1996 por Håkon Wium Lie com o intuito de aprimorar o layout e
+                    a formatação de páginas web, oferecendo maior flexibilidade em comparação com o estilo inline que estava
+                    disponível anteriormente.</p>
+            </li>
+            <li>
+                <p><strong>Definição</strong>:<br> CSS é utilizado para definir a estética de uma página web, controlando
+                    aspectos como cores, fontes, margens, espaçamentos e layout de elementos.</p>
+            </li>
+            <li>
+                <p><strong>Principais componentes</strong>:</p>
+                <ul>
+                    <li><strong>Seletores</strong>: Definem quais elementos HTML serão estilizados, como <code>p</code>,
+                        <code>.classe</code>, <code>#id</code>.</li>
+                    <li><strong>Propriedades e valores</strong>: Exemplo: <code>color: red;</code>,
+                        <code>font-size: 16px;</code>.</li>
+                    <li><strong>Layouts</strong>: Utilização de Flexbox e Grid para criação de layouts dinâmicos e responsivos.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Exemplos de utilização</strong>:</p>
+                <ul>
+                    <li>Definir a cor de fundo de uma página.</li>
+                    <li>Criar layouts responsivos que se ajustam a diferentes tamanhos de tela.</li>
+                    <li>Estilizar botões, fontes e outros componentes de forma atraente.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Por que utilizar?</strong><br> CSS é essencial para o design e a usabilidade da web. Sem ele, as
+                    páginas seriam sem estilo e difíceis de navegar. Ele permite que o conteúdo seja exibido de maneira
+                    agradável e funcional.</p>
+            </li>
+        </ul>
+        <hr>
+        <h2>3. JavaScript</h2>
+        <ul>
+            <li>
+                <p><strong>Introdução</strong>:<br> JavaScript é uma linguagem de programação de alto nível que adiciona
+                    interatividade e dinamismo às páginas web. Ele permite modificar conteúdo e responder a ações do usuário em
+                    tempo real.</p>
+            </li>
+            <li>
+                <p><strong>Origem</strong>:<br> Criado por Brendan Eich em 1995 na Netscape, JavaScript foi inicialmente
+                    projetado para tornar as páginas web mais interativas, permitindo a manipulação de eventos como cliques e
+                    inserção de dados.</p>
+            </li>
+            <li>
+                <p><strong>Definição</strong>:<br> JavaScript é uma linguagem de programação usada para tornar as páginas web
+                    interativas. Ele é executado no navegador do cliente, permitindo atualizações dinâmicas na página sem a
+                    necessidade de recarregá-la.</p>
+            </li>
+            <li>
+                <p><strong>Principais componentes</strong>:</p>
+                <ul>
+                    <li><strong>Sintaxe</strong>: Variáveis (<code>let</code>, <code>const</code>), funções
+                        (<code>function</code>), operadores (<code>+</code>, <code>-</code>, <code>*</code>).</li>
+                    <li><strong>DOM (Document Object Model)</strong>: Interface para interagir com os elementos HTML.</li>
+                    <li><strong>Eventos</strong>: Como <code>click</code>, <code>keydown</code>, <code>submit</code> para
+                        interagir com o usuário.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Exemplos de utilização</strong>:</p>
+                <ul>
+                    <li>Validação de formulários antes de enviar para o servidor.</li>
+                    <li>Manipulação de elementos HTML para criar efeitos interativos.</li>
+                    <li>Carregamento de dados sem recarregar a página (AJAX).</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Por que utilizar?</strong><br> JavaScript é fundamental para criar páginas web dinâmicas e
+                    interativas. Ele permite melhorar a experiência do usuário, tornando a navegação mais ágil e personalizada.
+                </p>
+            </li>
+        </ul>
+        <hr>
+        <h2>4. Python</h2>
+        <ul>
+            <li>
+                <p><strong>Introdução</strong>:<br> Python é uma linguagem de programação versátil, conhecida pela sua sintaxe
+                    simples e legível. É amplamente usada em diversas áreas, desde desenvolvimento web até ciência de dados e
+                    inteligência artificial.</p>
+            </li>
+            <li>
+                <p><strong>Origem</strong>:<br> Python foi criado por Guido van Rossum e lançado em 1991. A linguagem foi
+                    projetada para ser fácil de ler e escrever, promovendo uma programação clara e concisa.</p>
+            </li>
+            <li>
+                <p><strong>Definição</strong>:<br> Python é uma linguagem de alto nível, orientada a objetos, usada para
+                    desenvolver uma ampla gama de aplicativos. Sua sintaxe simples a torna ideal tanto para iniciantes quanto
+                    para profissionais experientes.</p>
+            </li>
+            <li>
+                <p><strong>Principais componentes</strong>:</p>
+                <ul>
+                    <li><strong>Sintaxe clara e legível</strong>: Indentação para definição de blocos de código.</li>
+                    <li><strong>Bibliotecas</strong>: Como <code>requests</code>, <code>matplotlib</code>, <code>pandas</code>,
+                        <code>Django</code>.</li>
+                    <li><strong>Tipos de dados</strong>: Strings, listas, dicionários, números e mais.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Exemplos de utilização</strong>:</p>
+                <ul>
+                    <li>Desenvolvimento de aplicativos web com frameworks como Django e Flask.</li>
+                    <li>Análise de dados com Pandas e visualização com Matplotlib.</li>
+                    <li>Desenvolvimento de scripts de automação e bots.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Por que utilizar?</strong><br> Python é uma das linguagens mais populares devido à sua facilidade de
+                    aprendizado e flexibilidade. Ele permite o desenvolvimento rápido e eficiente, sendo ideal para iniciantes e
+                    profissionais em diversas áreas.</p>
+            </li>
+        </ul>
+        <hr>
+        <h2>5. Dart/Flutter</h2>
+        <ul>
+            <li>
+                <p><strong>Introdução</strong>:<br> Dart é uma linguagem de programação criada pelo Google, usada principalmente
+                    com o framework Flutter para o desenvolvimento de aplicativos móveis e web de alta performance.</p>
+            </li>
+            <li>
+                <p><strong>Origem</strong>:<br> Dart foi lançado em 2011 pelo Google, e o Flutter, lançado em 2017, usa Dart
+                    para permitir o desenvolvimento de aplicativos nativos para múltiplas plataformas a partir de um único
+                    código-fonte.</p>
+            </li>
+            <li>
+                <p><strong>Definição</strong>:<br> Dart é uma linguagem orientada a objetos, usada para criar aplicações móveis,
+                    de desktop e web. Flutter é o framework que utiliza Dart para desenvolver interfaces nativas rápidas e
+                    atraentes.</p>
+            </li>
+            <li>
+                <p><strong>Principais componentes</strong>:</p>
+                <ul>
+                    <li><strong>Dart</strong>: Linguagem utilizada para criar lógica e comportamento das aplicações.</li>
+                    <li><strong>Flutter</strong>: Framework para criação de interfaces ricas, com widgets reutilizáveis.</li>
+                    <li><strong>Hot reload</strong>: Funcionalidade que permite atualizar a aplicação instantaneamente durante o
+                        desenvolvimento.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Exemplos de utilização</strong>:</p>
+                <ul>
+                    <li>Desenvolvimento de aplicativos móveis para Android e iOS com Flutter.</li>
+                    <li>Criação de interfaces de usuário modernas e interativas.</li>
+                    <li>Desenvolvimento de aplicativos para web e desktop.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Por que utilizar?</strong><br> Dart e Flutter oferecem uma maneira eficiente de criar aplicativos
+                    nativos com alto desempenho e um único código-fonte. Isso economiza tempo e recursos, além de proporcionar
+                    uma experiência de usuário fluida e consistente.</p>
+            </li>
+        </ul>
+        <hr>
+        <h2>Resumo das Informações Apresentadas</h2>
+        <p>Ao longo deste conteúdo, abordamos cinco tecnologias fundamentais para o desenvolvimento moderno de software: HTML,
+            CSS, JavaScript, Python e Dart/Flutter.</p>
+        <ul>
+            <li>
+                <p><strong>HTML</strong> é a linguagem de marcação responsável pela estruturação de conteúdo na web. Sem ele, as
+                    páginas seriam apenas sequências de texto sem qualquer organização ou formato visual. Sua importância é
+                    crucial para criar a espinha dorsal de qualquer site.</p>
+            </li>
+            <li>
+                <p><strong>CSS</strong> complementa o HTML ao definir o estilo visual das páginas. Ele é usado para ajustar a
+                    aparência de conteúdo web, incluindo layout, fontes e cores. A sua função vai além da estética, sendo
+                    fundamental para a experiência do usuário em dispositivos variados.</p>
+            </li>
+            <li>
+                <p><strong>JavaScript</strong> traz interatividade e dinamismo, permitindo manipular o conteúdo em tempo real,
+                    responder a eventos do usuário e até se comunicar com servidores. Ele é a linguagem que transforma páginas
+                    estáticas em aplicações web responsivas e dinâmicas.</p>
+            </li>
+            <li>
+                <p><strong>Python</strong> é uma linguagem de programação extremamente popular e versátil. Sua sintaxe simples e
+                    legibilidade a tornam uma escolha ideal para iniciantes, mas suas aplicações vão de desenvolvimento web e
+                    automação a ciência de dados e inteligência artificial, o que a torna uma das linguagens mais demandadas do
+                    mercado.</p>
+            </li>
+            <li>
+                <p><strong>Dart/Flutter</strong> oferece uma solução para o desenvolvimento de aplicativos móveis nativos de
+                    alto desempenho, utilizando um único código-fonte para Android, iOS e outras plataformas. Flutter, com sua
+                    ampla gama de widgets e funcionalidades como hot reload, torna o desenvolvimento mais rápido e eficiente.
+                </p>
+            </li>
+        </ul>
+        <p>Essas tecnologias formam a base do desenvolvimento web e de aplicativos móveis, cada uma com sua especialidade e
+            papel dentro do ciclo de desenvolvimento de software. O conhecimento delas é essencial para quem deseja se
+            aprofundar em tecnologia e construir soluções eficazes e inovadoras.</p>
+        <hr>
+    </main>
+    <section class="botoes">
+        <div id="container-botoes">
+            <h2>Utilitários</h2>
+            <ul class="ul-style-2">
+                <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">Github</a></li>
+                <li><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Chat GPT</a></li>
+                <li><a href="https://cssgradient.io/gradient-backgrounds/" target="_blank" rel="noopener noreferrer">CSS
+                        Gradient Backgrounds</a></li>
+                <li><a href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Google Fonts</a></li>
+                <li><a href="https://www.fronteditor.dev/" target="_blank" rel="noopener noreferrer">Front Editor</a></li>
+                <li><a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">Vercel</a></li>
+                <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN</a></li>
+                <li><a href="https://devdocs.io/" target="_blank" rel="noopener noreferrer">DevDocs</a></li>
+                <li><a href="https://www.notion.com/" target="_blank" rel="noopener noreferrer">Notion</a></li>
+                <li><a href="https://whimsical.com/" target="_blank" rel="noopener noreferrer">Whimsical</a></li>
+                <li><a href="https://www.tldraw.com/" target="_blank" rel="noopener noreferrer">TL Draw</a></li>
+                <li><a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a></li>
+                <li><a href="https://ionic.io/ionicons" target="_blank" rel="noopener noreferrer">Ion Icons</a></li>
+                <li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">Markup Validation
+                        Service</a>
+                <li><a href="https://codebeautify.org/markdown-to-html" target="_blank" rel="noopener noreferrer">Markdown
+                        to HTML</a>
+                </li>
+                <li><a href="https://tinkercad.com/" target="_blank" rel="noopener noreferrer">Tinkercad</a></li>
+                <li><a href="https://www.geogebra.org/" target="_blank" rel="noopener noreferrer">GeoGebra</a></li>
+                <li><a href="https://www.calculadoraonline.com.br/" target="_blank" rel="noopener noreferrer">Calculadora
+                        On-line</a></li>
+            </ul>
+            <hr>
+            <div id="social-links">
+                <a href="https://github.com/maccleyton" target="_blank" rel="noopener noreferrer"
+                    aria-label="Github"><ion-icon name="logo-github"></ion-icon></a>
+                <a href="https://www.linkedin.com/in/maccleyton/" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://instagram.com/maccleyton" target="_blank" rel="noopener noreferrer"
+                    aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="https://facebook.com/maccleyton" target="_blank" rel="noopener noreferrer"
+                    aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+            </div>
+        </div>
+        <footer>
+            Desenvolvido por Cleyton Duda Macedo
+        </footer>
+    </section>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="./script.js"></script>
+</body> 
+</html>

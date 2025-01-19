@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de CSS: Conceitos, Propriedades e Técnicas Avançadas</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/2-css/pag2.html">Próxima</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>CSS (Cascading Style Sheets) é a linguagem usada para estilizar páginas web, permitindo controlar cores, layouts e
+            interatividade visual. Este guia aborda desde conceitos básicos até técnicas modernas para criar designs responsivos
+            e acessíveis.</p>
+        <h2><strong>1. Fundamentos do CSS</strong></h2>
+        <h3><strong>1.1 Sintaxe Básica</strong></h3>
+        <p>A sintaxe do CSS é composta por seletores e declarações:</p>
+        <pre><code class="language-css">seletor {
+  propriedade: valor;
+}</code></pre>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}</code></pre>
+        <h3 id="12-tipos-de-seletores"><strong>1.2 Tipos de Seletores</strong></h3>
+        <ul>
+            <li>
+                <p><strong>Seletores Simples:</strong></p>
+                <pre><code class="language-css">p {
+  color: blue; /* Seleciona todas as tags &lt;p&gt; */
+}
+.classe {
+  font-size: 16px; /* Seleciona elementos com a classe &quot;classe&quot; */
+}
+#id {
+  margin: 10px; /* Seleciona o elemento com o id &quot;id&quot; */
+}</code></pre>
+            </li>
+            <li>
+                <p><strong>Seletores Combinadores:</strong></p>
+                <pre><code class="language-css">div p {
+  color: red; /* Seleciona &lt;p&gt; dentro de &lt;div&gt; */
+}
+a:hover {
+  text-decoration: underline; /* Aplica estilo no estado hover */
+}</code></pre>
+            </li>
+        </ul>
+        <h3><strong>1.3 Unidades de Medida</strong></h3>
+        <ul>
+            <li><strong>Relativas:</strong> <code>%</code>, <code>em</code>, <code>rem</code>, <code>vw</code>, <code>vh</code>.
+            </li>
+            <li><strong>Absolutas:</strong> <code>px</code>, <code>cm</code>, <code>mm</code>.</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">h1 {
+  font-size: 2em; /* Escala com base no elemento pai */
+}</code></pre>
+        <h2><strong>2. Box Model</strong></h2>
+        <h3><strong>2.1 Estrutura do Box Model</strong></h3>
+        <p>Cada elemento em CSS é representado como uma caixa com quatro áreas:</p>
+        <ol>
+            <li><strong>Content:</strong> Área do conteúdo.</li>
+            <li><strong>Padding:</strong> Espaço interno.</li>
+            <li><strong>Border:</strong> Borda ao redor do padding.</li>
+            <li><strong>Margin:</strong> Espaço externo ao redor da borda.</li>
+        </ol>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">div {
+  width: 200px;
+  padding: 10px;
+  border: 5px solid black;
+  margin: 15px;
+}</code></pre>
+        <h3><strong>2.2 Propriedade <code>box-sizing</code></strong></h3>
+        <p>Controla como o tamanho total da caixa é calculado.</p>
+        <ul>
+            <li><strong><code>content-box</code> (padrão):</strong> Inclui apenas o conteúdo.</li>
+            <li><strong><code>border-box</code>:</strong> Inclui padding e borda no cálculo do tamanho.</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">div {
+  box-sizing: border-box;
+}</code></pre>
+        <h2><strong>3. Layouts Modernos</strong></h2>
+        <h3><strong>3.1 Flexbox</strong></h3>
+        <p>Flexbox facilita a criação de layouts responsivos e alinhamentos flexíveis.</p>
+        <h4>Estrutura Básica:</h4>
+        <pre><code class="language-css">.container {
+  display: flex;
+  justify-content: center; /* Alinha horizontalmente */
+  align-items: center; /* Alinha verticalmente */
+}</code></pre>
+        <h4>Propriedades Principais:</h4>
+        <ul>
+            <li>
+                <p><strong><code>flex-direction</code>:</strong> Define a direção dos itens (linha, coluna, etc.).</p>
+                <pre><code class="language-css">.container {
+  flex-direction: row;
+}</code></pre>
+            </li>
+            <li>
+                <p><strong><code>gap</code>:</strong> Controla o espaçamento entre os itens.</p>
+                <pre><code class="language-css">.container {
+  gap: 10px;
+}</code></pre>
+            </li>
+        </ul>
+        <h3><strong>3.2 Grid Layout</strong></h3>
+        <p>Grid Layout é ideal para criar layouts bidimensionais mais complexos.</p>
+        <h4>Estrutura Básica:</h4>
+        <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</code></pre>
+        <h4>Propriedades Principais:</h4>
+        <ul>
+            <li>
+                <p><strong><code>grid-template-areas</code>:</strong> Define áreas nomeadas.</p>
+                <pre><code class="language-css">.container {
+  grid-template-areas:
+    &quot;header header header&quot;
+    &quot;sidebar main main&quot;
+    &quot;footer footer footer&quot;;
+}</code></pre>
+            </li>
+            <li>
+                <p><strong><code>grid-auto-rows</code>:</strong> Define alturas automáticas para linhas.</p>
+                <pre><code class="language-css">.container {
+  grid-auto-rows: 100px;
+}</code></pre>
+            </li>
+        </ul>
+        <h2><strong>4. Técnicas Modernas de CSS</strong></h2>
+        <h3><strong>4.1 Variáveis CSS</strong></h3>
+        <p>Permitem reutilizar valores em diferentes partes do código.</p>
+        <pre><code class="language-css">:root {
+  --cor-primaria: #3498db;
+  --espacamento: 16px;
+}
+
+button {
+  background-color: var(--cor-primaria);
+  padding: var(--espacamento);
+}</code></pre>
+        <h3><strong>4.2 Media Queries</strong></h3>
+        <p>Tornam o design responsivo para diferentes tamanhos de tela.</p>
+        <pre><code class="language-css">@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}</code></pre>
+        <h3><strong>4.3 Animações CSS</strong></h3>
+        <p>Crie transições e animações suaves.</p>
+        <h4>Transições</h4>
+        <pre><code class="language-css">button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2ecc71;
+}</code></pre>
+        <h4>Animações com <code>@keyframes</code></h4>
+        <pre><code class="language-css">@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.elemento {
+  animation: girar 2s linear infinite;
+}</code></pre>
+        <h2><strong>5. Acessibilidade com CSS</strong></h2>
+        <h3><strong>5.1 Foco Visível</strong></h3>
+        <p>Certifique-se de que elementos interativos possuem um estado de foco claro.</p>
+        <pre><code class="language-css">a:focus {
+  outline: 2px dashed #3498db;
+}</code></pre>
+        <h3><strong>5.2 Modo de Alto Contraste</strong></h3>
+        <p>Adapte estilos para usuários que precisam de maior contraste.</p>
+        <pre><code class="language-css">@media (prefers-contrast: high) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}</code></pre>
+        <hr>
+        <p>Este guia cobre os principais fundamentos e técnicas avançadas de CSS.</p>
+    </main>    
+</body>
+</html>

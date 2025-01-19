@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Dart & Futtler</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo: Dart &amp; Flutter</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/5-dart/pag2.html">Próxima</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Aqui está a versão combinada da estrutura inicial com a seção sobre a <strong>Configuração do Ambiente de Programação
+                em Windows</strong>.</p>
+        <h2>1. <strong>Introdução ao Dart</strong></h2>
+        <ul>
+            <li>
+                <p><strong>O que é Dart?</strong></p>
+                <ul>
+                    <li>Dart é uma linguagem de programação desenvolvida pela Google, projetada para ser rápida, fácil de
+                        aprender e otimizada para o desenvolvimento de aplicativos móveis e web. Ele é usado no Flutter para
+                        criar interfaces de usuário de alto desempenho.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Instalação do Dart</strong></p>
+                <ul>
+                    <li><strong>Windows</strong>: O Dart é instalado como parte do Flutter SDK, portanto, ao configurar o
+                        Flutter, você também instala o Dart.</li>
+                    <li>Acesse <a href="https://dart.dev/get-dart">Dart - Install</a> para obter instruções específicas, caso
+                        queira usar o Dart sem o Flutter.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Primeiro Programa em Dart</strong></p>
+                <ul>
+                    <li>Escreva e execute seu primeiro programa simples em Dart:</li>
+                </ul>
+                <pre><code class="language-dart">void main() {
+print(&quot;Olá, Mundo!&quot;);
+}</code></pre>
+            </li>
+        </ul>
+        <h2>2. <strong>Configuração do Ambiente de Programação em Windows</strong></h2>
+        <h3><strong>Requisitos do Sistema</strong></h3>
+        <ul>
+            <li><strong>Sistema Operacional</strong>: Windows 7 ou superior (64-bit).</li>
+            <li><strong>Espaço em Disco</strong>: Pelo menos 1,64 GB de espaço disponível para a instalação do Flutter SDK.</li>
+            <li><strong>Ferramentas de Linha de Comando</strong>:<ul>
+                    <li>Git para Windows (necessário para clonar repositórios e gerenciar versões).</li>
+                    <li>Um editor de texto (recomendado: VS Code ou Android Studio).</li>
+                </ul>
+            </li>
+        </ul>
+        <h3><strong>Passo a Passo para Instalação</strong></h3>
+        <p><strong>1. Instalação do Git</strong></p>
+        <ul>
+            <li>Baixe o Git em <em>"https://git-scm.com/"</em> e instale-o. Durante a instalação, adicione o Git
+                ao PATH do sistema.</li>
+        </ul>
+        <p><strong>2. Instalação do Flutter SDK</strong></p>
+        <ul>
+            <li>Baixe o Flutter SDK para Windows em <em>"https://flutter.dev/docs/get-started/install"</em>.</li>
+            <li>Extraia o arquivo em uma pasta (exemplo: <code>C:\src\flutter</code>) e adicione o caminho
+                <code>C:\src\flutter\bin</code> ao PATH do sistema.</li>
+        </ul>
+        <p><strong>3. Instalando o Android Studio</strong></p>
+        <ul>
+            <li>Baixe o Android Studio em <em>"https://developer.android.com/studio"</em>.</li>
+            <li>Instale o Android SDK e o AVD (Android Virtual Device) para emulação de dispositivos Android.</li>
+        </ul>
+        <p><strong>4. Instalando o VS Code</strong></p>
+        <ul>
+            <li>Baixe o Visual Studio Code em <em>"https://code.visualstudio.com/"</em> e instale.</li>
+            <li>Instale os plugins &quot;Flutter&quot; e &quot;Dart&quot; no VS Code para facilitar o desenvolvimento.</li>
+        </ul>
+        <p><strong>5. Verificando a Instalação</strong></p>
+        <ul>
+            <li>
+                <p>Após a instalação do Flutter, execute:</p>
+                <pre><code class="language-bash">flutter doctor</code></pre>
+                <p> Isso verifica se tudo foi instalado corretamente e aponta problemas a serem corrigidos.</p>
+            </li>
+        </ul>
+        <h2>3. <strong>Fundamentos do Dart</strong></h2>
+        <ul>
+            <li><strong>Sintaxe Básica</strong>
+                <ul>
+                    <li>Tipos de dados (int, double, String, bool, etc.).</li>
+                    <li>Variáveis e constantes.</li>
+                    <li>Operadores (aritméticos, lógicos, relacionais).</li>
+                </ul>
+            </li>
+            <li><strong>Controle de Fluxo</strong>
+                <ul>
+                    <li>Estruturas condicionais (<code>if</code>, <code>else</code>, <code>switch</code>).</li>
+                    <li>Laços de repetição (<code>for</code>, <code>while</code>, <code>do-while</code>).</li>
+                </ul>
+            </li>
+            <li><strong>Funções</strong>
+                <ul>
+                    <li>Como declarar e chamar funções em Dart.</li>
+                    <li>Funções anônimas e funções com parâmetros opcionais.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>4. <strong>Programação Orientada a Objetos em Dart</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Classes e Objetos</strong></p>
+                <ul>
+                    <li>Definição e instância de classes:</li>
+                </ul>
+                <pre><code class="language-dart">class Carro {
+String modelo;
+int ano;
+        		
+Carro(this.modelo, this.ano);
+}
+void main() {
+var meuCarro = Carro(&quot;Fusca&quot;, 1968);
+print(meuCarro.modelo);  // Saída: Fusca
+}</code></pre>
+            </li>
+            <li>
+                <p><strong>Herança e Polimorfismo</strong></p>
+                <ul>
+                    <li>Como funciona a herança em Dart e como podemos sobrescrever métodos.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Encapsulamento</strong></p>
+                <ul>
+                    <li>Utilizando getters e setters para proteger e controlar o acesso aos dados.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>5. <strong>Introdução ao Flutter</strong></h2>
+        <ul>
+            <li>
+                <p><strong>O que é o Flutter?</strong></p>
+                <ul>
+                    <li>Flutter é um framework de desenvolvimento de interfaces de usuário (UI) criado pela Google, que usa o
+                        Dart como linguagem principal. Ele permite o desenvolvimento de apps para Android, iOS, Web e Desktop
+                        com uma única base de código.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Instalação do Flutter</strong></p>
+                <ul>
+                    <li>O Flutter SDK inclui o Dart, então ao instalar o Flutter, o Dart também será instalado.</li>
+                    <li>Para instalar o Flutter, siga as instruções para Windows já descritas na seção de configuração do
+                        ambiente.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Primeiro Projeto em Flutter</strong></p>
+                <ul>
+                    <li>Crie seu primeiro projeto com o comando:</li>
+                </ul>
+                <pre><code class="language-bash">flutter create meu_primeiro_app
+cd meu_primeiro_app
+flutter run</code></pre>
+            </li>
+        </ul>
+        <h2>6. <strong>Widgets Básicos do Flutter</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Widgets em Flutter</strong></p>
+                <ul>
+                    <li>O Flutter utiliza &quot;widgets&quot; para construir interfaces. Eles podem ser vistos como blocos de
+                        construção da interface do usuário.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Widget Stateless vs. Stateful</strong></p>
+                <ul>
+                    <li><strong>StatelessWidget</strong>: Não muda de estado após a construção.</li>
+                    <li><strong>StatefulWidget</strong>: Pode mudar de estado durante a execução. Exemplo de um contador:</li>
+                </ul>
+                <pre><code class="language-dart">class Contador extends StatefulWidget {
+@override
+_ContadorState createState() =&gt; _ContadorState();
+}
+        		
+class _ContadorState extends State&lt;Contador&gt; {
+int _contador = 0;
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	body: Center(
+		child: Text(&quot;Contador: $_contador&quot;),
+	),
+	floatingActionButton: FloatingActionButton(
+		onPressed: () {
+		setState(() {
+			_contador++;
+		});
+		},
+		child: Icon(Icons.add),
+	),
+	);
+}
+}</code></pre>
+            </li>
+        </ul>
+        <h2>7. <strong>Gerenciamento de Estado no Flutter</strong></h2>
+        <ul>
+            <li><strong>StatefulWidgets e setState</strong>
+                <ul>
+                    <li>O <code>setState()</code> é usado para modificar o estado de um widget e atualizar a UI.</li>
+                </ul>
+            </li>
+            <li><strong>Gerenciamento de Estado com Provider</strong>
+                <ul>
+                    <li>O <code>Provider</code> é uma das formas mais comuns para gerenciar o estado de forma eficiente em
+                        Flutter.</li>
+                </ul>
+            </li>
+            <li><strong>Outros Gerenciadores de Estado</strong>
+                <ul>
+                    <li>Introdução ao <strong>BloC</strong> e <strong>Riverpod</strong>.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>8. <strong>Layouts e Navegação</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Layouts no Flutter</strong></p>
+                <ul>
+                    <li>Construindo layouts com widgets como <code>Row</code>, <code>Column</code>, <code>Container</code>, e
+                        <code>Stack</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Navegação</strong></p>
+                <ul>
+                    <li>Navegando entre telas:</li>
+                </ul>
+                <pre><code class="language-dart">Navigator.push(
+context,
+MaterialPageRoute(builder: (context) =&gt; NovaTela()),
+);</code></pre>
+            </li>
+        </ul>
+        <h2>9. <strong>Trabalhando com Dados e APIs</strong></h2>
+        <ul>
+            <li><strong>Consumindo APIs</strong>
+                <ul>
+                    <li>Como fazer requisições HTTP no Flutter utilizando a biblioteca <code>http</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Trabalhando com JSON</strong>
+                <ul>
+                    <li>Como decodificar e codificar JSON com o Flutter.</li>
+                </ul>
+            </li>
+            <li><strong>Persistência de Dados</strong>
+                <ul>
+                    <li>Usando <code>SharedPreferences</code> e <code>SQLite</code> para armazenar dados localmente.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>10. <strong>Flutter para Web e Desktop</strong></h2>
+        <ul>
+            <li><strong>Desenvolvimento para Web</strong>
+                <ul>
+                    <li>Como compilar e rodar um app Flutter para a Web.</li>
+                </ul>
+            </li>
+            <li><strong>Desenvolvimento para Desktop</strong>
+                <ul>
+                    <li>Como rodar um app Flutter no Windows, macOS ou Linux.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>11. <strong>Boas Práticas e Performance</strong></h2>
+        <ul>
+            <li><strong>Boas Práticas em Flutter</strong>
+                <ul>
+                    <li>Organizando projetos, mantendo o código limpo e reutilizável.</li>
+                </ul>
+            </li>
+            <li><strong>Otimização de Performance</strong>
+                <ul>
+                    <li>Técnicas para melhorar o desempenho do seu app Flutter.</li>
+                </ul>
+            </li>
+            <li><strong>Debugging e Testes</strong>
+                <ul>
+                    <li>Como depurar aplicativos e escrever testes no Flutter.</li>
+                </ul>
+            </li>
+        </ul>
+        <hr>
+        <p>Com a configuração do ambiente de desenvolvimento em Windows e os fundamentos iniciais cobrindo Dart e Flutter, você
+            agora está pronto para começar a escrever aplicativos incríveis! </p>
+    </main>
+</body>
+</html>

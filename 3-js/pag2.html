@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de JavaScript: Manipulação do DOM</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag3.html">Próxima</a></li>
+                <li><a href="/3-js/pag1.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>O Document Object Model (DOM) é uma interface de programação para documentos HTML e XML. Ele representa a estrutura
+            do documento como uma árvore de nós, onde cada nó corresponde a uma parte do documento. A manipulação do DOM permite
+            interagir e modificar os elementos e conteúdos da página dinamicamente.</p>
+        <h2><strong>1. Seleção de Elementos</strong></h2>
+        <p>Para manipular elementos HTML, primeiro precisamos selecioná-los. JavaScript fornece vários métodos para isso.</p>
+        <h3><strong>1.1 <code>document.getElementById</code></strong></h3>
+        <p>Seleciona um elemento pelo seu atributo <code>id</code>.</p>
+        <pre><code class="language-javascript">let titulo = document.getElementById(&quot;titulo&quot;);
+console.log(titulo.textContent);</code></pre>
+        <h3><strong>1.2 <code>document.querySelector</code></strong></h3>
+        <p>Seleciona o <strong>primeiro elemento</strong> que corresponde ao seletor CSS especificado.</p>
+        <pre><code class="language-javascript">let paragrafo = document.querySelector(&quot;p&quot;);
+console.log(paragrafo.innerHTML);</code></pre>
+        <h3><strong>1.3 <code>document.querySelectorAll</code></strong></h3>
+        <p>Seleciona <strong>todos os elementos</strong> que correspondem ao seletor CSS especificado, retornando uma NodeList.
+        </p>
+        <pre><code class="language-javascript">let itens = document.querySelectorAll(&quot;li&quot;);
+itens.forEach(item =&gt; console.log(item.textContent));</code></pre>
+        <h3><strong>1.4 Outros Métodos</strong></h3>
+        <ul>
+            <li>
+                <p><strong><code>document.getElementsByClassName</code></strong>: Seleciona elementos por classe.</p>
+                <pre><code class="language-javascript">let elementos = document.getElementsByClassName(&quot;classe-exemplo&quot;);</code></pre>
+            </li>
+            <li>
+                <p><strong><code>document.getElementsByTagName</code></strong>: Seleciona elementos por nome da tag.</p>
+                <pre><code class="language-javascript">let paragrafos = document.getElementsByTagName(&quot;p&quot;);</code></pre>
+            </li>
+        </ul>
+        <h2><strong>2. Manipulação de Conteúdo</strong></h2>
+        <h3><strong>2.1 <code>innerHTML</code></strong></h3>
+        <p>Define ou obtém o <strong>conteúdo HTML</strong> de um elemento.</p>
+        <pre><code class="language-javascript">titulo.innerHTML = &quot;&lt;strong&gt;Novo Título&lt;/strong&gt;&quot;;</code></pre>
+        <h3><strong>2.2 <code>textContent</code></strong></h3>
+        <p>Define ou obtém o <strong>conteúdo textual</strong> (sem tags HTML).</p>
+        <pre><code class="language-javascript">titulo.textContent = &quot;Novo Título&quot;;</code></pre>
+        <h3><strong>2.3 <code>innerText</code></strong></h3>
+        <p>Semelhante a <code>textContent</code>, mas considera o estilo CSS (por exemplo, elementos escondidos não serão
+            retornados).</p>
+        <pre><code class="language-javascript">console.log(titulo.innerText);</code></pre>
+        <h2><strong>3. Manipulação de Atributos</strong></h2>
+        <h3><strong>3.1 <code>setAttribute</code></strong></h3>
+        <p>Define um novo atributo ou atualiza o valor de um atributo existente.</p>
+        <pre><code class="language-javascript">let link = document.querySelector(&quot;a&quot;);
+link.setAttribute(&quot;href&quot;, &quot;https://www.example.com&quot;);</code></pre>
+        <h3><strong>3.2 <code>getAttribute</code></strong></h3>
+        <p>Obtém o valor de um atributo.</p>
+        <pre><code class="language-javascript">console.log(link.getAttribute(&quot;href&quot;));</code></pre>
+        <h3><strong>3.3 <code>removeAttribute</code></strong></h3>
+        <p>Remove um atributo de um elemento.</p>
+        <pre><code class="language-javascript">link.removeAttribute(&quot;target&quot;);</code></pre>
+        <h2><strong>4. Manipulação de Classes</strong></h2>
+        <h3><strong>4.1 <code>classList.add</code></strong></h3>
+        <p>Adiciona uma ou mais classes a um elemento.</p>
+        <pre><code class="language-javascript">titulo.classList.add(&quot;destaque&quot;, &quot;texto-grande&quot;);</code></pre>
+        <h3><strong>4.2 <code>classList.remove</code></strong></h3>
+        <p>Remove uma ou mais classes de um elemento.</p>
+        <pre><code class="language-javascript">titulo.classList.remove(&quot;destaque&quot;);</code></pre>
+        <h3><strong>4.3 <code>classList.toggle</code></strong></h3>
+        <p>Adiciona a classe se ela não existir, ou remove se ela já estiver presente.</p>
+        <pre><code class="language-javascript">titulo.classList.toggle(&quot;oculto&quot;);</code></pre>
+        <h3><strong>4.4 <code>classList.contains</code></strong></h3>
+        <p>Verifica se o elemento possui uma classe.</p>
+        <pre><code class="language-javascript">console.log(titulo.classList.contains(&quot;destaque&quot;)); // true ou false</code></pre>
+        <h2><strong>5. Manipulação de Estilos</strong></h2>
+        <h3><strong>5.1 <code>style</code></strong></h3>
+        <p>Permite definir estilos inline diretamente em elementos.</p>
+        <pre><code class="language-javascript">titulo.style.color = &quot;red&quot;;
+titulo.style.fontSize = &quot;24px&quot;;</code></pre>
+        <h3><strong>5.2 Computed Styles</strong></h3>
+        <p>Obtém os estilos calculados de um elemento.</p>
+        <pre><code class="language-javascript">let estilos = getComputedStyle(titulo);
+console.log(estilos.color);</code></pre>
+        <h2><strong>6. Criação e Remoção de Elementos</strong></h2>
+        <h3><strong>6.1 <code>createElement</code></strong></h3>
+        <p>Cria um novo elemento.</p>
+        <pre><code class="language-javascript">let novoParagrafo = document.createElement(&quot;p&quot;);
+novoParagrafo.textContent = &quot;Este é um novo parágrafo.&quot;;</code></pre>
+        <h3><strong>6.2 <code>appendChild</code></strong></h3>
+        <p>Adiciona um elemento como filho de outro.</p>
+        <pre><code class="language-javascript">document.body.appendChild(novoParagrafo);</code></pre>
+        <h3><strong>6.3 <code>removeChild</code></strong></h3>
+        <p>Remove um elemento filho.</p>
+        <pre><code class="language-javascript">let elementoParaRemover = document.getElementById(&quot;remover&quot;);
+document.body.removeChild(elementoParaRemover);</code></pre>
+        <h3><strong>6.4 <code>replaceChild</code></strong></h3>
+        <p>Substitui um elemento filho por outro.</p>
+        <pre><code class="language-javascript">let novoTitulo = document.createElement(&quot;h2&quot;);
+novoTitulo.textContent = &quot;Novo Título&quot;;
+document.body.replaceChild(novoTitulo, titulo);</code></pre>
+        <h2><strong>7. Eventos</strong></h2>
+        <p>Eventos permitem que o JavaScript responda às interações do usuário.</p>
+        <h3><strong>7.1 <code>addEventListener</code></strong></h3>
+        <p>Adiciona um ouvinte de evento a um elemento.</p>
+        <pre><code class="language-javascript">titulo.addEventListener(&quot;click&quot;, () =&gt; {
+  alert(&quot;Você clicou no título!&quot;);
+});</code></pre>
+        <h3><strong>7.2 Remover Eventos</strong></h3>
+        <pre><code class="language-javascript">function alerta() {
+  alert(&quot;Clicado!&quot;);
+}
+titulo.addEventListener(&quot;click&quot;, alerta);
+titulo.removeEventListener(&quot;click&quot;, alerta);</code></pre>
+        <h3><strong>7.3 Eventos Comuns</strong></h3>
+        <ul>
+            <li>
+                <p><strong><code>click</code></strong>: Disparado quando o elemento é clicado.</p>
+                <pre><code class="language-javascript">titulo.addEventListener(&quot;click&quot;, () =&gt; {
+  console.log(&quot;O título foi clicado.&quot;);
+});</code></pre>
+            </li>
+            <li>
+                <p><strong><code>mouseover</code></strong>: Disparado quando o cursor do mouse passa sobre o elemento.</p>
+                <pre><code class="language-javascript">titulo.addEventListener(&quot;mouseover&quot;, () =&gt; {
+  console.log(&quot;Mouse passou sobre o título.&quot;);
+});</code></pre>
+            </li>
+            <li>
+                <p><strong><code>mouseout</code></strong>: Disparado quando o cursor do mouse deixa o elemento.</p>
+                <pre><code class="language-javascript">titulo.addEventListener(&quot;mouseout&quot;, () =&gt; {
+  console.log(&quot;Mouse saiu do título.&quot;);
+});</code></pre>
+            </li>
+            <li>
+                <p><strong><code>keydown</code></strong>: Disparado quando uma tecla é pressionada.</p>
+                <pre><code class="language-javascript">document.addEventListener(&quot;keydown&quot;, (event) =&gt; {
+  console.log(`Tecla pressionada: ${event.key}`);
+});</code></pre>
+            </li>
+            <li>
+                <p><strong><code>keyup</code></strong>: Disparado quando uma tecla é liberada.</p>
+                <pre><code class="language-javascript">document.addEventListener(&quot;keyup&quot;, (event) =&gt; {
+  console.log(`Tecla liberada: ${event.key}`);
+});</code></pre>
+            </li>
+            <li>
+                <p><strong><code>submit</code></strong>: Disparado quando um formulário é enviado.</p>
+                <pre><code class="language-javascript">let form = document.querySelector(&quot;form&quot;);
+form.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  event.preventDefault(); // Evita o envio do formulário
+  console.log(&quot;Formulário enviado.&quot;);
+});</code></pre>
+            </li>
+            <li>
+                <p><strong><code>change</code></strong>: Disparado quando o valor de um elemento é alterado.</p>
+                <pre><code class="language-javascript">let input = document.querySelector(&quot;input&quot;);
+input.addEventListener(&quot;change&quot;, () =&gt; {
+  console.log(&quot;Valor alterado: &quot; + input.value);
+});</code></pre>
+            </li>
+        </ul>
+        <hr>
+        <p>Essa sessão abrange os fundamentos da manipulação do DOM.</p>
+    </main>
+</body>
+</html>

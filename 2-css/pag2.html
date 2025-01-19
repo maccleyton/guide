@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de CSS: Tópicos Avançados e Estratégias</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/2-css/pag1.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+            <p>Neste capítulo, exploraremos tópicos avançados de CSS que ajudam a criar designs mais flexíveis, acessíveis e
+                escaláveis, além de estratégias para organizar estilos e melhorar a performance de projetos grandes.</p>
+            <h2><strong>1. Pseudo-classes e Pseudo-elementos</strong></h2>
+            <h3><strong>1.1 Pseudo-classes</strong></h3>
+            <p>Pseudo-classes aplicam estilos a elementos com base em seu estado ou posição no DOM.</p>
+            <h4>Exemplos:</h4>
+            <pre><code class="language-css">a:hover {
+  color: red; /* Aplica estilo quando o mouse passa sobre o link */
+}
+
+input:focus {
+  border: 2px solid blue; /* Estilo quando o campo recebe foco */
+}
+
+li:nth-child(odd) {
+  background-color: #f9f9f9; /* Aplica a itens ímpares da lista */
+}</code></pre>
+            <h3><strong>1.2 Pseudo-elementos</strong></h3>
+            <p>Pseudo-elementos estilizam partes específicas de um elemento.</p>
+            <h4>Exemplos:</h4>
+            <pre><code class="language-css">p::first-line {
+  font-weight: bold; /* Estilo para a primeira linha de um parágrafo */
+}
+
+h1::after {
+  content: &#39; \2605&#39;; /* Adiciona um símbolo após o título */
+  color: gold;
+}</code></pre>
+            <h2><strong>2. Preprocessadores CSS</strong></h2>
+            <h3><strong>2.1 O que são Preprocessadores?</strong></h3>
+            <p>Preprocessadores como <strong>SASS</strong> e <strong>LESS</strong> adicionam funcionalidades ao CSS, permitindo o
+                uso de variáveis, aninhamento, mixins e funções.</p>
+            <h3><strong>2.2 Exemplos com SASS</strong></h3>
+            <h4>Variáveis:</h4>
+            <pre><code class="language-scss">$primary-color: #3498db;
+$spacing: 16px;
+            
+button {
+  background-color: $primary-color;
+  padding: $spacing;
+}</code></pre>
+            <h4>Mixins:</h4>
+            <pre><code class="language-scss">@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+.card {
+  @include border-radius(10px);
+}</code></pre>
+            <h2><strong>3. Frameworks CSS</strong></h2>
+            <h3><strong>3.1 Principais Frameworks</strong></h3>
+            <ul>
+                <li><strong>Bootstrap</strong>: Oferece uma ampla gama de componentes e utilitários para criar layouts responsivos
+                    rapidamente.</li>
+                <li><strong>Tailwind CSS</strong>: Um framework baseado em utilitários que permite personalização granular.</li>
+                <li><strong>Foundation</strong>: Semelhante ao Bootstrap, com foco em acessibilidade.</li>
+            </ul>
+            <h3 id="32-exemplo-com-bootstrap"><strong>3.2 Exemplo com Bootstrap</strong></h3>
+            <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;Coluna 1&lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;Coluna 2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <h2><strong>4. Estratégias de Organização e Escalabilidade</strong>
+            </h2>
+            <h3><strong>4.1 Metodologias CSS</strong></h3>
+            <ul>
+                <li>
+                    <p><strong>BEM (Block Element Modifier):</strong> Facilita o entendimento e reutilização de estilos.</p>
+                    <pre><code class="language-css">.menu__item--active {
+  color: red; /* Estilo para itens ativos do menu */
+}</code></pre>
+                </li>
+                <li>
+                    <p><strong>OOCSS (Object-Oriented CSS):</strong> Promove a reutilização de classes com estilos genéricos.</p>
+                </li>
+            </ul>
+            <h3><strong>4.2 Estrutura Modular</strong></h3>
+            <p>Divida os estilos em arquivos menores baseados em componentes ou funcionalidades.</p>
+            <pre><code class="language-css">// Arquivo: buttons.css
+.button {
+  padding: 10px 20px;
+  border: none;
+  background-color: blue;
+}
+
+// Arquivo: forms.css
+.input {
+  border: 1px solid gray;
+  padding: 5px;
+}</code></pre>
+            <h2><strong>5. Ferramentas de Debugging e Performance</strong></h2>
+            <h3><strong>5.1 Debugging no Navegador</strong></h3>
+            <ul>
+                <li>Use a aba &quot;Elements&quot; no DevTools para inspecionar e editar estilos em tempo real.</li>
+                <li>Utilize a aba &quot;Performance&quot; para medir o impacto dos estilos no carregamento da página.</li>
+            </ul>
+            <h3><strong>5.2 Melhores Práticas de Performance</strong></h3>
+            <ul>
+                <li>Minimize o CSS antes de enviá-lo para produção.</li>
+                <li>Evite seletores complexos e dependentes.</li>
+                <li>Prefira classes sobre seletores de elementos ou IDs para maior eficiência.</li>
+            </ul>
+            <h2><strong>6. CSS Grid e Flexbox Avançado</strong></h2>
+            <h3"><strong>6.1 Padrões Combinados de Grid e Flexbox</strong></h3>
+            <ul>
+                <li>Use o <strong>Grid</strong> para a estrutura geral e <strong>Flexbox</strong> para o alinhamento dentro de
+                    células.</li>
+            </ul>
+            <h4>Exemplo:</h4>
+            <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+            <h3><strong>6.2 Áreas Nomeadas no Grid</strong></h3>
+            <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-areas:
+    &quot;header header&quot;
+    &quot;sidebar main&quot;
+    &quot;footer footer&quot;;
+}
+
+.header {
+  grid-area: header;
+}</code></pre>
+            <h2><strong>7. Animações Avançadas</strong></h2>
+            <h3><strong>7.1 Bibliotecas de Animação</strong></h3>
+            <ul>
+                <li><strong>GSAP (GreenSock):</strong> Oferece controle preciso para animações complexas.</li>
+                <li><strong>Animate.css:</strong> Uma coleção de animações prontas para uso.</li>
+            </ul>
+            <h3><strong>7.2 Animações Baseadas em Scroll</strong></h3>
+            <pre><code class="language-css">@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.section {
+  animation: fadeIn 1s ease-in-out;
+}</code></pre>
+            <h2><strong>8. Customização de Navegadores</strong></h2>
+            <h3><strong>8.1 Estilização de Barras de Rolagem</strong></h3>
+            <pre><code class="language-css">::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border-radius: 10px;
+}</code></pre>
+            <h3><strong>8.2 Preferências do Usuário</strong></h3>
+            <pre><code class="language-css">@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+  }
+}</code></pre>
+            <hr>
+            <p>Esses tópicos avançados complementam o guia de CSS, cobrindo práticas modernas, frameworks e estratégias para
+                organização e performance.</p>
+    </main>
+</body>
+</html>

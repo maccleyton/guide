@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de HTML</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Avançado de HTML: Formulários, Tabelas e Multimídia</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/1-html/pag3.html">Próxima</a></li>
+                <li><a href="/1-html/pag1.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Após cobrir os fundamentos do HTML, esta seção explora tópicos mais avançados, incluindo formulários, tabelas e
+            elementos multimídia. Esses recursos são essenciais para construir páginas interativas e informativas.</p>
+        <h2><strong>1. Formulários HTML</strong></h2>
+        <p>Os formulários permitem coletar dados do usuário. A tag principal é <strong><code>&lt;form&gt;</code></strong>, que
+            envolve os elementos de entrada.</p>
+        <h3><strong>1.1 Estrutura Básica de um Formulário</strong></h3>
+        <pre><code class="language-html">&lt;form action=&quot;/enviar-dados&quot; method=&quot;POST&quot;&gt;
+  &lt;label for=&quot;nome&quot;&gt;Nome:&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;nome&quot; name=&quot;nome&quot; required&gt;
+
+  &lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+  &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <h3><strong>1.2 Atributos Comuns da Tag <code>&lt;form&gt;</code></strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Atributo</strong></th>
+                    <th><strong>Descrição</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>action</code></td>
+                    <td>URL para onde os dados do formulário serão enviados.</td>
+                </tr>
+                <tr>
+                    <td><code>method</code></td>
+                    <td>Método HTTP para envio (<code>GET</code> ou <code>POST</code>).</td>
+                </tr>
+                <tr>
+                    <td><code>enctype</code></td>
+                    <td>Tipo de codificação (ex.: <code>multipart/form-data</code> para uploads).</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><strong>1.3 Tipos de Campos de Entrada
+                (<code>&lt;input&gt;</code>)</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Tipo</strong></th>
+                    <th><strong>Descrição</strong></th>
+                    <th><strong>Exemplo</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>text</code></td>
+                    <td>Campo de texto comum.</td>
+                    <td><code>&lt;input type=&quot;text&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>email</code></td>
+                    <td>Valida emails automaticamente.</td>
+                    <td><code>&lt;input type=&quot;email&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>password</code></td>
+                    <td>Campo de senha (esconde os caracteres).</td>
+                    <td><code>&lt;input type=&quot;password&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>number</code></td>
+                    <td>Aceita apenas números.</td>
+                    <td><code>&lt;input type=&quot;number&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>date</code></td>
+                    <td>Seletor de datas.</td>
+                    <td><code>&lt;input type=&quot;date&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>checkbox</code></td>
+                    <td>Caixa de seleção.</td>
+                    <td><code>&lt;input type=&quot;checkbox&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>radio</code></td>
+                    <td>Botão de opção (seleção única por grupo).</td>
+                    <td><code>&lt;input type=&quot;radio&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>file</code></td>
+                    <td>Upload de arquivos.</td>
+                    <td><code>&lt;input type=&quot;file&quot;&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>submit</code></td>
+                    <td>Botão para envio do formulário.</td>
+                    <td><code>&lt;input type=&quot;submit&quot;&gt;</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><strong>1.4 Outros Elementos de Formulário</strong></h3>
+        <ul>
+            <li>
+                <p><strong><code>&lt;textarea&gt;</code></strong>: Para textos longos.</p>
+                <pre><code class="language-html">&lt;textarea name=&quot;mensagem&quot; rows=&quot;4&quot; cols=&quot;50&quot;&gt;Escreva aqui...&lt;/textarea&gt;</code></pre>
+            </li>
+            <li>
+                <p><strong><code>&lt;select&gt;</code></strong>: Menu suspenso com opções.</p>
+                <pre><code class="language-html">&lt;label for=&quot;opcao&quot;&gt;Escolha:&lt;/label&gt;
+&lt;select id=&quot;opcao&quot; name=&quot;opcao&quot;&gt;
+  &lt;option value=&quot;1&quot;&gt;Opção 1&lt;/option&gt;
+  &lt;option value=&quot;2&quot;&gt;Opção 2&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+            </li>
+        </ul>
+        <h2><strong>2. Tabelas</strong></h2>
+        <p>As tabelas exibem dados de forma tabular, usando a tag <strong><code>&lt;table&gt;</code></strong> e suas tags
+            relacionadas.</p>
+        <h3><strong>2.1 Estrutura Básica de uma Tabela</strong></h3>
+        <pre><code class="language-html">&lt;table border=&quot;1&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nome&lt;/th&gt;
+      &lt;th&gt;Email&lt;/th&gt;
+      &lt;th&gt;Idade&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;João&lt;/td&gt;
+      &lt;td&gt;joao@example.com&lt;/td&gt;
+      &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Maria&lt;/td&gt;
+      &lt;td&gt;maria@example.com&lt;/td&gt;
+      &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        <h3><strong>2.2 Tags Importantes para Tabelas</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Tag</strong></th>
+                    <th><strong>Descrição</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;table&gt;</code></td>
+                    <td>Define a tabela.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;thead&gt;</code></td>
+                    <td>Define o cabeçalho da tabela.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;tbody&gt;</code></td>
+                    <td>Define o corpo da tabela.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;tr&gt;</code></td>
+                    <td>Define uma linha na tabela.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;th&gt;</code></td>
+                    <td>Define uma célula de cabeçalho (negrito por padrão).</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;td&gt;</code></td>
+                    <td>Define uma célula de dados.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;caption&gt;</code></td>
+                    <td>Adiciona uma legenda à tabela.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><strong>2.3 Mesclagem de Células</strong></h3>
+        <ul>
+            <li><strong><code>colspan</code></strong>: Mescla células horizontalmente.</li>
+            <li><strong><code>rowspan</code></strong>: Mescla células verticalmente.</li>
+        </ul>
+        <pre><code class="language-html">&lt;table border=&quot;1&quot;&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;Célula Mesclada Horizontalmente&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&quot;2&quot;&gt;Célula Mesclada Verticalmente&lt;/td&gt;
+    &lt;td&gt;Outra Célula&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Célula Adicional&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        <h2><strong>3. Elementos Multimídia</strong></h2>
+        <p>O HTML suporta integração de mídia como áudio, vídeo e gráficos vetoriais (SVG).</p>
+        <h3><strong>3.1 Áudio</strong></h3>
+        <p>Usa a tag <strong><code>&lt;audio&gt;</code></strong> para reproduzir arquivos de áudio.</p>
+        <pre><code class="language-html">&lt;audio controls&gt;
+  &lt;source src=&quot;audio.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+  Seu navegador não suporta o elemento de áudio.
+&lt;/audio&gt;</code></pre>
+        <h3><strong>3.2 Vídeo</strong></h3>
+        <p>Usa a tag <strong><code>&lt;video&gt;</code></strong> para reproduzir arquivos de vídeo.</p>
+        <pre><code class="language-html">&lt;video controls width=&quot;600&quot;&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  Seu navegador não suporta o elemento de vídeo.
+&lt;/video&gt;</code></pre>
+        <h3><strong>3.3 SVG (Scalable Vector Graphics)</strong></h3>
+        <p>Permite criar gráficos vetoriais escaláveis diretamente no HTML.</p>
+        <pre><code class="language-html">&lt;svg width=&quot;100&quot; height=&quot;100&quot;&gt;
+  &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;3&quot; fill=&quot;red&quot; /&gt;
+&lt;/svg&gt; </code></pre>
+        <hr>
+        <p>Com esses tópicos avançados, você pode criar páginas mais interativas e funcionais.</p>
+    </main>
+</body>
+</html>

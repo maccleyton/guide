@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Python</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Introdução ao Python: Descubra o Poder da Simplicidade</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/4-py/pag2.html">Próxima</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Python é uma das linguagens de programação mais populares e acessíveis do mundo, conhecida por sua sintaxe clara e
+            versatilidade. Seja para iniciantes que estão dando os primeiros passos na programação ou para desenvolvedores
+            experientes buscando uma solução eficiente, Python oferece um ambiente intuitivo para resolver problemas e criar
+            aplicações poderosas.</p>
+        <p>Neste guia, você será introduzido aos fundamentos do Python, explorando conceitos essenciais que servirão de base
+            para projetos mais avançados. Vamos percorrer desde a configuração inicial até elementos essenciais da linguagem,
+            garantindo uma compreensão sólida.</p>
+        <h2>1. <strong>Introdução ao Python</strong></h2>
+        <ul>
+            <li>
+                <p><strong>História do Python</strong> Python foi criado por Guido van Rossum nos anos 1980, e sua primeira
+                    versão foi lançada em 1991. A linguagem foi desenvolvida com o objetivo de ser simples e legível, ao mesmo
+                    tempo que poderosa o suficiente para ser usada em uma variedade de áreas, como desenvolvimento web, análise
+                    de dados e automação.</p>
+            </li>
+            <li>
+                <p><strong>Características principais do Python:</strong></p>
+                <ul>
+                    <li><strong>Sintaxe limpa e legível</strong>: Python foi projetado para ser fácil de ler, com indentação
+                        significativa.</li>
+                    <li><strong>Interpretada</strong>: Não é necessário compilar o código, o que facilita o desenvolvimento e a
+                        depuração.</li>
+                    <li><strong>Multiplataforma</strong>: Funciona em vários sistemas operacionais, como Windows, macOS, Linux.
+                    </li>
+                    <li><strong>Bibliotecas poderosas</strong>: Possui uma grande variedade de bibliotecas para tudo, desde
+                        desenvolvimento web até aprendizado de máquina.</li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Instalação e Ambiente de Desenvolvimento</strong> Após instalar o Python, você pode escolher um
+                    ambiente de desenvolvimento integrado (IDE) para facilitar o código. Algumas opções populares incluem:</p>
+                <ul>
+                    <li><strong>IDLE</strong>: Vem com a instalação do Python e é simples de usar.</li>
+                    <li><strong>PyCharm</strong>: Uma IDE poderosa e cheia de recursos.</li>
+                    <li><strong>VS Code</strong>: Um editor de código leve com muitos plugins para Python.</li>
+                </ul>
+            </li>
+        </ul>
+        <h3<strong>1.1. Instalação do Python</strong></h3>
+        <p>Python é uma linguagem de programação amplamente usada e de código aberto. Antes de começar a programar, é necessário
+            instalar a linguagem em seu sistema.</p>
+        <h4><strong>Instalação no Windows</strong></h4>
+        <ol>
+            <li><p>Acesse o site oficial do Python</p></li>
+            <li><p>Baixe o instalador compatível com a sua versão do Windows.</p></li>
+            <li><p>Durante a instalação, <strong>marque a opção &quot;Add Python to PATH&quot;</strong>.</p></li>
+            <li><p>Finalize a instalação e verifique no terminal/cmd:</p>
+                <pre><code class="language-bash">python --version</code></pre></li>
+        </ol>
+        <h3><strong>Configuração do Ambiente de Desenvolvimento</strong></h3>
+        <h4><strong>Editor de Código Recomendado</strong></h4>
+        <ul>
+            <li><a href="https://code.visualstudio.com/">Visual Studio Code (VSCode)</a>: Instale a extensão Python para
+                facilitações como autocompletar e debug.</li>
+        </ul>
+        <h4><strong>Gerenciando Dependências com Virtualenv</strong></h4>
+        <ol>
+            <li>
+                <p>Instale o <code>virtualenv</code>:</p>
+                <pre><code class="language-bash">pip install virtualenv</code></pre>
+            </li>
+            <li>
+                <p>Crie um ambiente virtual:</p>
+                <pre><code class="language-bash">virtualenv venv</code></pre>
+            </li>
+            <li>
+                <p>Ative o ambiente:</p>
+                <ul>
+                    <li>
+                        <p>Windows:</p>
+                        <pre><code class="language-bash">venv\Scripts\activate</code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <h2>2. <strong>Sintaxe Básica</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Indentação</strong> Python utiliza indentação para definir blocos de código, ao contrário de outras
+                    linguagens que usam chaves <code>{}</code>. Um erro comum é a mistura de espaços e tabulações, o que pode
+                    causar erros:</p>
+                <pre><code class="language-python">if True:
+	print(&quot;Indentação correta&quot;)</code></pre>
+            </li>
+            <li>
+                <p><strong>Declaração de Variáveis</strong> Em Python, não é necessário declarar o tipo da variável. Python
+                    inferirá o tipo com base no valor atribuído:</p>
+                <pre><code class="language-python">numero = 10          # inteiro
+nome = &quot;Python&quot;      # string
+valor_pi = 3.14159   # float</code></pre>
+            </li>
+            <li>
+                <p><strong>Conversão de Tipos</strong> Python fornece funções embutidas para converter entre tipos de dados:</p>
+                <pre><code class="language-python"># Convertendo um número inteiro para string
+num = 5
+num_str = str(num)  # &quot;5&quot;
+        		
+# Convertendo uma string para inteiro
+num_str = &quot;10&quot;
+num = int(num_str)  # 10
+        		
+# Convertendo para float
+numero = float(&quot;3.14&quot;)  # 3.14</code></pre>
+            </li>
+            <li>
+                <p><strong>Entrada de Dados</strong> Você pode obter dados do usuário com a função <code>input()</code>:</p>
+                <pre><code class="language-python">nome = input(&quot;Qual é o seu nome? &quot;)
+print(f&quot;Olá, {nome}!&quot;)</code></pre>
+            </li>
+        </ul>
+        <h2>3. <strong>Estruturas Condicionais</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Estrutura <code>if</code>, <code>elif</code> e <code>else</code></strong> Essa estrutura de controle
+                    permite realizar verificações de múltiplas condições:</p>
+                <pre><code class="language-python">idade = 20
+if idade &gt;= 18:
+	print(&quot;Você é maior de idade.&quot;)
+elif idade == 17:
+	print(&quot;Você tem 17 anos.&quot;)
+else:
+	print(&quot;Você é menor de idade.&quot;)</code></pre>
+            </li>
+            <li>
+                <p><strong>Operadores Lógicos</strong></p>
+                <ul>
+                    <li><strong><code>and</code></strong>: Retorna <code>True</code> se ambas as condições forem verdadeiras.
+                    </li>
+                    <li><strong><code>or</code></strong>: Retorna <code>True</code> se pelo menos uma das condições for
+                        verdadeira.</li>
+                    <li><strong><code>not</code></strong>: Inverte o valor lógico de uma condição.</li>
+                </ul>
+                <pre><code class="language-python">idade = 30
+tem_cnh = True
+if idade &gt;= 18 and tem_cnh:
+	print(&quot;Você pode dirigir!&quot;)</code></pre>
+            </li>
+            <li>
+                <p><strong>Operadores de Membro</strong></p>
+                <ul>
+                    <li><strong><code>in</code></strong>: Verifica se um valor está dentro de uma sequência (lista, tupla,
+                        string, etc.).</li>
+                </ul>
+                <pre><code class="language-python">frutas = [&quot;maçã&quot;, &quot;banana&quot;, &quot;laranja&quot;]
+if &quot;maçã&quot; in frutas:
+	print(&quot;Tem maçã na lista!&quot;)</code></pre>
+            </li>
+            <li>
+                <p><strong>Operadores de Identidade</strong></p>
+                <ul>
+                    <li><strong><code>is</code></strong>: Verifica se duas variáveis apontam para o mesmo objeto na memória.
+                    </li>
+                </ul>
+                <pre><code class="language-python">a = [1, 2, 3]
+b = a
+if a is b:
+	print(&quot;As duas variáveis apontam para o mesmo objeto!&quot;)</code></pre>
+            </li>
+        </ul>
+        <h2>4. <strong>Laços de Repetição</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Laço <code>for</code></strong> O <code>for</code> em Python é usado para iterar sobre sequências
+    (listas, strings, tuplas, etc.):</p>
+                <pre><code class="language-python">for i in range(5):  # range cria uma sequência de 0 a 4
+	print(i)</code></pre>
+                <ul>
+                    <li>
+                        <p><strong><code>range()</code></strong>: Cria uma sequência de números. Exemplo:</p>
+                        <pre><code class="language-python">for i in range(1, 10, 2):  # Começa em 1, vai até 9 e pula de 2 em 2
+	print(i)  # Saída: 1, 3, 5, 7, 9
+        		</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Laço <code>while</code></strong> O <code>while</code> continua a execução enquanto a condição for
+                    verdadeira:</p>
+                <pre><code class="language-python">contador = 0
+while contador &lt; 5:
+	print(contador)
+	contador += 1</code></pre>
+            </li>
+            <li>
+                <p><strong>Laços e <code>break</code>, <code>continue</code></strong> O <code>break</code> interrompe o laço, e
+                    o <code>continue</code> pula para a próxima iteração:</p>
+                <pre><code class="language-python">for i in range(10):
+	if i == 5:
+		break  # Interrompe o laço quando i for 5
+	print(i)</code></pre>
+            </li>
+        </ul>
+        <h2>5. <strong>Funções</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Funções com múltiplos parâmetros</strong> As funções podem aceitar vários parâmetros:</p>
+                <pre><code class="language-python">def calcular_area(base, altura):
+	return base * altura
+        		
+area = calcular_area(10, 5)
+print(area)  # Saída: 50</code></pre>
+            </li>
+            <li>
+                <p><strong>Funções com valor padrão</strong> Você pode definir valores padrão para parâmetros:</p>
+                <pre><code class="language-python">def saudacao(nome=&quot;Visitante&quot;):
+	print(f&quot;Olá, {nome}!&quot;)
+        		
+saudacao()  # Usa o valor padrão
+saudacao(&quot;Alice&quot;)  # Usa o valor passado</code></pre>
+            </li>
+            <li>
+                <p><strong>Funções Recursivas</strong> Uma função pode chamar a si mesma (recursão). Exemplo de cálculo de
+                    fatorial:</p>
+                <pre><code class="language-python">def fatorial(n):
+	if n == 1:
+		return 1
+	else:
+		return n * fatorial(n - 1)
+        		
+print(fatorial(5))  # Saída: 120</code></pre>
+            </li>
+        </ul>
+        <h2>6. <strong>Listas e Tuplas</strong></h2>
+        <ul>
+            <li>
+                <p><strong>Manipulação de Listas</strong></p>
+                <ul>
+                    <li><strong>Adicionar elementos</strong>: <code>append()</code>, <code>insert()</code></li>
+                    <li><strong>Remover elementos</strong>: <code>remove()</code>, <code>pop()</code></li>
+                    <li><strong>Ordenar lista</strong>: <code>sort()</code>, <code>reverse()</code></li>
+                </ul>
+                <pre><code class="language-python">lista = [3, 1, 4, 1, 5, 9]
+lista.append(2)  # Adiciona 2 ao final
+lista.sort()     # Ordena a lista
+print(lista)     # Saída: [1, 1, 2, 3, 4, 5, 9]</code></pre>
+            </li>
+            <li>
+                <p><strong>Tuplas</strong></p>
+                <ul>
+                    <li>São imutáveis, mas você pode acessar seus elementos por índice:</li>
+                </ul>
+                <pre><code class="language-python">tupla = (10, 20, 30)
+print(tupla[0])  # Saída: 10</code></pre>
+            </li>
+            <li>
+                <p><strong>Listas por compreensão</strong> As listas podem ser criadas de maneira compacta usando compreensão:
+                </p>
+                <pre><code class="language-python">quadrados = [x ** 2 for x in range(10)]
+print(quadrados)  # Saída: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
+            </li>
+        </ul>
+        <h2>7. <strong>Dicionários</strong></h2>
+        <p>Os <strong>dicionários</strong> são coleções de pares chave-valor. Eles são mutáveis, o que significa que você pode
+            adicionar, modificar e remover elementos depois de criá-los.</p>
+        <h3><strong>Criação e Manipulação de Dicionários</strong></h3>
+        <ul>
+            <li>Um dicionário é definido usando chaves <code>{}</code>:</li>
+        </ul>
+        <pre><code class="language-python">pessoa = {&quot;nome&quot;: &quot;Alice&quot;, &quot;idade&quot;: 25, &quot;cidade&quot;: &quot;São Paulo&quot;}</code></pre>
+        <ul>
+            <li>Acessando elementos:</li>
+        </ul>
+        <pre><code class="language-python">print(pessoa[&quot;nome&quot;])  # Saída: Alice</code></pre>
+        <h3><strong>Adicionar ou Modificar Elementos</strong></h3>
+        <p>Você pode adicionar novos pares chave-valor ou modificar os existentes:</p>
+        <pre><code class="language-python">pessoa[&quot;profissão&quot;] = &quot;Engenheira&quot;  # Adicionando uma chave nova
+pessoa[&quot;idade&quot;] = 26  # Modificando o valor da chave &#39;idade&#39;</code></pre>
+        <h3><strong>Remover Elementos</strong></h3>
+        <p>Existem várias formas de remover elementos de um dicionário:</p>
+        <pre><code class="language-python">del pessoa[&quot;cidade&quot;]  # Remove a chave &#39;cidade&#39;
+pessoa.pop(&quot;nome&quot;)    # Remove a chave &#39;nome&#39; e retorna o valor</code></pre>
+        <h3><strong>Métodos Comuns em Dicionários</strong></h3>
+        <ul>
+            <li><strong><code>keys()</code></strong>: Retorna todas as chaves</li>
+            <li><strong><code>values()</code></strong>: Retorna todos os valores</li>
+            <li><strong><code>items()</code></strong>: Retorna todos os pares chave-valor</li>
+        </ul>
+        <pre><code class="language-python">print(pessoa.keys())  # Saída: dict_keys([&#39;idade&#39;, &#39;profissão&#39;])</code></pre>
+        <h2 >8. <strong>Módulos e Bibliotecas</strong></h2>
+        <p>O Python possui uma vasta gama de bibliotecas padrão e externas que podem ser importadas para resolver problemas
+            comuns.</p>
+        <h3><strong>Importação de Módulos</strong></h3>
+        <p>Você pode importar um módulo inteiro ou partes dele:</p>
+        <pre><code class="language-python">import math  # Importa o módulo inteiro
+print(math.sqrt(16))  # Saída: 4.0</code></pre>
+        <p>Ou importar apenas funções específicas:</p>
+        <pre><code class="language-python">from math import sqrt
+print(sqrt(16))  # Saída: 4.0</code></pre>
+        <h3><strong>Bibliotecas Externas</strong></h3>
+        <p>Para usar bibliotecas externas (que não estão na biblioteca padrão), você pode usar o <code>pip</code>:</p>
+        <pre><code class="language-bash">pip install requests  # Instala a biblioteca &#39;requests&#39;</code></pre>
+        <p>Exemplo de uso com a biblioteca <code>requests</code> para fazer uma requisição HTTP:</p>
+        <pre><code class="language-python">import requests
+response = requests.get(&quot;https://api.github.com&quot;)
+print(response.status_code)  # Saída: 200 (código de sucesso)</code></pre>
+        <h2>9. <strong>Manipulação de Arquivos</strong></h2>
+        <p>Python facilita a leitura e escrita de arquivos.</p>
+        <h3><strong>Leitura de Arquivos</strong></h3>
+        <p>Para ler arquivos, você usa a função <code>open()</code>. Você pode abrir um arquivo em diferentes modos (leitura,
+            escrita, etc.):</p>
+        <pre><code class="language-python">with open(&#39;arquivo.txt&#39;, &#39;r&#39;) as file:
+	conteudo = file.read()
+	print(conteudo)</code></pre>
+        <ul>
+            <li>O <code>with</code> garante que o arquivo seja fechado corretamente após o uso.</li>
+        </ul>
+        <h3><strong>Escrita em Arquivos</strong></h3>
+        <p>Você pode escrever em arquivos com o modo <code>w</code> (substitui o conteúdo existente) ou <code>a</code> (adiciona
+            ao final):</p>
+        <pre><code class="language-python">with open(&#39;novo_arquivo.txt&#39;, &#39;w&#39;) as file:
+	file.write(&quot;Este é um exemplo de escrita no arquivo.&quot;)</code></pre>
+        <h3><strong>Leitura linha por linha</strong></h3>
+        <p>Se você preferir ler o arquivo linha por linha:</p>
+        <pre><code class="language-python">with open(&#39;arquivo.txt&#39;, &#39;r&#39;) as file:
+	for linha in file:
+		print(linha.strip())  # .strip() remove os espaços extras</code></pre>
+        <h2>10. <strong>Exceções e Erros</strong></h2>
+        <p>O Python possui um sistema de <strong>tratamento de exceções</strong>, que permite lidar com erros de forma elegante
+            e controlada, sem que o programa seja interrompido abruptamente.</p>
+        <h3><strong>O que são Exceções?</strong></h3>
+        <p>Exceções são erros que ocorrem durante a execução do programa. Quando uma exceção é levantada, o Python interrompe a
+            execução normal do programa e busca uma maneira de tratá-la.</p>
+        <h3><strong>Bloco try-except</strong></h3>
+        <ul>
+            <li><strong><code>try</code></strong>: Bloco onde você coloca o código que pode gerar um erro.</li>
+            <li><strong><code>except</code></strong>: Bloco que captura e trata o erro.</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-python">try:
+	resultado = 10 / 0  # Vai gerar uma exceção de divisão por zero
+except ZeroDivisionError:
+	print(&quot;Não é possível dividir por zero!&quot;)</code></pre>
+        <h3><strong>Bloco finally</strong></h3>
+        <p>O bloco <strong><code>finally</code></strong> é opcional e sempre é executado, independentemente de ter ocorrido uma
+            exceção ou não:</p>
+        <pre><code class="language-python">try:
+	arquivo = open(&quot;arquivo.txt&quot;, &quot;r&quot;)
+	# Código para manipular o arquivo
+except FileNotFoundError:
+	print(&quot;Arquivo não encontrado.&quot;)
+finally:
+	arquivo.close()  # Garante que o arquivo será fechado</code></pre>
+        <h3><strong>Lançando Exceções</strong></h3>
+        <p>Você pode gerar exceções manualmente com a palavra-chave <code>raise</code>:</p>
+        <pre><code class="language-python">def valida_idade(idade):
+	if idade &lt; 18:
+		raise ValueError(&quot;Idade deve ser maior ou igual a 18.&quot;)
+	return idade
+
+try:
+	valida_idade(15)
+except ValueError as e:
+	print(f&quot;Erro: {e}&quot;)</code></pre>
+        <hr>
+        <p>Compreender os fundamentos do Python é o primeiro passo para se tornar um programador confiante e produtivo. Este
+            guia fornecerá a base necessária para explorar projetos mais avançados e áreas de aplicação diversificadas, como
+            automação, desenvolvimento web e ciência de dados. Vamos começar esta jornada e descobrir todo o potencial que
+            Python tem a oferecer!</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Dart & Futtler</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Introdução ao Flutter: Explorando Funcionalidades Avançadas</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/5-dart/pag4.html">Próxima</a></li>
+                <li><a href="/5-dart/pag2.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Flutter, o framework de desenvolvimento de aplicações móveis criado pelo Google, tem ganhado popularidade devido à
+            sua capacidade de criar apps nativos de alta performance para Android, iOS e até mesmo para a web e desktop. Com uma
+            única base de código, você pode criar interfaces ricas e interativas de forma rápida e eficiente. Este guia oferece
+            uma introdução aos conceitos essenciais do Flutter, desde a construção de um aplicativo simples até a integração com
+            recursos mais avançados como animações e Firebase.</p>
+        <h2><strong>1. Criando um App Simples</strong></h2>
+        <p>Um app básico no Flutter é composto por <strong>widgets</strong>. Vamos começar com um app simples que mostra um
+            texto na tela.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        
+void main() {
+runApp(MeuApp());
+}
+            
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: Scaffold(
+		appBar: AppBar(title: Text(&quot;Meu App&quot;)),
+		body: Center(
+		child: Text(&quot;Olá, Flutter!&quot;),
+		),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>O <code>MaterialApp</code> é o widget raiz que fornece temas e navegação.</li>
+            <li>O <code>Scaffold</code> oferece a estrutura básica de layout (barra de app, corpo, etc.).</li>
+            <li>O <code>Center</code> centraliza o texto na tela.</li>
+        </ul>
+        <h2><strong>2. Widgets Stateless e Stateful</strong></h2>
+        <p>Em Flutter, você trabalha principalmente com dois tipos de widgets: <strong>StatelessWidget</strong> (sem estado) e
+            <strong>StatefulWidget</strong> (com estado).</p>
+        <p><strong>Exemplo - StatelessWidget</strong>:</p>
+        <pre><code class="language-dart">class Saudacao extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return Text(&#39;Bem-vindo ao Flutter!&#39;);
+}
+}</code></pre>
+        <p><strong>Exemplo - StatefulWidget</strong>:</p>
+        <pre><code class="language-dart">class Contador extends StatefulWidget {
+@override
+_ContadorState createState() =&gt; _ContadorState();
+}
+            
+class _ContadorState extends State&lt;Contador&gt; {
+int _contador = 0;
+                
+void _incrementar() {
+	setState(() {
+	_contador++;
+	});
+}
+            
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Contador&quot;)),
+	body: Center(
+		child: Column(
+		mainAxisAlignment: MainAxisAlignment.center,
+		children: &lt;Widget&gt;[
+			Text(&#39;Contagem: $_contador&#39;),
+			FloatingActionButton(
+			onPressed: _incrementar,
+			child: Icon(Icons.add),
+			),
+		],
+		),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><strong>StatelessWidget</strong> não mantém o estado, e é mais simples.</li>
+            <li><strong>StatefulWidget</strong> mantém o estado e atualiza a interface quando o estado muda (usando
+                <code>setState</code>).</li>
+        </ul>
+        <h2><strong>3. Navegação entre Telas</strong></h2>
+        <p>Você pode navegar entre telas em Flutter usando o <strong>Navigator</strong>.</p>
+        <p><strong>Exemplo</strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        
+void main() =&gt; runApp(MeuApp());
+        
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaInicial(),
+	);
+}
+}
+            
+class TelaInicial extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Tela Inicial&quot;)),
+	body: Center(
+		child: ElevatedButton(
+		onPressed: () {
+			Navigator.push(
+			context,
+			MaterialPageRoute(builder: (context) =&gt; TelaSecundaria()),
+			);
+		},
+		child: Text(&quot;Ir para a Tela Secundária&quot;),
+		),
+	),
+	);
+}
+}
+            
+class TelaSecundaria extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Tela Secundária&quot;)),
+	body: Center(
+		child: Text(&quot;Você chegou à tela secundária!&quot;),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A função <code>Navigator.push</code> navega para uma nova tela.</li>
+            <li><code>MaterialPageRoute</code> cria a rota para a nova tela.</li>
+        </ul>
+        <h2><strong>4. Trabalhando com Formulários e Validações</strong></h2>
+        <p>No Flutter, você pode criar formulários interativos, que incluem campos de texto e validações.</p>
+        <p><strong>Exemplo - Formulário com validação</strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        
+void main() {
+runApp(MeuApp());
+}
+            
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaFormulario(),
+	);
+}
+}
+            
+class TelaFormulario extends StatefulWidget {
+@override
+_TelaFormularioState createState() =&gt; _TelaFormularioState();
+}
+            
+class _TelaFormularioState extends State&lt;TelaFormulario&gt; {
+final _formKey = GlobalKey&lt;FormState&gt;();
+String _nome = &#39;&#39;;
+                
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&#39;Formulário&#39;)),
+	body: Padding(
+		padding: const EdgeInsets.all(16.0),
+		child: Form(
+		key: _formKey,
+		child: Column(
+			children: &lt;Widget&gt;[
+			TextFormField(
+				decoration: InputDecoration(labelText: &#39;Nome&#39;),
+				validator: (value) {
+				if (value == null || value.isEmpty) {
+					return &#39;Por favor, insira um nome&#39;;
+				}
+				return null;
+				},
+				onSaved: (value) {
+				_nome = value ?? &#39;&#39;;
+				},
+			),
+			SizedBox(height: 20),
+			ElevatedButton(
+				onPressed: () {
+				if (_formKey.currentState?.validate() ?? false) {
+					_formKey.currentState?.save();
+					ScaffoldMessenger.of(context).showSnackBar(
+					SnackBar(content: Text(&#39;Nome: $_nome&#39;)),
+					);
+				}
+				},
+				child: Text(&#39;Salvar&#39;),
+			),
+			],
+		),
+		),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>Um <code>Form</code> é criado com um campo de texto (<code>TextFormField</code>).</li>
+            <li>A validação é feita no <code>validator</code> e um erro é retornado se o campo estiver vazio.</li>
+            <li>O método <code>onSaved</code> salva o valor quando o formulário é validado com sucesso.</li>
+        </ul>
+        <h2><strong>5. Trabalhando com Imagens e Recursos</strong></h2>
+        <p>Em Flutter, você pode adicionar imagens e outros recursos aos seus apps.</p>
+        <p><strong>Exemplo - Exibindo uma imagem local</strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        
+void main() {
+runApp(MeuApp());
+}
+            
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaImagem(),
+	);
+}
+}
+            
+class TelaImagem extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&#39;Imagem Local&#39;)),
+	body: Center(
+		child: Image.asset(&#39;assets/imagem_exemplo.jpg&#39;),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>A imagem <code>imagem_exemplo.jpg</code> precisa estar na pasta <code>assets</code> do projeto.</li>
+            <li>No arquivo <code>pubspec.yaml</code>, adicione o caminho da imagem para garantir que o Flutter a carregue.</li>
+        </ul>
+        <p><strong>Configuração no pubspec.yaml</strong>:</p>
+        <pre><code class="language-yaml">flutter:
+assets:
+	- assets/imagem_exemplo.jpg</code></pre>
+        <h2><strong>6. Animações no Flutter</strong></h2>
+        <p>O Flutter tem uma biblioteca robusta para animações, permitindo criar interfaces dinâmicas e interativas.</p>
+        <p><strong>Exemplo - Animação simples com <code>AnimatedContainer</code></strong>:</p>
+        <pre><code class="language-dart">import &#39;package:flutter/material.dart&#39;;
+        
+void main() {
+runApp(MeuApp());
+}
+            
+class MeuApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaAnimacao(),
+	);
+}
+}
+            
+class TelaAnimacao extends StatefulWidget {
+@override
+_TelaAnimacaoState createState() =&gt; _TelaAnimacaoState();
+}
+            
+class _TelaAnimacaoState extends State&lt;TelaAnimacao&gt; {
+double _largura = 100;
+double _altura = 100;
+Color _cor = Colors.blue;
+                
+void _animar() {
+	setState(() {
+	_largura = _largura == 100 ? 200 : 100;
+	_altura = _altura == 100 ? 200 : 100;
+	_cor = _cor == Colors.blue ? Colors.red : Colors.blue;
+	});
+}
+            
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&#39;Animação&#39;)),
+	body: Center(
+		child: GestureDetector(
+		onTap: _animar,
+		child: AnimatedContainer(
+			width: _largura,
+			height: _altura,
+			color: _cor,
+			duration: Duration(seconds: 1),
+			curve: Curves.easeInOut,
+		),
+		),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li>Usamos <code>AnimatedContainer</code> para animar o tamanho e a cor de um contêiner ao tocar na tela.</li>
+            <li>O método <code>setState</code> altera as propriedades <code>_largura</code>, <code>_altura</code>, e
+                <code>_cor</code> para iniciar a animação.</li>
+        </ul>
+        <h2><strong>7. Trabalhando com Firebase (Backend)</strong></h2>
+        <p>O Firebase é uma plataforma poderosa para desenvolvimento de backend e integração com Flutter. Ele oferece
+            funcionalidades como autenticação, banco de dados em tempo real e armazenamento de arquivos.</p>
+        <p><strong>Exemplo - Autenticação com Firebase</strong>:</p>
+        <ol>
+            <li>Adicione a dependência do Firebase no <code>pubspec.yaml</code>:</li>
+        </ol>
+        <pre><code class="language-yaml">dependencies:
+firebase_core: latest_version
+firebase_auth: latest_version</code></pre>
+        <ol start="2">
+            <li>Inicialize o Firebase no código:</li>
+        </ol>
+        <pre><code class="language-dart">import &#39;package:firebase_core/firebase_core.dart&#39;;
+import &#39;package:firebase_auth/firebase_auth.dart&#39;;
+        
+void main() async {
+WidgetsFlutterBinding.ensureInitialized();
+await Firebase.initializeApp();
+runApp(MyApp());
+}
+            
+class MyApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+	return MaterialApp(
+	home: TelaLogin(),
+	);
+}
+}
+            
+class TelaLogin extends StatelessWidget {
+final FirebaseAuth _auth = FirebaseAuth.instance;
+                
+@override
+Widget build(BuildContext context) {
+	return Scaffold(
+	appBar: AppBar(title: Text(&quot;Login&quot;)),
+	body: Center(
+		child: ElevatedButton(
+		onPressed: () async {
+			try {
+			UserCredential user = await _auth.signInAnonymously();
+			print(&#39;Usuário autenticado: ${user.user?.uid}&#39;);
+			} catch (e) {
+			print(&#39;Erro de autenticação: $e&#39;);
+			}
+		},
+		child: Text(&quot;Login Anônimo&quot;),
+		),
+	),
+	);
+}
+}</code></pre>
+        <p><strong>Explicação</strong>:</p>
+        <ul>
+            <li><code>firebase_core</code> inicializa o Firebase.</li>
+            <li><code>firebase_auth</code> permite a autenticação de usuários. No exemplo, é feito um login anônimo.</li>
+        </ul>
+        <hr>
+        <p>Com Flutter, é possível criar aplicativos móveis ricos e interativos de forma rápida e eficiente. Este guia cobriu os
+            principais conceitos e práticas essenciais para construir seu próprio aplicativo, desde o layout até a integração
+            com serviços como Firebase. Através do uso de widgets poderosos, animações e manipulação de dados, você estará bem
+            preparado para construir aplicativos móveis modernos que atendem às necessidades do usuário.</p>
+    </main>
+</body>
+</html>

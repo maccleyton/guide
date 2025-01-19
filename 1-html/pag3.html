@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de HTML</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Avançado de HTML: Acessibilidade, SEO e Técnicas Modernas</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/1-html/pag2.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>HTML é a base da web, mas para criar páginas otimizadas e acessíveis, é necessário ir além do básico. Este guia
+            explora práticas avançadas para <strong>acessibilidade</strong>, <strong>SEO</strong> e <strong>técnicas
+                modernas</strong> que elevam a qualidade das páginas.</p>
+        <h2><strong>1. Acessibilidade (A11y)</strong></h2>
+        <p>Acessibilidade é o processo de tornar os sites utilizáveis por pessoas com diferentes habilidades, incluindo aquelas
+            com deficiências.</p>
+        <h3><strong>1.1 Diretrizes Básicas de Acessibilidade</strong></h3>
+        <ul>
+            <li><strong>Semântica</strong>: Use elementos HTML apropriados (como <code>&lt;button&gt;</code> em vez de
+                <code>&lt;div&gt;</code>).</li>
+            <li><strong>Teclado</strong>: Certifique-se de que todas as interações sejam acessíveis pelo teclado.</li>
+            <li><strong>Contraste</strong>: Garanta um contraste adequado entre o texto e o fundo.</li>
+        </ul>
+        <h3><strong>1.2 Uso de ARIA (Accessible Rich Internet
+                Applications)</strong></h3>
+        <p>ARIA melhora a acessibilidade de elementos dinâmicos, como menus e modais.</p>
+        <h4>Atributos ARIA Comuns</h4>
+        <ul>
+            <li>
+                <p><strong><code>role</code></strong>: Define o papel de um elemento.</p>
+                <pre><code class="language-html">&lt;div role=&quot;button&quot;&gt;Clique aqui&lt;/div&gt;</code></pre>
+            </li>
+            <li>
+                <p><strong><code>aria-label</code></strong>: Fornece uma descrição para elementos interativos.</p>
+                <pre><code class="language-html">&lt;button aria-label=&quot;Fechar janela&quot;&gt;X&lt;/button&gt;</code></pre>
+            </li>
+            <li>
+                <p><strong><code>aria-hidden</code></strong>: Oculta elementos de leitores de tela.</p>
+                <pre><code class="language-html">&lt;div aria-hidden=&quot;true&quot;&gt;Texto decorativo&lt;/div&gt;</code></pre>
+            </li>
+        </ul>
+        <h3><strong>1.3 Exemplos de Boas Práticas</strong></h3>
+        <h4>Formulários Acessíveis</h4>
+        <ul>
+            <li>
+                <p>Use <code>&lt;label&gt;</code> com o atributo <code>for</code> associado ao <code>id</code> do campo.</p>
+                <pre><code class="language-html">&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;</code></pre>
+            </li>
+            <li>
+                <p>Forneça mensagens de erro claras com <code>aria-describedby</code>.</p>
+                <pre><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;username&quot; aria-describedby=&quot;error-msg&quot;&gt;
+&lt;span id=&quot;error-msg&quot; role=&quot;alert&quot;&gt;Nome de usuário inválido&lt;/span&gt;</code></pre>
+            </li>
+        </ul>
+        <h4>Navegação</h4>
+        <ul>
+            <li>
+                <p>Adicione links para &quot;pular para o conteúdo&quot;.</p>
+                <pre><code class="language-html">&lt;a href=&quot;#conteudo&quot; class=&quot;skip-link&quot;&gt;Pular para o conteúdo&lt;/a&gt;</code></pre>
+            </li>
+            <li>
+                <p>Estruture a navegação com <code>&lt;nav&gt;</code> e use listas ordenadas.</p>
+                <pre><code class="language-html">&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </li>
+        </ul>
+        <h2><strong>2. SEO (Search Engine Optimization)</strong></h2>
+        <p>SEO melhora a visibilidade do site nos mecanismos de busca, atraindo mais tráfego orgânico.</p>
+        <h3><strong>2.1 Tags Meta Essenciais</strong></h3>
+        <h4>Título e Descrição</h4>
+        <ul>
+            <li>
+                <p>O <code>&lt;title&gt;</code> aparece nos resultados de busca e deve ser descritivo.</p>
+                <pre><code class="language-html">&lt;title&gt;Guia Completo de Acessibilidade e SEO&lt;/title&gt;</code></pre>
+            </li>
+            <li>
+                <p>A <code>&lt;meta name=&quot;description&quot;&gt;</code> fornece um resumo da página.</p>
+                <pre><code class="language-html">&lt;meta name=&quot;description&quot; content=&quot;Aprenda técnicas avançadas de HTML para melhorar acessibilidade e SEO.&quot;&gt;</code></pre>
+            </li>
+        </ul>
+        <h4>Tag Viewport</h4>
+        <ul>
+            <li>
+                <p>Torna a página responsiva em dispositivos móveis.</p>
+                <pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
+            </li>
+        </ul>
+        <h4>Tags Open Graph (OG)</h4>
+        <ul>
+            <li>
+                <p>Melhoram a exibição de links em redes sociais.</p>
+                <pre><code class="language-html">&lt;meta property=&quot;og:title&quot; content=&quot;Guia Avançado de HTML&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;Técnicas modernas de acessibilidade e SEO.&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;link-da-imagem.png&quot;&gt;</code></pre>
+            </li>
+        </ul>
+        <h3><strong>2.2 Estrutura de Cabeçalhos</strong></h3>
+        <ul>
+            <li>
+                <p>Use cabeçalhos hierárquicos (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>).</p>
+                <pre><code class="language-html">&lt;h1&gt;Guia Avançado de HTML&lt;/h1&gt;
+&lt;h2&gt;Acessibilidade&lt;/h2&gt;
+&lt;h3&gt;Diretrizes Básicas&lt;/h3&gt;</code></pre>
+            </li>
+        </ul>
+        <h3><strong>2.3 Links e URLs Amigáveis</strong></h3>
+        <ul>
+            <li>
+                <p>Escreva URLs claras e descritivas.</p>
+                <pre><code class="language-html">&lt;a href=&quot;/acessibilidade&quot;&gt;Leia sobre acessibilidade&lt;/a&gt;</code></pre>
+            </li>
+        </ul>
+        <h2><strong>3. Técnicas Modernas de HTML</strong></h2>
+        <h3><strong>3.1 Elementos Customizados com Web Components</strong>
+        </h3>
+        <p>Web Components permitem criar elementos HTML reutilizáveis e encapsulados.</p>
+        <h4>Exemplo Básico</h4>
+        <pre><code class="language-javascript">class MeuComponente extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: &#39;open&#39; });
+    this.shadowRoot.innerHTML = `&lt;p&gt;Olá, sou um componente!&lt;/p&gt;`;
+  }
+}
+customElements.define(&#39;meu-componente&#39;, MeuComponente);</code></pre>
+        <pre><code class="language-html">&lt;meu-componente&gt;&lt;/meu-componente&gt;</code></pre>
+        <h3><strong>3.2 Carregamento Condicional de Recursos</strong></h3>
+        <p>Use o atributo <code>loading</code> para melhorar o desempenho de imagens.</p>
+        <pre><code class="language-html">&lt;img src=&quot;imagem-grande.jpg&quot; loading=&quot;lazy&quot; alt=&quot;Imagem carregada lentamente&quot;&gt;</code></pre>
+        <h3><strong>3.3 Uso de <code>&lt;template&gt;</code></strong></h3>
+        <p>Defina estruturas HTML reutilizáveis sem renderizá-las imediatamente.</p>
+        <pre><code class="language-html">&lt;template id=&quot;meu-template&quot;&gt;
+  &lt;div class=&quot;cartao&quot;&gt;
+    &lt;h2&gt;Título&lt;/h2&gt;
+    &lt;p&gt;Conteúdo&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  const template = document.getElementById(&#39;meu-template&#39;);
+  document.body.appendChild(template.content.cloneNode(true));
+&lt;/script&gt;</code></pre>
+        <h3><strong>3.4 Elemento <code>&lt;dialog&gt;</code></strong></h3>
+        <p>Cria caixas de diálogo nativas.</p>
+        <pre><code class="language-html">&lt;dialog id=&quot;meu-dialogo&quot;&gt;
+  &lt;p&gt;Este é um diálogo nativo!&lt;/p&gt;
+  &lt;button onclick=&quot;document.getElementById(&#39;meu-dialogo&#39;).close()&quot;&gt;Fechar&lt;/button&gt;
+&lt;/dialog&gt;
+&lt;button onclick=&quot;document.getElementById(&#39;meu-dialogo&#39;).showModal()&quot;&gt;Abrir&lt;/button&gt;</code></pre>
+        <hr>
+        <p>Esses tópicos avançados ajudam a criar páginas HTML modernas, acessíveis e otimizadas para SEO.</p>
+    </main>
+</body>
+</html>

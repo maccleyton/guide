@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de HTML</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de HTML</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/1-html/pag2.html">Próxima</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>O <strong>HTML (HyperText Markup Language)</strong> é a base de toda página da web.
+            Ele define a estrutura e o conteúdo de um site, servindo como o primeiro passo
+            para quem deseja ingressar no desenvolvimento web.
+            Este guia foi criado para ajudá-lo a dominar o HTML, começando com os fundamentos
+            e avançando até práticas modernas e técnicas avançadas.</p>
+        <h2><strong>1. Estrutura Básica de um Documento HTML</strong></h2>
+        <p>Todo documento HTML segue uma estrutura básica que inclui tags essenciais:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-br&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Título da Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Bem-vindo ao HTML&lt;/h1&gt;
+  &lt;p&gt;Este é um exemplo de estrutura básica de um documento HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <h3><strong>1.1. Explicação das Tags</strong></h3>
+        <ul>
+            <li><strong><code>&lt;!DOCTYPE html&gt;</code></strong>: Declara que o documento é HTML5.</li>
+            <li><strong><code>&lt;html&gt;</code></strong>: Envolve todo o conteúdo da página.<ul>
+                    <li><strong>Atributo <code>lang</code></strong>: Define o idioma do documento.</li>
+                </ul>
+            </li>
+            <li><strong><code>&lt;head&gt;</code></strong>: Contém metadados e informações sobre a página.<ul>
+                    <li><strong><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></strong>: Define a codificação de caracteres
+                        como UTF-8.</li>
+                    <li><strong><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></strong>:
+                        Garante que a página seja responsiva.</li>
+                    <li><strong><code>&lt;title&gt;</code></strong>: Define o título da página que aparece na aba do navegador.
+                    </li>
+                </ul>
+            </li>
+            <li><strong><code>&lt;body&gt;</code></strong>: Contém o conteúdo visível da página.</li>
+        </ul>
+        <h2><strong>2. Elementos de Texto</strong></h2>
+        <p>O HTML oferece várias tags para definir textos e seu formato.</p>
+        <h3><strong>2.1 Títulos</strong></h3>
+        <p>Usados para destacar cabeçalhos. Existem seis níveis: <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>.</p>
+        <pre><code class="language-html">&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;h2&gt;Subtítulo&lt;/h2&gt;
+&lt;h3&gt;Seção&lt;/h3&gt;
+&lt;h4&gt;Subseção&lt;/h4&gt;
+&lt;h5&gt;Nota&lt;/h5&gt;
+&lt;h6&gt;Pequena Observação&lt;/h6&gt;</code></pre>
+        <h3><strong>2.2 Parágrafos e Quebras de Linha</strong></h3>
+        <ul>
+            <li><strong><code>&lt;p&gt;</code></strong>: Define um parágrafo.</li>
+            <li><strong><code>&lt;br&gt;</code></strong>: Insere uma quebra de linha.</li>
+        </ul>
+        <pre><code class="language-html">&lt;p&gt;Este é um parágrafo.&lt;/p&gt;
+&lt;p&gt;Outro parágrafo com&lt;br&gt;uma quebra de linha.&lt;/p&gt;</code></pre>
+        <h3><strong>2.3 Texto Formatado</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Elemento</strong></th>
+                    <th><strong>Descrição</strong></th>
+                    <th><strong>Exemplo</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;strong&gt;</code></td>
+                    <td>Enfatiza (texto em negrito).</td>
+                    <td><code>&lt;strong&gt;Importante&lt;/strong&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;em&gt;</code></td>
+                    <td>Enfatiza (texto em itálico).</td>
+                    <td><code>&lt;em&gt;Destaque&lt;/em&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;u&gt;</code></td>
+                    <td>Texto sublinhado.</td>
+                    <td><code>&lt;u&gt;Exemplo&lt;/u&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;small&gt;</code></td>
+                    <td>Texto menor.</td>
+                    <td><code>&lt;small&gt;Nota&lt;/small&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;mark&gt;</code></td>
+                    <td>Destaca texto (marcado).</td>
+                    <td><code>&lt;mark&gt;Importante&lt;/mark&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;del&gt;</code></td>
+                    <td>Texto tachado (removido).</td>
+                    <td><code>&lt;del&gt;Removido&lt;/del&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;ins&gt;</code></td>
+                    <td>Texto inserido (sublinhado por padrão).</td>
+                    <td><code>&lt;ins&gt;Adicionado&lt;/ins&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;sup&gt;</code></td>
+                    <td>Texto sobrescrito.</td>
+                    <td><code>E = mc&lt;sup&gt;2&lt;/sup&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;sub&gt;</code></td>
+                    <td>Texto subscrito.</td>
+                    <td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;code&gt;</code></td>
+                    <td>Texto formatado como código.</td>
+                    <td><code>&lt;code&gt;código&lt;/code&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;pre&gt;</code></td>
+                    <td>Texto pré-formatado.</td>
+                    <td><code>&lt;pre&gt;texto&lt;/pre&gt;</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><strong>3. Listas</strong></h2>
+        <h3><strong>3.1 Listas Não Ordenadas</strong></h3>
+        <p>Usam o elemento <code>&lt;ul&gt;</code> com itens definidos por <code>&lt;li&gt;</code>.</p>
+        <pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h3><strong>3.2 Listas Ordenadas</strong></h3>
+        <p>Usam o elemento <code>&lt;ol&gt;</code> com itens definidos por <code>&lt;li&gt;</code>.</p>
+        <pre><code class="language-html">&lt;ol&gt;
+  &lt;li&gt;Primeiro Item&lt;/li&gt;
+  &lt;li&gt;Segundo Item&lt;/li&gt;
+  &lt;li&gt;Terceiro Item&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <h3><strong>3.3 Listas Aninhadas</strong></h3>
+        <p>Combina listas ordenadas e não ordenadas.</p>
+        <pre><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;Item Principal
+    &lt;ul&gt;
+      &lt;li&gt;Subitem 1&lt;/li&gt;
+      &lt;li&gt;Subitem 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Outro Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h2><strong>4. Links e Navegação</strong></h2>
+        <h3><strong>4.1 Links Simples</strong></h3>
+        <p>Usam a tag <code>&lt;a&gt;</code> com o atributo <code>href</code>.</p>
+        <pre><code class="language-html">&lt;a href=&quot;https://www.exemplo.com&quot;&gt;Visite nosso site&lt;/a&gt;</code></pre>
+        <h3><strong>4.2 Links com Alvo (<em>target</em>)</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Valor</strong></th>
+                    <th><strong>Descrição</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>_self</code></td>
+                    <td>Abre o link na mesma janela (padrão).</td>
+                </tr>
+                <tr>
+                    <td><code>_blank</code></td>
+                    <td>Abre o link em uma nova aba.</td>
+                </tr>
+                <tr>
+                    <td><code>_parent</code></td>
+                    <td>Abre no frame pai.</td>
+                </tr>
+                <tr>
+                    <td><code>_top</code></td>
+                    <td>Abre no contexto principal (ignora frames).</td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="language-html">&lt;a href=&quot;https://www.exemplo.com&quot; target=&quot;_blank&quot;&gt;Abrir em nova aba&lt;/a&gt;</code></pre>
+        <h3><strong>4.3 Links para âncoras</strong></h3>
+        <p>Usam o atributo <code>id</code> para navegar para partes específicas da página.</p>
+        <pre><code class="language-html">&lt;h2 id=&quot;seção1&quot;&gt;Seção 1&lt;/h2&gt;
+&lt;a href=&quot;#seção1&quot;&gt;Ir para a Seção 1&lt;/a&gt;</code></pre>
+        <h2><strong>5. Imagens</strong></h2>
+        <h3><strong>5.1 Tag Básica de Imagem</strong></h3>
+        <p>Usa a tag <code>&lt;img&gt;</code> com os atributos <code>src</code> e <code>alt</code>.</p>
+        <pre><code class="language-html">&lt;img src=&quot;imagem.jpg&quot; alt=&quot;Descrição da imagem&quot;&gt;</code></pre>
+        <h3><strong>5.2 Atributos Comuns</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Atributo</strong></th>
+                    <th><strong>Descrição</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>src</code></td>
+                    <td>URL da imagem.</td>
+                </tr>
+                <tr>
+                    <td><code>alt</code></td>
+                    <td>Texto alternativo para acessibilidade.</td>
+                </tr>
+                <tr>
+                    <td><code>width</code></td>
+                    <td>Largura da imagem (em pixels ou %).</td>
+                </tr>
+                <tr>
+                    <td><code>height</code></td>
+                    <td>Altura da imagem (em pixels ou %).</td>
+                </tr>
+                <tr>
+                    <td><code>title</code></td>
+                    <td>Texto exibido ao passar o mouse.</td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="language-html">&lt;img src=&quot;imagem.jpg&quot; alt=&quot;Descrição&quot; width=&quot;300&quot; height=&quot;200&quot; title=&quot;Exemplo de Imagem&quot;&gt;</code></pre>
+        <hr>
+        <p>Esta é a primeira parte do guia de HTML cobrindo os fundamentos.</p>
+    </main>
+</body>
+</html>

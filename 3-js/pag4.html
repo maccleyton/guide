@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+               <stong>Guia Avançado de JavaScript: Modularização e Bundling</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag3.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Conforme os projetos JavaScript crescem, organizar o código de maneira eficiente se torna essencial. Este guia
+            explora conceitos avançados como <strong>modularização</strong> e ferramentas de <strong>bundling</strong> para
+            criar aplicações mais escaláveis e manuteníveis.</p>
+        <h2><strong>1. Modularização em JavaScript</strong></h2>
+        <h3><strong>1.1 O Que São Módulos?</strong></h3>
+        <p>Módulos permitem dividir o código em pequenos arquivos reutilizáveis. Cada módulo pode conter funções, classes ou
+            variáveis relacionadas a uma funcionalidade específica.</p>
+        <ul>
+            <li><strong>Benefícios</strong>:<ul>
+                    <li>Melhora a organização do código.</li>
+                    <li>Facilita o reuso de componentes.</li>
+                    <li>Evita conflitos de variáveis no escopo global.</li>
+                </ul>
+            </li>
+        </ul>
+        <h3><strong>1.2 Sintaxe de Módulos (ES6)</strong></h3>
+        <h4>Exportação</h4>
+        <p>Usamos <code>export</code> para tornar funcionalidades disponíveis em outros arquivos.</p>
+        <pre><code class="language-javascript">// arquivo: calculadora.js
+export function somar(a, b) {
+  return a + b;
+}
+
+export const PI = 3.14159;
+
+export default function subtrair(a, b) {
+  return a - b;
+}</code></pre>
+        <h4>Importação</h4>
+        <p>Utilizamos <code>import</code> para acessar as funcionalidades exportadas.</p>
+        <pre><code class="language-javascript">// arquivo: app.js
+import subtrair, { somar, PI } from &#39;./calculadora.js&#39;;
+        
+console.log(somar(2, 3)); // 5
+console.log(subtrair(10, 5)); // 5
+console.log(PI); // 3.14159</code></pre>
+        <ul>
+            <li><strong>Default Export</strong>: Permite exportar um valor padrão por módulo.</li>
+            <li><strong>Named Export</strong>: Permite exportar vários valores nomeados por módulo.</li>
+        </ul>
+        <h3><strong>1.3 Importações Dinâmicas</strong></h3>
+        <p>Permite carregar módulos sob demanda, útil para melhorar o desempenho de aplicações.</p>
+        <pre><code class="language-javascript">if (condicao) {
+  import(&#39;./modulo.js&#39;).then(module =&gt; {
+    module.funcao();
+  });
+}</code></pre>
+        <h2><strong>2. Ferramentas de Bundling</strong></h2>
+        <p>Quando usamos módulos em projetos maiores, frequentemente precisamos compactar e combinar múltiplos arquivos em um
+            único arquivo final. Ferramentas de <strong>bundling</strong> ajudam nesse processo.</p>
+        <h3><strong>2.1 O Que é Bundling?</strong></h3>
+        <p>Bundling é o processo de combinar múltiplos arquivos de código em um único arquivo para reduzir o número de
+            requisições HTTP.</p>
+        <ul>
+            <li><strong>Benefícios</strong>:<ul>
+                    <li>Reduz o tamanho do código enviado ao navegador.</li>
+                    <li>Melhora o desempenho ao minimizar arquivos.</li>
+                    <li>Resolve dependências automaticamente.</li>
+                </ul>
+            </li>
+        </ul>
+        <h3><strong>2.2 Ferramentas Populares</strong></h3>
+        <h4><strong>Webpack</strong></h4>
+        <ul>
+            <li>Uma das ferramentas de bundling mais usadas.</li>
+            <li>Configuração flexível para diferentes tipos de arquivos (JS, CSS, imagens).</li>
+        </ul>
+        <p><strong>Exemplo de Configuração Webpack:</strong></p>
+        <pre><code class="language-javascript">// webpack.config.js
+module.exports = {
+  entry: &#39;./src/index.js&#39;,
+  output: {
+    filename: &#39;bundle.js&#39;,
+    path: __dirname + &#39;/dist&#39;,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [&#39;style-loader&#39;, &#39;css-loader&#39;],
+      },
+    ],
+  },
+};</code></pre>
+        <h4><strong>Vite</strong></h4>
+        <ul>
+            <li>Otimizado para projetos modernos.</li>
+            <li>Fornece um servidor de desenvolvimento rápido.</li>
+        </ul>
+        <p><strong>Instalação Rápida:</strong></p>
+        <pre><code class="language-bash">npm create vite@latest minha-aplicacao</code></pre>
+        <h4><strong>Parcel</strong></h4>
+        <ul>
+            <li>Zero configuração para bundling básico.</li>
+        </ul>
+        <p><strong>Instalação Simples:</strong></p>
+        <pre><code class="language-bash">npx parcel index.html</code></pre>
+        <h3><strong>2.3 Minificação de Código</strong></h3>
+        <p>A minificação remove espaços em branco e reduz o tamanho do código.</p>
+        <p>Ferramentas como o <strong>Terser</strong> e <strong>UglifyJS</strong> são usadas em conjunto com bundlers para esse
+            propósito.</p>
+        <h2><strong>3. Boas Práticas com Módulos e Bundling</strong></h2>
+        <h3><strong>3.1 Organização de Arquivos</strong></h3>
+        <ul>
+            <li>Separe funcionalidades em diferentes arquivos.</li>
+            <li>Use nomes descritivos para os arquivos.</li>
+        </ul>
+        <p><strong>Estrutura de Projeto Sugerida:</strong></p>
+        <pre><code class="language-javascript">/src
+  /components
+    header.js
+    footer.js
+  /utils
+    helpers.js
+index.js</code></pre>
+        <h3><strong>3.2 Lazy Loading</strong></h3>
+        <p>Carregue módulos somente quando necessário para melhorar a performance.</p>
+        <h3><strong>3.3 Divisão de Código</strong></h3>
+        <p>Divida o código em chunks para otimizar o carregamento de páginas.</p>
+        <pre><code class="language-javascript">// Webpack Example
+output: {
+  filename: &#39;[name].bundle.js&#39;,
+},
+optimization: {
+  splitChunks: {
+    chunks: &#39;all&#39;,
+  },
+},</code></pre>
+        <hr>
+        <p>Essa seção cobre os conceitos principais de modularização e bundling, ajudando a criar aplicações JavaScript modernas
+            e otimizadas.</p>
+    </main>
+</body>
+</html>
