@@ -27,4 +27,4 @@ O projeto está em constante evolução, sendo atualizado periodicamente para re
 
 ## ✒️ Autores
 
-* [**Cleyton D. Macedo** | LinkedIn](https://www.linkedin.com/in/maccleyton/))
+* [**Cleyton D. Macedo** | LinkedIn](https://www.linkedin.com/in/maccleyton/)
