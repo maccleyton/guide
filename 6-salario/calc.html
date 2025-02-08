@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Salário</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Cálculo de Salário</h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+            </ul>
+        </div>
+        <hr>
+    </header>
+    <main>
+        <div class="password-container">
+            <form id="password-form" onsubmit="return checkPassword()">
+                <h2>Informe a senha para acessar a página:</h2>
+                <input type="password" id="password" placeholder="Digite a senha">
+                <button type="submit">Acessar</button>
+            </form>
+        </div>
+        <div id="protected-parent" class="hidden">
+            <div  id="content" class="box0">
+                <div class="box1">
+                    <h2>Análise de variação salarial</h2>
+                    <table class="valores">
+                        <colgroup>
+                            <col class="col1">
+                            <col class="col2">
+                            <col class="col3">
+                            <col class="col4">
+                        </colgroup>
+                        <tbody id="outputs">
+                            <tr>
+                                <td class="sub1">Descrição</td>
+                                <td class="sub3">Referência</td>
+                                <td class="sub2">Proventos</td>
+                                <td class="sub2">Descontos</td>
+                            </tr>
+                            <tr>
+                                <td>Vencimento</td>
+                                <td class="sub6">30</td>
+                                <td class="sub7" id="output_vencimento" onBlur="atualizarSubtotais();"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Gratificação</td>
+                                <td class="sub6">30</td>
+                                <td class="sub7" id="output_gratificacao" onBlur="atualizarSubtotais();"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Adicionais</td>
+                                <td class="sub6">30</td>
+                                <td class="sub7" id="output_adicional" onBlur="atualizarSubtotais();"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Complemento</td>
+                                <td class="sub6">30</td>
+                                <td class="sub7" id="output_complemento" onBlur="atualizarSubtotais();"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>INSS</td>
+                                <td class="sub6" id="aliq_efetiva">0,00%</td>
+                                <td></td>
+                                <td class="sub7" id="cont_inss" onBlur="atualizarSubtotais();"></td>
+                            </tr>
+                            <tr>
+                                <td>Plano de Saúde</td>
+                                <td class="sub6" id="valorPlanoSaudeDisplay">0,00%</td>
+                                <td></td>
+                                <td class="sub7" id="cont_cassi" onBlur="atualizarSubtotais();"></td>
+                            </tr>
+                            <tr>
+                                <td>Previdência Complementar</td>
+                                <td class="sub6" id="output_previ">0,00%</td>
+                                <td></td>
+                                <td class="sub7" id="cont_previ" onBlur="atualizarSubtotais();"></td>
+                            </tr>
+                            <tr>
+                                <td>Imposto de Renda</td>
+                                <td class="sub6" id="aliq_progressiva">0,00%</td>
+                                <td></td>
+                                <td class="sub7" id="cont_irrf" onBlur="atualizarSubtotais();"></td>
+                            </tr>
+                            <tr>
+                                <td>Contribuição Sindical</td>
+                                <td class="sub6" id="output_sindicato">0,00%</td>
+                                <td></td>
+                                <td class="sub7" id="cont_sindicato" onBlur="atualizarSubtotais();"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="sub1"><strong>Subtotal</strong></td>
+                                <td class="sub2" id="sub_proventos"></td>
+                                <td class="sub2" id="sub_descontos"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><strong>Salário Líquido</strong></td>
+                                <td class="sub4" id="salario_liquido" disabled></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="box2">
+                    <br>
+                    <h2>Inclusão de Parâmetros</h2>
+                    <label for="selectField1">Escolha o item:</label>
+                    <select id="selectField1">
+                        <option value="">Selecione...</option>
+                        <option value="vencimento">Vencimento</option>
+                        <option value="adicional">Adicionais</option>
+                        <option value="bruto">Salário Bruto</option>
+                        <option value="liquido">Salário Líquido</option>
+                        <option value="jornada">Jornada de Trabalho</option>
+                    </select>
+                    <label for="inputField">Digite o valor:</label>
+                    <input id="inputField" type="text" placeholder="Digite aqui">
+                    <button id="addButton">Adicionar</button>
+                    <button id="resetButton">Reiniciar</button>
+                    <hr>
+                    <label for="selectField2">Selecione o cargo:</label>
+                    <select id="selectField2">
+                        <option value="">Selecione...</option>
+                        <option value="610">Escriturário</option>
+                        <option value="12392">Assessor III</option>
+                        <option value="17310">Gerente de Relacionamento</option>
+                        <option value="17317">Gerente de Relacionamento Atendimento</option>
+                        <option value="17404">Gerente de Serviços</option>
+                        <option value="17511">Assistente de Negócios</option>
+                        <option value="17513">Assistente de Atendimento e Negócios</option>
+                    </select>
+                    <hr>
+                    <table class="opcionais">
+                        <colgroup>
+                            <col class="colA">
+                            <col class="colB">
+                            <col class="colC">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" class="sub3">Opcionais</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="checkboxSindicato" name="checkboxSindicato" value="1.5"><label for="checkboxSindicato">Sindicato</label></td>
+                                <td><input type="checkbox" id="checkboxPC" name="checkboxPC" value="7"><label for="checkboxPC">Previdência Complementar</label></td>
+                                <td><label>Dependentes do IR:</label>
+                                <button class="operadores" id="decrementarDependenteIR">-</button>
+                                <span id="quantidadeDependentesIR">0</span>
+                                <button class="operadores" id="incrementarDependenteIR">+</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="checkboxTitular"><label for="checkboxTitular">Plano de Saúde</label></td>
+                                <td colspan="2">
+                                    <div id="dependentesPlanoSaude" style="display: none;">
+                                        <label>Dependentes:</label>
+                                        <button class="operadores" id="decrementarDependente">-</button>
+                                        <span id="quantidadeDependentes">0</span>
+                                        <button class="operadores" id="incrementarDependente">+</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <table class="valores">
+                        <colgroup>
+                            <col class="colA">
+                            <col class="colB">
+                            <col class="colC">
+                            <col class="colD">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="sub1" id="output_nome">Informações Adicionais</td>
+                                <td class="sub3">Origem</td>
+                                <td class="sub3">Destino</td>
+                                <td class="sub3">Variação</td>
+                            </tr>
+                            <tr>
+                                <td>Salário Bruto</td>
+                                <td class="sub6" id="output_bruto">0,00</td>
+                                <td class="sub6" id="subtotal_proventos2">0,00</td>
+                                <td class="sub6" id="var_bruto">0,00%</td>
+                            </tr>
+                            <tr>
+                                <td>Salário Liquido</td>
+                                <td class="sub6" id="output_liquido">0,00</td>
+                                <td class="sub6" id="salario_liquido2">0,00</td>
+                                <td class="sub6" id="var_liquido">0,00%</td>
+                            </tr>
+                            <tr>
+                                <td>Jornada de Trabalho</td>
+                                <td class="sub6" id="output_jornada">0,00</td>
+                                <td class="sub6" id="cargahoraria">0,00</td>
+                                <td class="sub6" id="var_jornada">0,00%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="obs">Observação: Informações como <em><strong>adicionais</strong></em> e
+                        <em><strong>coparticipação</strong></em> devem ser informadas o valor total.</p>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 Cálculo de Salário. Todos os direitos reservados
+    </footer>
+    <script src="script.js"></script>
+    <script src="restrict.js"></script>
+</body>
+</html>

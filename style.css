@@ -1,3 +1,31 @@
+/* styles.css */
+.password-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#password-form input {
+    padding: 10px;
+    margin: 10px;
+}
+
+#password-form button {
+    padding: 10px 20px;
+}
+
+#protected-parent.hidden #content {
+    display: none;
+}
+
+#protected-parent.show #content {
+    display: flex;
+    /* Mantém o display flex da sua classe existente */
+    justify-content: center;
+    /* Ajuste conforme necessário */
+    align-items: center;
+    /* Ajuste conforme necessário */
+}
+
 body {
     background: url(./assets/background.jpg);
     font-family: 'Trebuchet MS';
@@ -18,20 +46,28 @@ a {
     text-decoration: none;
 }
 
-h1 {
+h1, h2 {
     color: #FF6633;
 }
 
-h2 {
-    color: #FF6633;
+h3 {
+    color: #ffd000;
+}
+
+h4, .subtitulo {
+    color: #ffffff;
+}
+
+h5 {
+    color: #45A049;
+}
+
+h6 {
+    color: #0056B3;
 }
 
 li {
-    padding: 0 0 10px 0;
-}
-
-.subtitulo {
-    color: #ffffff;
+    padding-bottom: 10px;
 }
 
 .container {
@@ -40,9 +76,10 @@ li {
     align-items: center;
     margin: 0;
     padding: 0;
+    height: 60px;
 }
 
-.glossario {
+.glossario, .glossario li {
     display: flex;
     align-items: center;
     list-style: none;
@@ -52,12 +89,9 @@ li {
 }
 
 .glossario li {
-    display: flex;
     justify-content: center;
-    align-items: center;
     background:#FF6633;
-    margin: 0 4px;
-    padding: 0;
+    margin-right: 4px;
     border-radius: 10px;
     height: 30px;
     width: 100px;
@@ -112,16 +146,14 @@ li {
     border-radius: 10px;
 }
 
-#social-links {
+#social-links, #social-links a {
     display: flex;
     justify-content: center;
     padding: 0;
 }
 
 #social-links a {
-    display: flex;
     align-items: center;
-    justify-content: center;
     padding: 10px;
     transition: background 0.2s;
     border-radius: 50%;
@@ -137,22 +169,6 @@ footer {
     font-size: 14px;
 }
 
-h3 {
-    color: #ffd000;
-}
-
-h4 {
-    color: #ffffff;
-}
-
-h5 {
-    color: #45A049;
-}
-
-h6 {
-    color: #0056B3;
-}
-
 table {
     border-collapse: collapse;
     width: 100%;
@@ -161,5 +177,165 @@ table {
 td, th {
     border: 1px solid black;
     padding: 8px;
-    text-align: left;
+}
+
+.col1 {
+    width: 250px;
+}
+
+.col2 {
+    width: 15%;
+}
+
+.col3, .col4 {
+    width: 20%;
+}
+
+.colA, .colB, .colC, .colD {
+    width: 15%;
+}
+
+#infos {
+    font-size: 12px;
+    width: 646px;
+}
+
+.box0, .box3 {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.box1, .box2, .box4, .box5 {
+    flex: 1;
+    width: 50%;
+}
+
+.box1 {
+    height: 100%;
+}
+
+.valores, .opcionais {
+    font-size: 12px;
+    height: 20px;
+}
+
+.valores th, .valores td {
+    border: 1px solid black;
+    padding: 0 8px;
+    vertical-align: middle;
+    margin: 10px;
+    height: 32px;
+}
+
+.opcionais th, .opcionais td {
+    border: 1px solid #141414;
+    padding: 0 8px;
+    vertical-align: middle;
+    margin: 10px;
+    height: 32px;
+}
+
+.obs {
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.form-section, .result-section {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input, select, button {
+    background-color: #3b3b3b;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+input, select {
+    margin: 5px;
+}
+
+#inputField {
+    width: 12.7%;
+}
+
+#selectField1 {
+    width: 23%;
+}
+
+#selectField2 {
+    width: 40%;
+}
+
+.sub1, .sub2, .sub3 {
+    background-color: black;
+    font-weight: bold;
+    color: #ffd000;
+}
+
+.sub2, .sub4, .sub7 {
+    text-align: right;
+}
+
+.sub3, .sub5, .sub6 {
+    text-align: center;
+}
+
+.sub4, .sub5, .sub8 {
+    font-weight: bold;
+}
+
+.operadores {
+    display: inline-flex;
+    font-size: 10px;
+    height: 20px;
+    width: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.operadores:hover {
+    background: white;
+}
+
+#addButton, #incButton {
+    background: #0a22ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    align-items: center
+}
+
+#resetButton {
+    background: #ff1313;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#addButton, #resetButton {
+    width: 80px;
+}
+
+#addButton:hover, #incButton:hover {
+    background: #000cb3;
+}
+
+#resetButton:hover {
+    background: #b30000;
 }
