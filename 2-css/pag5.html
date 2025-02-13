@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de CSS: Cores Hexadecimais no CSS</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/2-css/pag6.html">Próxima</a></li>
+                <li><a href="/2-css/pag4.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>As cores <strong>hexadecimais</strong> são representadas por um código de 6 caracteres que começa com <code>#</code>,
+            composto por números (<code>0-9</code>) e letras (<code>A-F</code>). Esse código define a intensidade de
+            <strong>vermelho (R), verde (G) e azul (B)</strong> no formato <strong><code>#RRGGBB</code></strong>.</p>
+        <h2><strong>1. Estrutura da Cor Hexadecimal</strong></h2>
+        <p>Cada par de caracteres representa um valor entre <strong>00 (mínimo)</strong> e <strong>FF (máximo)</strong>:</p>
+        <ul>
+            <li><strong>#FF0000</strong> → Vermelho</li>
+            <li><strong>#00FF00</strong> → Verde</li>
+            <li><strong>#0000FF</strong> → Azul</li>
+        </ul>
+        <p>A estrutura é a seguinte:</p>
+        <pre><code class="language-css">#RRGGBB
+RR → Intensidade de vermelho (00 a FF)
+GG → Intensidade de verde (00 a FF)
+BB → Intensidade de azul (00 a FF)</code></pre>
+        <h2><strong>2. Exemplos de Cores em Hexadecimal</strong></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Código Hexadecimal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Preto</td>
+                    <td><code>#000000</code></td>
+                </tr>
+                <tr>
+                    <td>Branco</td>
+                    <td><code>#FFFFFF</code></td>
+                </tr>
+                <tr>
+                    <td>Vermelho</td>
+                    <td><code>#FF0000</code></td>
+                </tr>
+                <tr>
+                    <td>Verde</td>
+                    <td><code>#00FF00</code></td>
+                </tr>
+                <tr>
+                    <td>Azul</td>
+                    <td><code>#0000FF</code></td>
+                </tr>
+                <tr>
+                    <td>Amarelo</td>
+                    <td><code>#FFFF00</code></td>
+                </tr>
+                <tr>
+                    <td>Ciano</td>
+                    <td><code>#00FFFF</code></td>
+                </tr>
+                <tr>
+                    <td>Magenta</td>
+                    <td><code>#FF00FF</code></td>
+                </tr>
+                <tr>
+                    <td>Cinza</td>
+                    <td><code>#808080</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><strong>3. Formas de Usar Cores no CSS</strong></h2>
+        <p>Você pode definir cores para <strong>fundos, textos e bordas</strong> com código hexadecimal:</p>
+        <pre><code class="language-css">body {
+  background-color: #F0F0F0; /* Cor de fundo */
+}
+        
+h1 {
+  color: #FF5733; /* Cor do texto */
+}
+        
+button {
+  background-color: #008CBA; /* Cor do botão */
+  border: 2px solid #005f73; /* Borda */
+}</code></pre>
+        <h2><strong>4. Formato Abreviado (<code>#RGB</code>)</strong></h2>
+        <p>Se os pares de valores forem iguais, você pode usar uma versão curta com <strong>3 caracteres</strong>:</p>
+        <ul>
+            <li><code>#FFF</code> → Branco (<code>#FFFFFF</code>)</li>
+            <li><code>#000</code> → Preto (<code>#000000</code>)</li>
+            <li><code>#F00</code> → Vermelho (<code>#FF0000</code>)</li>
+            <li><code>#0F0</code> → Verde (<code>#00FF00</code>)</li>
+            <li><code>#00F</code> → Azul (<code>#0000FF</code>)</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">p {
+  color: #333; /* Cor cinza escuro */
+  background-color: #FAF; /* Rosa claro */
+}</code></pre>
+        <h2><strong>5. Cores com Transparência (<code>#RRGGBBAA</code>)</strong></h2>
+        <p>Você também pode adicionar um <strong>canal Alfa (AA)</strong> para transparência:</p>
+        <ul>
+            <li><code>#FF000080</code> → Vermelho com 50% de opacidade</li>
+            <li><code>#000000C0</code> → Preto com 75% de opacidade</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">div {
+  background-color: #3498db80; /* Azul com transparência */
+}</code></pre>
+        <h2><strong>6. Conversão para Outros Formatos</strong></h2>
+        <p>Além de hexadecimal, você pode usar <strong>RGB e HSL</strong> para definir cores:</p>
+        <pre><code class="language-css">/* Hexadecimal */
+color: #3498db;
+        
+/* RGB */
+color: rgb(52, 152, 219);
+        
+/* RGBA (com transparência) */
+color: rgba(52, 152, 219, 0.5);
+        
+/* HSL */
+color: hsl(207, 70%, 50%);</code></pre>
+        <hr>
+        <p>Na próxima seção abordaremos as paletas de cores e modos de cor mais utilizados no CSS</p>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

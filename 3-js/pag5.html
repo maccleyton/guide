@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+               <stong>Guia Avançado de JavaScript: Operadores e Funções</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag6.html">Próxima</a></li>
+                <li><a href="/3-js/pag4.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Aqui está um guia detalhado sobre cada um desses conceitos do <strong>JavaScript</strong>:</p>
+        <h2><strong>1. Operadores de Atribuição</strong></h2>
+        <p>Os <strong>operadores de atribuição</strong> são usados para atribuir valores a variáveis.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Exemplo</th>
+              <th>Equivalente a...</th>
+              <th>Explicação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>=</code></td>
+              <td><code>x = 10</code></td>
+              <td><code>x = 10</code></td>
+              <td>Atribui 10 à variável <code>x</code></td>
+            </tr>
+            <tr>
+              <td><code>+=</code></td>
+              <td><code>x += 5</code></td>
+              <td><code>x = x + 5</code></td>
+              <td>Soma e atribui</td>
+            </tr>
+            <tr>
+              <td><code>-=</code></td>
+              <td><code>x -= 3</code></td>
+              <td><code>x = x - 3</code></td>
+              <td>Subtrai e atribui</td>
+            </tr>
+            <tr>
+              <td><code>*=</code></td>
+              <td><code>x *= 2</code></td>
+              <td><code>x = x * 2</code></td>
+              <td>Multiplica e atribui</td>
+            </tr>
+            <tr>
+              <td><code>/=</code></td>
+              <td><code>x /= 2</code></td>
+              <td><code>x = x / 2</code></td>
+              <td>Divide e atribui</td>
+            </tr>
+            <tr>
+              <td><code>%=</code></td>
+              <td><code>x %= 3</code></td>
+              <td><code>x = x % 3</code></td>
+              <td>Atribui o resto da divisão</td>
+            </tr>
+            <tr>
+              <td><code>**=</code></td>
+              <td><code>x **= 2</code></td>
+              <td><code>x = x ** 2</code></td>
+              <td>Atribui potência</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2><strong>2. Incremento e Decremento</strong></h2>
+        <p>São usados para aumentar ou diminuir valores de variáveis numéricas.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Exemplo</th>
+              <th>Explicação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>++</code></td>
+              <td><code>x++</code></td>
+              <td>Incrementa <code>x</code> em 1 (pós-incremento)</td>
+            </tr>
+            <tr>
+              <td><code>--</code></td>
+              <td><code>x--</code></td>
+              <td>Decrementa <code>x</code> em 1 (pós-decremento)</td>
+            </tr>
+            <tr>
+              <td><code>++x</code></td>
+              <td><code>++x</code></td>
+              <td>Incrementa <code>x</code> antes de usar o valor</td>
+            </tr>
+            <tr>
+              <td><code>--x</code></td>
+              <td><code>--x</code></td>
+              <td>Decrementa <code>x</code> antes de usar o valor</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let a = 5;
+console.log(a++); // Exibe 5 e depois incrementa para 6
+console.log(++a); // Incrementa primeiro para 7 e depois exibe 7</code></pre>
+        <h2><strong>3. Concatenar Strings e Variáveis</strong></h2>
+        <p>A concatenação une <strong>strings</strong> com outras strings ou variáveis.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let nome = &quot;Maria&quot;;
+let mensagem = &quot;Olá, &quot; + nome + &quot;! Bem-vinda.&quot;;
+console.log(mensagem);</code></pre>
+        <h2><strong>4. Interpolação de String (Template Literals)</strong></h2>
+        <p>A interpolação usa <strong>crases (<code>``</code>)</strong> e <strong><code>${}</code></strong> para inserir valores
+          dentro de uma string.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let nome = &quot;João&quot;;
+let idade = 30;
+console.log(`Meu nome é ${nome} e eu tenho ${idade} anos.`);</code></pre>
+        <h2><strong>5. Operador <code>typeof</code></strong></h2>
+        <p>O <code>typeof</code> retorna o <strong>tipo de dado</strong> de uma variável.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">console.log(typeof &quot;Olá&quot;); // string
+console.log(typeof 10);    // number
+console.log(typeof true);  // boolean
+console.log(typeof {});    // object
+console.log(typeof null);  // object (erro histórico do JS)
+console.log(typeof undefined); // undefined</code></pre>
+        <h2><strong>6. Declarações Condicionais (<code>if</code>,
+            <code>if...else</code>, <code>else if</code>)</strong></h2>
+        <p>Usadas para <strong>tomar decisões</strong> no código.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let idade = 18;
+if (idade &lt; 18) {
+  console.log(&quot;Menor de idade&quot;);
+} else if (idade === 18) {
+  console.log(&quot;Tem exatamente 18 anos&quot;);
+} else {
+  console.log(&quot;Maior de idade&quot;);
+}</code></pre>
+        <h2><strong>7. Operadores de Comparação</strong></h2>
+        <p>Usados para comparar valores.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Descrição</th>
+              <th>Exemplo (<code>a = 5</code>, <code>b = &quot;5&quot;</code>)</th>
+              <th>Retorno</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>==</code></td>
+              <td>Igualdade de valor (não compara tipo)</td>
+              <td><code>a == b</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <td><code>===</code></td>
+              <td>Igualdade estrita (compara tipo)</td>
+              <td><code>a === b</code></td>
+              <td><code>false</code></td>
+            </tr>
+            <tr>
+              <td><code>!=</code></td>
+              <td>Diferente de valor</td>
+              <td><code>a != b</code></td>
+              <td><code>false</code></td>
+            </tr>
+            <tr>
+              <td><code>!==</code></td>
+              <td>Diferente de valor e tipo</td>
+              <td><code>a !== b</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <td><code>&gt;</code></td>
+              <td>Maior que</td>
+              <td><code>a &gt; 3</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;</code></td>
+              <td>Menor que</td>
+              <td><code>a &lt; 3</code></td>
+              <td><code>false</code></td>
+            </tr>
+            <tr>
+              <td><code>&gt;=</code></td>
+              <td>Maior ou igual</td>
+              <td><code>a &gt;= 5</code></td>
+              <td><code>true</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;=</code></td>
+              <td>Menor ou igual</td>
+              <td><code>a &lt;= 5</code></td>
+              <td><code>true</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <h2><strong>8. Operadores Lógicos</strong></h2>
+        <p>Usados para combinar expressões.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Descrição</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&amp;&amp;</code></td>
+              <td>E (AND)</td>
+              <td><code>(a &gt; 0 &amp;&amp; b &lt; 10)</code> (ambos devem ser <code>true</code>)</td>
+            </tr>
+            <tr>
+              <td>`</td>
+              <td></td>
+              <td>`</td>
+            </tr>
+            <tr>
+              <td><code>!</code></td>
+              <td>Negação (NOT)</td>
+              <td><code>!(a &gt; 0)</code> (inverte o valor lógico)</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2><strong>9. Operador Ternário</strong></h2>
+        <p>Uma forma simplificada de <code>if...else</code>.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let idade = 20;
+let status = (idade &gt;= 18) ? &quot;Maior de idade&quot; : &quot;Menor de idade&quot;;
+console.log(status);</code></pre>
+        <h2><strong>10. <code>switch</code></strong></h2>
+        <p>Substitui <code>if...else</code> quando há <strong>múltiplas opções</strong>.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let cor = &quot;azul&quot;;
+switch (cor) {
+  case &quot;vermelho&quot;:
+    console.log(&quot;A cor é vermelha&quot;);
+    break;
+  case &quot;azul&quot;:
+    console.log(&quot;A cor é azul&quot;);
+    break;
+  default:
+    console.log(&quot;Cor não reconhecida&quot;);
+}</code></pre>
+        <h2><strong>11. Funções no JavaScript</strong></h2>
+        <p>Funções são blocos de código reutilizáveis.</p>
+        <p>🔹 <strong>Exemplo:</strong></p>
+        <pre><code class="language-js">function saudacao(nome) {
+  return `Olá, ${nome}!`;
+}
+console.log(saudacao(&quot;Carlos&quot;));</code></pre>
+        <h2><strong>12. Parâmetros e Argumentos</strong></h2>
+        <ul>
+          <li><strong>Parâmetros</strong>: valores que uma função <strong>recebe</strong>.</li>
+          <li><strong>Argumentos</strong>: valores passados na <strong>chamada</strong> da função.</li>
+        </ul>
+        <h2><strong>13. Parâmetros Padrão</strong></h2>
+        <p>Caso um argumento não seja passado, um <strong>valor padrão</strong> pode ser usado.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">function cumprimentar(nome = &quot;Visitante&quot;) {
+  console.log(`Olá, ${nome}!`);
+}
+cumprimentar(); // &quot;Olá, Visitante!&quot;</code></pre>
+        <h2><strong>14. <code>return</code> (Retorno de Função)</strong></h2>
+        <p>Faz a função retornar um valor.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">function dobro(num) {
+  return num * 2;
+}
+console.log(dobro(4)); // 8</code></pre>
+        <h2><strong>15. Expressões de Função</strong></h2>
+        <p>Uma <strong>função anônima</strong> atribuída a uma variável.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">const soma = function(a, b) {
+  return a + b;
+};
+console.log(soma(3, 7));</code></pre>
+        <h2><strong>16. Arrow Functions (Funções de Seta)</strong></h2>
+        <p>Uma forma mais curta de declarar funções.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">const multiplicar = (a, b) =&gt; a * b;
+console.log(multiplicar(4, 5));</code></pre>
+        <h2><strong>17. Funções Concisas</strong></h2>
+        <p>Quando há <strong>apenas uma linha</strong>, o <code>return</code> pode ser omitido.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">const saudacao = nome =&gt; `Olá, ${nome}!`;
+console.log(saudacao(&quot;Lucas&quot;));</code></pre>
+    </main>
+    <hr>
+    <footer>
+      &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

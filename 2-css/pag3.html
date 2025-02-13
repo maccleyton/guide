@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de CSS: Seletores, Atributos e Elementos do CSS</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/2-css/pag4.html">Próxima</a></li>
+                <li><a href="/2-css/pag2.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <h2>1. Seletores CSS</h2>
+        <p>Os seletores do CSS são usados para identificar elementos HTML e aplicar estilos. Existem vários tipos de seletores:
+        </p>
+        <h3><strong>1.1. Seletores Simples</strong></h3>
+        <p>São os mais básicos e incluem:</p>
+        <ul>
+            <li>
+                <p><strong>Seletor de Tipo:</strong> Seleciona elementos HTML pelo nome da tag.</p>
+                <pre><code class="language-css">p {
+  color: blue;
+}</code></pre>
+                <p> <em>(Todos os <code>&lt;p&gt;</code> terão cor azul.)</em></p>
+            </li>
+            <li>
+                <p><strong>Seletor de Classe (<code>.</code>):</strong> Aplica estilos a todos os elementos com a mesma classe.
+                </p>
+                <pre><code class="language-css">.destaque {
+  font-weight: bold;
+}</code></pre>
+                <p> <em>(Qualquer elemento com <code>class=&quot;destaque&quot;</code> terá o texto em negrito.)</em></p>
+            </li>
+            <li>
+                <p><strong>Seletor de ID (<code>#</code>):</strong> Aplica estilos a um único elemento com um ID específico.</p>
+                <pre><code class="language-css">#titulo {
+  font-size: 24px;
+}</code></pre>
+                <p> <em>(Apenas o elemento com <code>id=&quot;titulo&quot;</code> terá tamanho de 24px.)</em></p>
+            </li>
+            <li>
+                <p><strong>Seletor Universal (<code>*</code>):</strong> Seleciona todos os elementos.</p>
+                <pre><code class="language-css">* {
+  margin: 0;
+  padding: 0;
+}</code></pre>
+                <p> <em>(Remove margem e preenchimento de todos os elementos.)</em></p>
+            </li>
+        </ul>
+        <h3><strong>1.2. Seletores Combinadores</strong></h3>
+        <p>Eles combinam diferentes seletores para criar regras mais específicas.</p>
+        <ul>
+            <li>
+                <p><strong>Seletor Descendente ( - espaço):</strong> Aplica estilos a elementos dentro de um determinado pai.
+                </p>
+                <pre><code class="language-css">div p {
+  color: red;
+}</code></pre>
+                <p> <em>(Todos os <code>&lt;p&gt;</code> dentro de <code>&lt;div&gt;</code> ficarão vermelhos.)</em></p>
+            </li>
+            <li>
+                <p><strong>Seletor Filho (<code>&gt;</code>):</strong> Seleciona elementos que são filhos diretos de outro
+                    elemento.</p>
+                <pre><code class="language-css">div &gt; p {
+  color: green;
+}</code></pre>
+                <p> <em>(Apenas <code>&lt;p&gt;</code> que são filhos diretos da <code>&lt;div&gt;</code> ficarão verdes.)</em>
+                </p>
+            </li>
+            <li>
+                <p><strong>Seletor Irmão Adjacente (<code>+</code>):</strong> Seleciona um elemento imediatamente após outro.
+                </p>
+                <pre><code class="language-css">h1 + p {
+  font-style: italic;
+}</code></pre>
+                <p> <em>(O primeiro <code>&lt;p&gt;</code> logo após um <code>&lt;h1&gt;</code> ficará em itálico.)</em></p>
+            </li>
+            <li>
+                <p><strong>Seletor de Irmãos Gerais (<code>~</code>):</strong> Seleciona todos os elementos irmãos que vêm
+                    depois de um elemento específico.</p>
+                <pre><code class="language-css">h1 ~ p {
+  color: gray;
+}</code></pre>
+                <p> <em>(Todos os <code>&lt;p&gt;</code> depois de um <code>&lt;h1&gt;</code> ficarão cinza.)</em></p>
+            </li>
+        </ul>
+        <h3><strong>1.3. Seletores de Atributo</strong></h3>
+        <p>Selecionam elementos com base nos atributos HTML.</p>
+        <ul>
+            <li>
+                <p><strong>Presença de Atributo:</strong></p>
+                <pre><code class="language-css">input[required] {
+  border: 2px solid red;
+}</code></pre>
+                <p> <em>(Todos os <code>&lt;input&gt;</code> com <code>required</code> terão borda vermelha.)</em></p>
+            </li>
+            <li>
+                <p><strong>Valor Específico (<code>=</code>):</strong></p>
+                <pre><code class="language-css">input[type=&quot;password&quot;] {
+  background-color: yellow;
+}</code></pre>
+                <p> <em>(Todos os <code>&lt;input&gt;</code> do tipo &quot;password&quot; terão fundo amarelo.)</em></p>
+            </li>
+            <li>
+                <p><strong>Valor que Começa Com (<code>^=</code>):</strong></p>
+                <pre><code class="language-css">a[href^=&quot;https&quot;] {
+  color: green;
+}</code></pre>
+                <p> <em>(Links que começam com &quot;https&quot; terão cor verde.)</em></p>
+            </li>
+            <li>
+                <p><strong>Valor que Termina Com (<code>$=</code>):</strong></p>
+                <pre><code class="language-css">img[src$=&quot;.png&quot;] {
+  border: 5px solid blue;
+}</code></pre>
+                <p> <em>(Imagens PNG terão borda azul.)</em></p>
+            </li>
+            <li>
+                <p><strong>Valor que Contém (<code>*=</code>):</strong></p>
+                <pre><code class="language-css">div[class*=&quot;box&quot;] {
+  padding: 20px;
+}</code></pre>
+                <p> <em>(Qualquer <code>&lt;div&gt;</code> com &quot;box&quot; no nome da classe terá preenchimento de
+                        20px.)</em></p>
+            </li>
+        </ul>
+        <h2>2. Atributos do CSS</h2>
+        <p>Os atributos do CSS são propriedades que definem o estilo dos elementos. Aqui estão alguns dos principais grupos:</p>
+        <h3><strong>2.1. Atributos de Texto</strong></h3>
+        <ul>
+            <li><code>color</code>: Define a cor do texto.</li>
+            <li><code>font-size</code>: Tamanho da fonte.</li>
+            <li><code>font-weight</code>: Define a espessura do texto (normal, bold, etc.).</li>
+            <li><code>text-align</code>: Alinhamento do texto (left, center, right, justify).</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">p {
+  color: navy;
+  font-size: 18px;
+  text-align: center;
+}</code></pre>
+        <h3><strong>2.2. Atributos de Fundo e Borda</strong></h3>
+        <ul>
+            <li><code>background-color</code>: Cor de fundo.</li>
+            <li><code>background-image</code>: Define uma imagem de fundo.</li>
+            <li><code>border</code>: Define uma borda.</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">div {
+  background-color: lightgray;
+  border: 2px solid black;
+}</code></pre>
+        <h3><strong>2.3. Atributos de Layout</strong></h3>
+        <ul>
+            <li><code>width</code>: Largura do elemento.</li>
+            <li><code>height</code>: Altura do elemento.</li>
+            <li><code>margin</code>: Espaço externo ao redor do elemento.</li>
+            <li><code>padding</code>: Espaço interno dentro do elemento.</li>
+        </ul>
+        <p>Exemplo:</p>
+        <pre><code class="language-css">.box {
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  padding: 20px;
+}</code></pre>
+        <h2>3. Elementos do CSS</h2>
+        <p>Os elementos do CSS referem-se às tags HTML que podem ser estilizadas com CSS. Alguns dos mais comuns incluem:</p>
+        <ul>
+            <li><strong>Blocos de Texto</strong>: <code>p</code>, <code>h1</code> - <code>h6</code>, <code>span</code>,
+                <code>strong</code>, <code>em</code></li>
+            <li><strong>Blocos Estruturais</strong>: <code>div</code>, <code>section</code>, <code>article</code>,
+                <code>aside</code>, <code>header</code>, <code>footer</code></li>
+            <li><strong>Formulários</strong>: <code>input</code>, <code>textarea</code>, <code>button</code>,
+                <code>select</code></li>
+            <li><strong>Listas</strong>: <code>ul</code>, <code>ol</code>, <code>li</code></li>
+            <li><strong>Tabelas</strong>: <code>table</code>, <code>tr</code>, <code>td</code>, <code>th</code></li>
+        </ul>
+        <h3 id="exemplo-de-aplicação-no-html-e-css">Exemplo de Aplicação no HTML e CSS:</h3>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-br&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Exemplo CSS&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+        
+  &lt;h1 id=&quot;titulo&quot;&gt;Título Principal&lt;/h1&gt;
+  
+  &lt;p class=&quot;destaque&quot;&gt;Este é um parágrafo com destaque.&lt;/p&gt;
+
+  &lt;div class=&quot;box&quot;&gt;
+    &lt;p&gt;Conteúdo dentro da div.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;input type=&quot;text&quot; required placeholder=&quot;Campo obrigatório&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <pre><code class="language-css">/* Arquivo style.css */
+body {
+  font-family: Arial, sans-serif;
+}
+        
+#titulo {
+  color: darkblue;
+  text-align: center;
+}
+        
+.destaque {
+  color: red;
+  font-weight: bold;
+}
+        
+.box {
+  background-color: lightgray;
+  padding: 20px;
+  border: 2px solid black;
+}</code></pre>
+        <hr>
+        <h2>📝 Conclusão</h2>
+        <p>Os seletores do CSS permitem estilizar elementos HTML com precisão. Os atributos controlam a aparência e o
+            comportamento dos elementos, enquanto os elementos do CSS são as próprias tags HTML estilizadas.</p>
+    </main>    
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+               <stong>Guia Avançado de JavaScript: Identificando Erros com o Console</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag8.html">Próxima</a></li>
+                <li><a href="/3-js/pag6.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>A função que ajuda a identificar exatamente onde um erro está ocorrendo no código é
+            <strong><code>console.trace()</code></strong>.</p>
+        <h2>1. <strong>O que é <code>console.trace()</code>?</strong></h2>
+        <p><code>console.trace()</code> imprime a <strong>pilha de chamadas</strong> no console, mostrando a sequência de
+            funções que foram executadas até chegar naquele ponto do código. Isso ajuda a entender a origem de um erro ou
+            verificar como o fluxo do código chegou a determinada parte.</p>
+        <h3>📌 <strong>Exemplo de Uso</strong></h3>
+        <pre><code class="language-js">function primeiraFuncao() {
+  segundaFuncao();
+}
+        
+function segundaFuncao() {
+  terceiraFuncao();
+}
+        
+function terceiraFuncao() {
+  console.trace(&quot;Rastreamento do erro:&quot;);
+}
+        
+primeiraFuncao();</code></pre>
+        <p>🛠 <strong>Saída no console:</strong></p>
+        <pre><code class="language-js">Rastreamento do erro:
+    at terceiraFuncao (&lt;anonymous&gt;:10:11)
+    at segundaFuncao (&lt;anonymous&gt;:6:3)
+    at primeiraFuncao (&lt;anonymous&gt;:2:3)
+    at &lt;anonymous&gt;:13:1</code></pre>
+        <p>Essa saída mostra que a função <code>terceiraFuncao</code> foi chamada por <code>segundaFuncao</code>, que foi
+            chamada por <code>primeiraFuncao</code>, e assim por diante.</p>
+        <h3>🎯 <strong>Quando usar?</strong></h3>
+        <ul>
+            <li>Quando você quer entender <strong>qual caminho do código</strong> levou até um erro.</li>
+            <li>Para depurar chamadas de funções encadeadas.</li>
+            <li>Para acompanhar a execução do código sem precisar de um <strong>debugger</strong>.</li>
+        </ul>
+        <p>Se precisar de mais detalhes sobre depuração, posso te explicar outras formas, como <code>console.error()</code>,
+            <code>debugger</code>, ou o próprio <code>try...catch</code> para tratamento de erros. 🚀</p>
+        <h2>2. <strong>Formais Adicionais de Depurar Erros</strong></h2>
+        <p>Aqui estão algumas formas adicionais de depurar erros no JavaScript:</p>
+        <h3>1️⃣ <strong><code>console.error()</code> – Exibir Erros no
+                Console</strong></h3>
+        <p>O <code>console.error()</code> funciona como <code>console.log()</code>, mas exibe mensagens de erro em
+            <strong>vermelho</strong> no console do navegador ou terminal.</p>
+        <p>🔍 <strong>Exemplo:</strong></p>
+        <pre><code class="language-js">console.error(&quot;Algo deu errado!&quot;);</code></pre>
+        <p>🛠 <strong>Saída no Console:</strong></p>
+        <pre><code class="language-js">Algo deu errado! (em vermelho)</code></pre>
+        <p>💡 <strong>Uso:</strong> Ideal para destacar erros específicos no meio de várias mensagens de
+            <code>console.log()</code>.</p>
+        <h3>2️⃣ <strong><code>console.warn()</code> – Exibir Avisos</strong></h3>
+        <p>O <code>console.warn()</code> é semelhante ao <code>console.error()</code>, mas exibe avisos em
+            <strong>amarelo</strong>.</p>
+        <p>🔍 <strong>Exemplo:</strong></p>
+        <pre><code class="language-js">console.warn(&quot;Cuidado! Isso pode gerar um erro no futuro.&quot;);</code></pre>
+        <p>🛠 <strong>Saída no Console:</strong></p>
+        <pre><code class="language-js">Cuidado! Isso pode gerar um erro no futuro. (em amarelo)</code></pre>
+        <p>💡 <strong>Uso:</strong> Para avisos importantes sem interromper a execução do código.</p>
+        <h3>3️⃣ <strong><code>debugger</code> – Interromper Execução no Navegador</strong></h3>
+        <p>A instrução <code>debugger</code> pausa a execução do código no <strong>DevTools</strong> (Ferramentas de
+            Desenvolvedor do navegador) e permite inspecionar variáveis, funções e chamadas.</p>
+        <p>🔍 <strong>Exemplo:</strong></p>
+        <pre><code class="language-js">let nome = &quot;Carlos&quot;;
+debugger; // O código para aqui e você pode analisar as variáveis
+console.log(nome);</code></pre>
+        <p>💡 <strong>Uso:</strong></p>
+        <ul>
+            <li>Melhor forma de depuração ao invés de usar muitos <code>console.log()</code>.</li>
+            <li>Funciona como um <strong>ponto de interrupção</strong> no código.</li>
+        </ul>
+        <p>📌 <strong>Para usar:</strong></p>
+        <ol>
+            <li>Abra o <strong>DevTools</strong> (F12 ou <code>Ctrl + Shift + I</code> no Chrome).</li>
+            <li>Vá até a aba <strong>&quot;Sources&quot;</strong>.</li>
+            <li>Execute o código e veja onde ele para.</li>
+        </ol>
+        <h3>4️⃣ <strong><code>try...catch</code> – Tratamento de Erros</strong></h3>
+        <p>O bloco <code>try...catch</code> captura erros e evita que o código quebre completamente.</p>
+        <p>🔍 <strong>Exemplo:</strong></p>
+        <pre><code class="language-js">try {
+  let resultado = 10 / 0;
+  console.log(resultado);
+} catch (erro) {
+  console.error(&quot;Ocorreu um erro:&quot;, erro.message);
+}</code></pre>
+        <p>🛠 <strong>Saída:</strong></p>
+        <pre><code class="language-js">Ocorreu um erro: &lt;mensagem do erro&gt;</code></pre>
+        <p>💡 <strong>Uso:</strong></p>
+        <ul>
+            <li>Para capturar e lidar com erros sem interromper a execução do código.</li>
+            <li>Essencial em operações <strong>assíncronas</strong>, como chamadas de API.</li>
+        </ul>
+        <h3>5️⃣ <strong>Ferramentas do Navegador (DevTools)</strong></h3>
+        <p>Além de comandos no código, você pode usar o <strong>DevTools</strong> do navegador para inspecionar e depurar.</p>
+        <p>📌 <strong>Como acessar?</strong></p>
+        <ol>
+            <li>Pressione <strong>F12</strong> ou <strong>Ctrl + Shift + I</strong> no Chrome/Edge.</li>
+            <li>Vá até a aba <strong>&quot;Console&quot;</strong> para ver mensagens de erro.</li>
+            <li>Use a aba <strong>&quot;Sources&quot;</strong> para adicionar <strong>pontos de interrupção</strong> e analisar
+                o código em tempo real.</li>
+        </ol>
+        <h3>🎯 <strong>Qual Método Usar?</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Método</th>
+                    <th>Melhor uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>console.error()</code></td>
+                    <td>Para exibir erros claramente no console</td>
+                </tr>
+                <tr>
+                    <td><code>console.warn()</code></td>
+                    <td>Para alertar sobre problemas potenciais</td>
+                </tr>
+                <tr>
+                    <td><code>debugger</code></td>
+                    <td>Para inspecionar o código pausando a execução</td>
+                </tr>
+                <tr>
+                    <td><code>try...catch</code></td>
+                    <td>Para capturar e tratar erros sem quebrar o código</td>
+                </tr>
+                <tr>
+                    <td><strong>DevTools</strong></td>
+                    <td>Para depuração interativa no navegador</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

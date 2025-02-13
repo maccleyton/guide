@@ -34,38 +34,108 @@
         permitindo que você desenvolva aplicações robustas para a web e além.</p>
         <h2>1. <strong>Variáveis</strong></h2>
         <p>Variáveis armazenam valores para uso no código. Em JavaScript, há três maneiras principais de declarar variáveis:
-            <code>var</code>, <code>let</code>, e <code>const</code>.</p>
-        <h3>1.1 <strong><code>var</code></strong></h3>
-        <ul>
-            <li>Escopo: Função ou global.</li>
-            <li>Pode ser redeclarada.</li>
-            <li>Pode ser atualizada.</li>
-            <li>Problemas: Não respeita o escopo de bloco.</li>
-        </ul>
-        <p><strong>Exemplo:</strong></p>
-        <pre><code class="language-javascript">var mensagem = &quot;Olá&quot;;
-var mensagem = &quot;Oi de novo&quot;; // Redeclaração permitida
-console.log(mensagem); // Oi de novo</code></pre>
-        <h3>1.2 <strong><code>let</code></strong></h3>
-        <ul>
-            <li>Escopo: Bloco.</li>
-            <li>Não pode ser redeclarada no mesmo escopo.</li>
-            <li>Pode ser atualizada.</li>
-        </ul>
-        <p><strong>Exemplo:</strong></p>
-        <pre><code class="language-javascript">let nome = &quot;Maria&quot;;
-nome = &quot;João&quot;; // Atualização permitida
-console.log(nome); // João</code></pre>
-        <h3>1.3 <strong><code>const</code></strong></h3>
-        <ul>
-            <li>Escopo: Bloco.</li>
-            <li>Não pode ser redeclarada.</li>
-            <li>Não pode ser atualizada.</li>
-        </ul>
-        <p><strong>Exemplo:</strong></p>
-        <pre><code class="language-javascript">const PI = 3.14;
-// PI = 3.15; // Erro: Não é possível atualizar uma constante
-console.log(PI); // 3.14</code></pre>
+            <code>var</code>, <code>let</code>, e <code>const</code>. A diferença entre elas está relacionada principalmente
+             ao escopo, à mutabilidade e ao comportamento durante a execução do código. Vamos analisar cada uma:</p>
+        <h3>1.1. <code>var</code> (Declaração Antiga)</h3>
+        <p>Antes do ES6, <code>var</code> era a única forma de declarar variáveis no JavaScript. No entanto, ele tem algumas
+            limitações:</p>
+        <h4>Características:</h4>
+        <ol>
+            <li><strong>Escopo de Função</strong>: A variável declarada com <code>var</code> fica acessível em toda a função
+                onde foi declarada.</li>
+            <li><strong>Hoisting</strong>: As variáveis <code>var</code> são &quot;movidas&quot; para o topo do escopo antes da
+                execução do código (podem ser usadas antes da declaração).</li>
+            <li><strong>Pode ser redeclarada</strong>: Permite que a mesma variável seja redeclarada dentro do mesmo escopo, o
+                que pode causar erros.</li>
+        </ol>
+        <h4>Exemplo:</h4>
+        <pre><code class="language-js">function exemplo() {
+  console.log(nome); // undefined (por causa do hoisting)
+  var nome = &quot;Carlos&quot;;
+  console.log(nome); // Carlos
+}
+</code></pre>
+        <h3>1.2. <code>let</code> (Declaração Moderna)</h3>
+        <p>Introduzida no ES6, <code>let</code> resolve problemas do <code>var</code>, tornando o código mais seguro.</p>
+        <h4>Características:</h4>
+        <ol>
+            <li><strong>Escopo de Bloco</strong>: Só pode ser acessada dentro do bloco <code>{}</code> onde foi declarada.</li>
+            <li><strong>Hoisting sem inicialização</strong>: A variável é içada, mas não pode ser usada antes da inicialização.
+            </li>
+            <li><strong>Não pode ser redeclarada no mesmo escopo</strong>: Evita problemas comuns com variáveis globais.</li>
+        </ol>
+        <h4>Exemplo:</h4>
+        <pre><code class="language-js">function exemplo() {
+  if (true) {
+    let idade = 30;
+    console.log(idade); // 30
+  }
+  console.log(idade); // Erro! idade não existe fora do bloco
+}
+</code></pre>
+        <h3>1.3. <code>const</code> (Constante)</h3>
+        <p>Também introduzida no ES6, <code>const</code> serve para declarar valores que <strong>não podem ser
+                reatribuídos</strong>.</p>
+        <h4>Características:</h4>
+        <ol>
+            <li><strong>Escopo de Bloco</strong>: Funciona como <code>let</code>, visível apenas dentro do bloco onde foi
+                declarada.</li>
+            <li><strong>Não pode ser reatribuída</strong>: Após a inicialização, o valor não pode ser alterado.</li>
+            <li><strong>Deve ser inicializada na declaração</strong>: Diferente de <code>var</code> e <code>let</code>,
+                <code>const</code> exige um valor inicial.
+            </li>
+        </ol>
+        <h4>Exemplo:</h4>
+        <pre><code class="language-js">const PI = 3.1415;
+PI = 4; // Erro! Constantes não podem ser reatribuídas
+</code></pre>
+        <p>⚠️ <strong>Atenção:</strong> Objetos e arrays declarados com <code>const</code> podem ter seus <strong>conteúdos
+                modificados</strong>, mas não podem ser completamente reatribuídos.</p>
+        <pre><code class="language-js">const pessoa = { nome: &quot;João&quot; };
+pessoa.nome = &quot;Maria&quot;; // ✅ Permitido
+pessoa = {}; // ❌ Erro! Reatribuir o objeto não é permitido.
+</code></pre>
+        <h3>⚖️ <strong>Resumo das Diferenças</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th><code>var</code></th>
+                    <th><code>let</code></th>
+                    <th><code>const</code></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Escopo</td>
+                    <td>Função</td>
+                    <td>Bloco</td>
+                    <td>Bloco</td>
+                </tr>
+                <tr>
+                    <td>Hoisting</td>
+                    <td>Sim, mas inicializa como <code>undefined</code></td>
+                    <td>Sim, mas não pode ser usada antes da inicialização</td>
+                    <td>Sim, mas não pode ser usada antes da inicialização</td>
+                </tr>
+                <tr>
+                    <td>Pode ser redeclarada?</td>
+                    <td>Sim</td>
+                    <td>Não</td>
+                    <td>Não</td>
+                </tr>
+                <tr>
+                    <td>Pode ser reatribuída?</td>
+                    <td>Sim</td>
+                    <td>Sim</td>
+                    <td>Não</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Recomendação:</strong> <strong>Evite <code>var</code> e prefira <code>let</code> ou
+                <code>const</code></strong> para um código mais seguro e previsível. Use <code>const</code> sempre que o valor
+            não precisar mudar. 🚀</p>
+    
         <h2>2. <strong>Tipos de Dados</strong></h2>
         <p>Os tipos de dados em JavaScript se dividem em primitivos e objetos.</p>
         <h3><strong>2.1 Tipos Primitivos</strong></h3>
@@ -105,18 +175,39 @@ console.log(valor); // undefined</code></pre>
         <h3><strong>2.2 Tipos de Objetos</strong></h3>
         <ul>
             <li>
-                <p><strong>Objetos Literais</strong>: Conjuntos de pares chave-valor.</p>
-                <pre><code class="language-javascript">let pessoa = { nome: &quot;João&quot;, idade: 25 };</code></pre>
+                <p><strong>Objetos Literais</strong>: Coleções de pares chave-valor que representam entidades.</p>
+                <pre><code class="language-javascript">let pessoa = {
+  nome: &quot;Maria&quot;,
+  idade: 30,
+  saudacao: function() {
+    return &quot;Olá, &quot; + this.nome;
+  }
+};
+console.log(pessoa.saudacao());
+</code></pre>
             </li>
             <li>
-                <p><strong>Arrays</strong>: Lista ordenada de elementos.</p>
-                <pre><code class="language-javascript">let frutas = [&quot;Maçã&quot;, &quot;Banana&quot;, &quot;Laranja&quot;];</code></pre>
-            </li>
+                <p><strong>Arrays</strong>: Coleção ordenada de valores.</p>
+                <pre><code class="language-javascript">let numeros = [10, 20, 30];
+console.log(numeros[0]); // 10
+</code></pre>
+                    <h4><strong>Métodos úteis:</strong></h4>
+                    <ul>
+                        <li><code>push()</code>: adiciona um elemento ao final do array.</li>
+                        <li><code>pop()</code>: remove o último elemento.</li>
+                        <li><code>shift()</code>: remove o primeiro elemento.</li>
+                        <li><code>unshift()</code>: adiciona um elemento no início.</li>
+                        <li><code>map()</code>, <code>filter()</code>, <code>reduce()</code>: métodos avançados para manipulação de
+                            arrays.</li>
+                    </ul>
+                </li>
             <li>
-                <p><strong>Funções</strong>: Blocos de código executáveis.</p>
+                <p><strong>Funções</strong>: Blocos de código executáveis e reutilizáveis.</p>
                 <pre><code class="language-javascript">function somar(a, b) {
   return a + b;
-}</code></pre>
+}
+console.log(somar(2, 3));
+</code></pre>
             </li>
         </ul>
         <h2>3. <strong>Operadores</strong></h2>
@@ -236,23 +327,157 @@ do {
         <h3><strong>5.1 Declaração de Funções</strong></h3>
         <ul>
             <li>
-                <p><strong>Função Nomeada:</strong></p>
+                <p><strong>Funções Nomeadas:</strong> funções que possui um nome específico no momento da declaração.</p>
+                <ul>
+                    <li><strong>Sintaxe de uma função nomeada</strong></li>
+                </ul>
                 <pre><code class="language-javascript">function saudacao(nome) {
-  return `Olá, ${nome}!`;
+    return `Olá, ${nome}!`;
 }
-console.log(saudacao(&quot;João&quot;)); // Olá, João!</code></pre>
+
+console.log(saudacao(&quot;Carlos&quot;)); // Saída: Olá, Carlos!</code></pre>
+                <ul>
+                    <li>
+                        <p><strong>Principais características das funções nomeadas:</strong></p>
+                        <ol>
+                            <li><strong>Possuem um nome definido</strong> que pode ser usado para chamá-las novamente.</li>
+                            <li><strong>Podem ser reutilizadas</strong> ao longo do código.</li>
+                            <li><strong>Podem ser chamadas antes da declaração</strong> devido ao <strong>hoisting</strong>
+                                (elevação), pois são armazenadas na memória antes da execução do código.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Exemplo de hoisting com função nomeada</strong></li>
+                </ul>
+                <pre><code class="language-javascript">console.log(dobrar(5)); // Saída: 10
+                
+function dobrar(numero) {
+    return numero * 2;
+}</code></pre>
+                <p>Mesmo chamando a função antes da sua definição, o código funciona por causa do <strong>hoisting</strong>.</p>
             </li>
             <li>
-                <p><strong>Função Anônima:</strong></p>
-                <pre><code class="language-javascript">const somar = function (a, b) {
-  return a + b;
+                <p><strong>Arrow Functions:</strong> são uma forma mais curta de escrever funções introduzida no ES6.</p>
+                <ul>
+                    <li><strong>Sintaxe Básica</strong></li>
+                </ul>
+                <pre><code class="language-javascript">const soma = (a, b) =&gt; a + b;
+                
+console.log(soma(2, 3)); // Saída: 5</code></pre>
+                <ul>
+                    <li>
+                        <p><strong>Principais características:</strong></p>
+                        <ol>
+                            <li><strong>Sintaxe reduzida</strong> → Menos código comparado à função tradicional.</li>
+                            <li><strong>Não possuem <code>this</code> próprio</strong> → Herda o <code>this</code> do contexto
+                                onde foi criada.</li>
+                            <li><strong>Sempre anônimas</strong> → Devem ser atribuídas a uma variável ou usadas diretamente.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><strong>Comparação com Função Tradicional</strong></p>
+                        <ol>
+                            <li><strong>Forma tradicional (função nomeada)</strong>
+                                <pre><code class="language-javascript">function saudacao(nome) {
+return Olá, ${nome}!;
+}</code></pre>
+                            </li>
+                            <li><strong>Arrow Function equivalente</strong>
+                                <pre><code class="language-javascript">const saudacao = (nome) =&gt; `Olá, ${nome}!`;</code></pre>
+                            </li>
+                            <li><strong>Se a função tem apenas um parâmetro</strong>, os parênteses podem ser omitidos:
+                                <pre><code class="language-javascript">const dobrar = numero =&gt; numero * 2;</code></pre>
+                            </li>
+                            <li><strong>Se não há parâmetros</strong>, os parênteses são obrigatórios:
+                                <pre><code class="language-javascript">const mensagem = () =&gt; &quot;Olá, mundo!&quot;;</code></pre>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+                <ul>
+                    <li><strong>Uso com <code>this</code></strong>: Diferente das funções normais,
+                        <strong>Arrow Functions não criam seu próprio <code>this</code></strong>.
+                        Elas herdam o <code>this</code> do escopo onde foram declaradas.
+                        <p><strong>Exemplo com <code>this:</code></strong></p>
+                    </li>
+                </ul>
+                <pre><code class="language-javascript">const objeto = {
+nome: &quot;Carlos&quot;,
+funcTradicional: function () {
+console.log(this.nome); // &#39;this&#39; refere-se ao objeto
+},
+arrowFunc: () =&gt; {
+console.log(this.nome); // &#39;this&#39; não é do objeto, mas do escopo pai
+}
 };
-console.log(somar(5, 3)); // 8</code></pre>
+objeto.funcTradicional(); // Saída: Carlos
+objeto.arrowFunc(); // Saída: undefined</code></pre>
+                <ul>
+                    <li><strong>Conclusão:</strong> Funções tradicionais são mais indicadas quando precisamos manipular
+                        <code>this</code>.
+                    </li>
+                </ul>
             </li>
             <li>
-                <p><strong>Arrow Function:</strong></p>
-                <pre><code class="language-javascript">const multiplicar = (a, b) =&gt; a * b;
-console.log(multiplicar(4, 2)); // 8</code></pre>
+                <p><strong>Funções Anônimas:</strong> funções sem nome atribuídas a variáveis ou usadas como argumentos.</p>
+                <ul>
+                    <li><strong>Sintaxe de uma Função Anônima</strong></li>
+                </ul>
+                <pre><code class="language-javascript">const saudacao = function(nome) {
+    return `Olá, ${nome}!`;
+};
+
+console.log(saudacao(&quot;Carlos&quot;)); // Saída: Olá, Carlos!</code></pre>
+                <p> Aqui, a função não tem um nome próprio, mas foi armazenada na variável <code>saudacao</code>, permitindo sua
+                    reutilização.</p>
+                <ul>
+                    <li>
+                        <p><strong>Diferença entre Função Nomeada e Anônima</strong></p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Função</th>
+                                    <th>Exemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nomeada</td>
+                                    <td><code>function somar(a, b) { return a + b; }</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Anônima</td>
+                                    <td><code>const somar = function(a, b) { return a + b; };</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><strong>Funções nomeadas</strong> podem ser chamadas antes da sua definição (por causa do
+                        <strong>hoisting</strong>). Já as funções anônimas <strong>não sofrem hoisting</strong>, pois só são
+                        reconhecidas após serem atribuídas a uma variável.
+                    </li>
+                    <li><strong>Exemplo de Uso: Função como Argumento</strong>
+                        Funções anônimas são muito usadas como <strong>callbacks</strong> (funções passadas como argumento
+                        para outra função).</li>
+                </ul>
+                <pre><code class="language-javascript">setTimeout(function() {
+    console.log(&quot;Executado após 2 segundos!&quot;);
+}, 2000);</code></pre>
+                <ul>
+                    <li><strong>Uso com Arrow Functions</strong>
+                        Como alternativa, você pode reescrever funções anônimas usando <strong>Arrow Functions</strong>:</li>
+                </ul>
+                <pre><code class="language-javascript">const saudacao = (nome) =&gt; `Olá, ${nome}!`;</code></pre>
+                <p> Isso torna o código mais curto e moderno.</p>
+                <ul>
+                    <li><strong>Conclusão:</strong> Funções anônimas são úteis para:
+                        <ol>
+                            <li>Armazenar em variáveis</li>
+                            <li>Passar como argumento para outras funções</li>
+                            <li>Criar funções sem necessidade de reutilização</li>
+                        </ol>
+                    </li>
+                </ul>
             </li>
         </ul>
         <h3><strong>5.2 Funções com Parâmetros Padrão</strong></h3>
@@ -294,8 +519,77 @@ console.log(fatorial(5)); // 120</code></pre>
                 <p><strong><code>textContent</code></strong>: Define ou obtém apenas o texto de um elemento.</p>
             </li>
         </ul>
+        <h2>7. ES6 (Novas Funcionalidades)</h2>
+        <ul>
+            <li>
+                <p><strong>Template Literals:</strong> facilita a concatenação de strings.</p>
+                <pre><code class="language-javascript">let nome = &quot;Ana&quot;;
+console.log(`Olá, ${nome}!`);
+</code></pre>
+            </li>
+            <li>
+                <p><strong>Destructuring:</strong> extrai valores de arrays ou objetos de forma mais limpa.</p>
+                <pre><code class="language-javascript">const [a, b] = [10, 20];
+console.log(a); // 10
+</code></pre>
+            </li>
+        </ul>
+        <h2>8. Operações com Arrays</h2>
+        <ul>
+            <li>
+                <p><strong>Filter:</strong> cria um novo array com elementos que passam no teste.</p>
+                <pre><code class="language-javascript">let pares = [1, 2, 3, 4].filter(num =&gt; num % 2 === 0);
+console.log(pares);
+</code></pre>
+            </li>
+        </ul>
+        <h2>9. Eventos JavaScript</h2>
+        <p>Eventos permitem que ações sejam executadas com base nas interações do usuário.</p>
+        <pre><code class="language-javascript">document.getElementById(&quot;botao&quot;).addEventListener(&quot;click&quot;, function() {
+  alert(&quot;Botão clicado!&quot;);
+});
+</code></pre>
+        <h2>10. Sincronia e Assincronia</h2>
+        <ul>
+            <li>
+                <p><strong>Promises:</strong> lidam com operações assíncronas de forma estruturada.</p>
+                <pre><code class="language-javascript">fetch(&#39;https://api.example.com&#39;)
+  .then(response =&gt; response.json())
+  .then(data =&gt; console.log(data));
+</code></pre>
+            </li>
+        </ul>
+        <h2>11. Classes em JavaScript</h2>
+        <p>Classes são modelos para criar objetos com propriedades e métodos.</p>
+        <pre><code class="language-javascript">class Carro {
+  constructor(marca) {
+    this.marca = marca;
+  }
+  buzinar() {
+    console.log(&quot;Beep Beep!&quot;);
+  }
+}
+let meuCarro = new Carro(&quot;Ford&quot;);
+meuCarro.buzinar();
+</code></pre>
+        <h2>12. Módulos, Bibliotecas e Node.js</h2>
+        <ul>
+            <li><strong>Módulos permitem dividir código em partes reutilizáveis.</strong></li>
+            <li><strong>Bibliotecas são coleções de funções úteis.</strong></li>
+            <li><strong>Node.js permite rodar JavaScript no servidor.</strong></li>
+        </ul>
+        <pre><code class="language-javascript">export function soma(a, b) {
+  return a + b;
+}
+import { soma } from &#39;./arquivo.js&#39;;
+console.log(soma(3, 4));
+</code></pre>
         <hr>
-        <p>Essa sessão abrange os principais fundamentos do JavaScript.</p>
+        <p>Essa seção abrange os principais fundamentos do JavaScript.</p>
     </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
 </body>
 </html>

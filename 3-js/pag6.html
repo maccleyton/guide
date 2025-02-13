@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+               <stong>Guia Avançado de JavaScript: Outras Funções</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag7.html">Próxima</a></li>
+                <li><a href="/3-js/pag5.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Aqui está um guia detalhado sobre cada um desses tópicos no JavaScript:</p>
+        <h2><strong>1. Funções de Captura de Dados (<code>input</code>, <code>select</code>, <code>checkbox</code>)</strong></h2>
+        <p>Para capturar valores do HTML, utilizamos <strong><code>document.querySelector</code></strong> ou
+            <strong><code>document.getElementById</code></strong>.</p>
+        <p><strong>Exemplo (Captura de <code>input</code>)</strong></p>
+        <pre><code class="language-js">function capturarInput() {
+  let nome = document.getElementById(&quot;nome&quot;).value;
+  console.log(&quot;Nome digitado:&quot;, nome);
+}</code></pre>
+        <pre><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;nome&quot;&gt;
+&lt;button onclick=&quot;capturarInput()&quot;&gt;Capturar&lt;/button&gt;</code></pre>
+        <p><strong>Exemplo (Captura de <code>select</code>)</strong></p>
+        <pre><code class="language-js">function capturarSelect() {
+  let opcao = document.getElementById(&quot;opcoes&quot;).value;
+  console.log(&quot;Opção selecionada:&quot;, opcao);
+}</code></pre>
+        <pre><code class="language-html">&lt;select id=&quot;opcoes&quot; onchange=&quot;capturarSelect()&quot;&gt;
+  &lt;option value=&quot;A&quot;&gt;Opção A&lt;/option&gt;
+  &lt;option value=&quot;B&quot;&gt;Opção B&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        <p><strong>Exemplo (Captura de <code>checkbox</code>)</strong></p>
+        <pre><code class="language-js">function capturarCheckbox() {
+  let checkbox = document.getElementById(&quot;aceito&quot;).checked;
+  console.log(&quot;Checkbox marcado?&quot;, checkbox);
+}</code></pre>
+        <pre><code class="language-html">&lt;input type=&quot;checkbox&quot; id=&quot;aceito&quot; onchange=&quot;capturarCheckbox()&quot;&gt; Aceito os termos</code></pre>
+        <h2><strong>2. Funções de Validação de Dados</strong></h2>
+        <p>Validação é essencial para garantir que os valores inseridos sejam corretos.</p>
+        <p><strong>Exemplo (Validando Campo Obrigatório)</strong></p>
+        <pre><code class="language-js">function validarNome() {
+  let nome = document.getElementById(&quot;nome&quot;).value;
+  if (nome.trim() === &quot;&quot;) {
+    alert(&quot;O campo Nome não pode estar vazio.&quot;);
+    return false;
+  }
+  return true;
+}</code></pre>
+        <p><strong>Exemplo (Validando Email)</strong></p>
+        <pre><code class="language-js">function validarEmail(email) {
+  let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+console.log(validarEmail(&quot;teste@email.com&quot;)); // true
+console.log(validarEmail(&quot;email errado&quot;)); // false</code></pre>
+        <h2><strong>3. Funções de Conversão de Formatos</strong></h2>
+        <p>Essas funções são úteis para converter valores entre diferentes formatos.</p>
+        <p><strong>Exemplo (Converter String para Número)</strong></p>
+        <pre><code class="language-js">let numero = parseFloat(&quot;10.50&quot;);
+console.log(numero); // 10.5</code></pre>
+        <p><strong>Exemplo (Converter Número para Moeda)</strong></p>
+        <pre><code class="language-js">let valor = 1234.56;
+console.log(valor.toLocaleString(&quot;pt-BR&quot;, { style: &quot;currency&quot;, currency: &quot;BRL&quot; }));</code></pre>
+        <p><strong>Exemplo (Converter Data para Formato BR)</strong></p>
+        <pre><code class="language-js">function formatarData(data) {
+  let dataFormatada = new Date(data).toLocaleDateString(&quot;pt-BR&quot;);
+  return dataFormatada;
+}
+console.log(formatarData(&quot;2024-02-12&quot;)); // &quot;12/02/2024&quot;</code></pre>
+        <h2><strong>4. Funções de Modificação do DOM</strong></h2>
+        <p>Alteram elementos da página dinamicamente.</p>
+        <p><strong>Exemplo (Alterar Texto de um Elemento)</strong></p>
+        <pre><code class="language-js">function alterarTexto() {
+  document.getElementById(&quot;titulo&quot;).innerText = &quot;Texto alterado!&quot;;
+}</code></pre>
+        <pre><code class="language-html">&lt;h1 id=&quot;titulo&quot;&gt;Título Original&lt;/h1&gt;
+&lt;button onclick=&quot;alterarTexto()&quot;&gt;Alterar&lt;/button&gt;</code></pre>
+        <p><strong>Exemplo (Alterar Cor de Fundo)</strong></p>
+        <pre><code class="language-js">function alterarCor() {
+  document.body.style.backgroundColor = &quot;lightblue&quot;;
+}</code></pre>
+        <h2><strong>5. Funções de Reset</strong></h2>
+        <p>Redefinem valores de formulários.</p>
+        <p><strong>Exemplo (Resetando um Formulário)</strong></p>
+        <pre><code class="language-js">function resetarFormulario() {
+  document.getElementById(&quot;meuFormulario&quot;).reset();
+}</code></pre>
+        <pre><code class="language-html">&lt;form id=&quot;meuFormulario&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;nome&quot;&gt;
+  &lt;button type=&quot;button&quot; onclick=&quot;resetarFormulario()&quot;&gt;Resetar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <h2><strong>6. Funções de Ocultação e Exibição de Informações no HTML</strong></h2>
+        <p>Escondem ou mostram elementos dinamicamente.</p>
+        <p><strong>Exemplo (Mostrar e Ocultar Elemento)</strong></p>
+        <pre><code class="language-js">function mostrarElemento() {
+  document.getElementById(&quot;mensagem&quot;).style.display = &quot;block&quot;;
+}
+        
+function ocultarElemento() {
+  document.getElementById(&quot;mensagem&quot;).style.display = &quot;none&quot;;
+}</code></pre>
+        <pre><code class="language-html">&lt;p id=&quot;mensagem&quot; style=&quot;display: none;&quot;&gt;Mensagem secreta!&lt;/p&gt;
+&lt;button onclick=&quot;mostrarElemento()&quot;&gt;Mostrar&lt;/button&gt;
+&lt;button onclick=&quot;ocultarElemento()&quot;&gt;Ocultar&lt;/button&gt;</code></pre>
+        <p><strong>Exemplo (Alternar Visibilidade)</strong></p>
+        <pre><code class="language-js">function alternarVisibilidade() {
+  let elemento = document.getElementById(&quot;mensagem&quot;);
+  elemento.style.display = (elemento.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;
+}</code></pre>
+        <h2><strong>7. Funções Chamando Funções</strong></h2>
+        <p>Uma função pode chamar outra.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">function mensagem() {
+  return &quot;Olá, &quot;;
+}
+        
+function saudacao(nome) {
+  console.log(mensagem() + nome);
+}
+        
+saudacao(&quot;Carlos&quot;); // &quot;Olá, Carlos&quot;</code></pre>
+        <h2><strong>8. Subfunções</strong></h2>
+        <p>Funções dentro de funções.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">function calcularPreco(preco) {
+  function aplicarDesconto(valor) {
+    return valor * 0.9;
+  }
+  return aplicarDesconto(preco);
+}
+        
+console.log(calcularPreco(100)); // 90</code></pre>
+        <h2><strong>9. Ordem de Escrita e Execução de Funções</strong></h2>
+        <p>O JavaScript executa funções <strong>de cima para baixo</strong>, e <strong>precisam ser chamadas</strong>.</p>
+        <p><strong>Exemplo (Chamada Correta)</strong></p>
+        <pre><code class="language-js">function mensagem() {
+  console.log(&quot;Essa função foi chamada!&quot;);
+}
+mensagem(); // OK</code></pre>
+        <p><strong>Exemplo (Chamada Antes da Declaração - Não Funciona com <code>const</code>)</strong></p>
+        <pre><code class="language-js">saudacao(); // ERRO se usar `const` ou `let`
+        
+function saudacao() {
+  console.log(&quot;Oi!&quot;);
+}</code></pre>
+        <p><strong>Funções anônimas precisam ser chamadas após serem declaradas:</strong></p>
+        <pre><code class="language-js">const ola = function() {
+  console.log(&quot;Oi!&quot;);
+};
+        
+ola(); // OK</code></pre>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+               <stong>Guia Avançado de JavaScript: Validação de Dados e Formatos</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag9.html">Próxima</a></li>
+                <li><a href="/3-js/pag7.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Aqui está a explicação detalhada de cada um desses conceitos:</p>
+        <h2><strong>1. Expressões Regulares (Regex)</strong></h2>
+        <p>Expressões regulares são padrões usados para buscar ou validar strings.</p>
+        <h3>📌 <strong>Validação de Email</strong></h3>
+        <pre><code class="language-js">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</code></pre>
+        <p><strong>Explicação:</strong></p>
+        <ul>
+            <li><code>^</code> → Início da string</li>
+            <li><code>[^\s@]+</code> → Qualquer caractere, exceto espaços ou <code>@</code> (nome do usuário)</li>
+            <li><code>@</code> → Obrigatório</li>
+            <li><code>[^\s@]+</code> → Parte do domínio antes do ponto</li>
+            <li><code>\.</code> → O ponto literal</li>
+            <li><code>[^\s@]+</code> → Parte final do domínio (ex: <code>.com</code>, <code>.br</code>)</li>
+            <li><code>$</code> → Fim da string</li>
+        </ul>
+        <p><strong>Uso:</strong></p>
+        <pre><code class="language-js">function validarEmail(email) {
+  let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+console.log(validarEmail(&quot;teste@email.com&quot;)); // true
+console.log(validarEmail(&quot;email errado&quot;)); // false</code></pre>
+        <h3>📌 <strong>Validação de Números</strong></h3>
+        <pre><code class="language-js">/^\d+$/.test</code></pre>
+        <p><strong>Explicação:</strong></p>
+        <ul>
+            <li><code>^</code> → Início da string</li>
+            <li><code>\d+</code> → Apenas dígitos (0-9)</li>
+            <li><code>$</code> → Fim da string</li>
+        </ul>
+        <p><strong>Uso:</strong></p>
+        <pre><code class="language-js">console.log(/^\d+$/.test(&quot;12345&quot;)); // true
+console.log(/^\d+$/.test(&quot;12a45&quot;)); // false</code></pre>
+        <h2><strong>2. Métodos Matemáticos (<code>Math</code>)</strong></h2>
+        <h3>📌 <strong>Potenciação (<code>Math.pow</code>)</strong></h3>
+        <pre><code class="language-js">console.log(Math.pow(2, 3)); // 2³ = 8</code></pre>
+        <p><strong>Alternativa com ES6:</strong></p>
+        <pre><code class="language-js">console.log(2 ** 3); // 8</code></pre>
+        <h3>📌 <strong>Arredondamento (<code>Math.round</code>)</strong></h3>
+        <pre><code class="language-js">console.log(Math.round(4.4)); // 4
+console.log(Math.round(4.6)); // 5</code></pre>
+        <ul>
+            <li><strong><code>Math.ceil(4.1)</code></strong> → Arredonda para cima (5)</li>
+            <li><strong><code>Math.floor(4.9)</code></strong> → Arredonda para baixo (4)</li>
+        </ul>
+        <h2><strong>3. Métodos de Conversão e Formatação</strong></h2>
+        <h3>📌 <strong>Converter String para Número (<code>Number</code>)</strong></h3>
+        <pre><code class="language-js">let num = Number(&quot;123.45&quot;);
+console.log(num); // 123.45</code></pre>
+        <h3>📌 <strong>Formatar Moeda (<code>toLocaleString</code>)</strong></h3>
+        <pre><code class="language-js">let valor = 1234.56;
+console.log(valor.toLocaleString(&quot;pt-BR&quot;, { style: &quot;currency&quot;, currency: &quot;BRL&quot; })); // R$ 1.234,56</code></pre>
+        <h3>📌 <strong>Definir Casas Decimais
+                (<code>minimumFractionDigits</code> e <code>maximumFractionDigits</code>)</strong></h3>
+        <pre><code class="language-js">let num = 1234.5;
+console.log(num.toLocaleString(&quot;pt-BR&quot;, { minimumFractionDigits: 2, maximumFractionDigits: 2 })); // &quot;1.234,50&quot;</code></pre>
+        <h2><strong>4. Tratamento de Erros</strong></h2>
+        <h3>📌 <strong>Capturar Erros (<code>catch</code>)</strong></h3>
+        <pre><code class="language-js">try {
+  let resultado = 10 / 0;
+  throw new Error(&quot;Erro personalizado&quot;);
+} catch (erro) {
+  console.log(&quot;Erro capturado:&quot;, erro.message);
+}</code></pre>
+        <h2><strong>5. Verificar Valores</strong></h2>
+        <h3>📌 <strong>Verificar se não é número (<code>isNaN</code>)</strong></h3>
+        <pre><code class="language-js">console.log(isNaN(&quot;abc&quot;)); // true
+console.log(isNaN(123));   // false</code></pre>
+        <h2><strong>6. JSDoc (<code>@param</code> e <code>@returns</code>)</strong></h2>
+        <p>Comentário usado para documentar funções.</p>
+        <p><strong>Exemplo:</strong></p>
+        <pre><code class="language-js">/**
+ * Calcula a soma de dois números.
+ * @param {number} a - Primeiro número
+ * @param {number} b - Segundo número
+ * @returns {number} - Resultado da soma
+ */
+function somar(a, b) {
+  return a + b;
+}</code></pre>
+        <h2><strong>7. Expressões Regulares (<code>regex</code>)</strong></h2>
+        <h3>📌 <strong>Verificar um padrão com <code>.test</code></strong></h3>
+        <pre><code class="language-js">let regex = /^[A-Za-z]+$/;
+console.log(regex.test(&quot;JavaScript&quot;)); // true
+console.log(regex.test(&quot;JS123&quot;)); // false</code></pre>
+        <h3>📌 <strong>Negação de regex (<code>!regex.test</code>)</strong></h3>
+        <pre><code class="language-js">if (!/^\d+$/.test(&quot;ABC&quot;)) {
+  console.log(&quot;Não é um número válido.&quot;);
+}</code></pre>
+        <h2><strong>8. Manipulação de Eventos</strong></h2>
+        <h3>📌 <strong>Adicionar Event Listener
+                (<code>.addEventListener</code>)</strong></h3>
+        <pre><code class="language-js">document.getElementById(&quot;botao&quot;).addEventListener(&quot;click&quot;, function() {
+  alert(&quot;Botão clicado!&quot;);
+});</code></pre>
+        <pre><code class="language-html">&lt;button id=&quot;botao&quot;&gt;Clique Aqui&lt;/button&gt;</code></pre>
+        <h2><strong>9. Métodos de String</strong></h2>
+        <h3>📌 <strong>Verificar se um texto contém outra palavra
+                (<code>.includes</code>)</strong></h3>
+        <pre><code class="language-js">let frase = &quot;Aprendendo JavaScript!&quot;;
+console.log(frase.includes(&quot;JavaScript&quot;)); // true
+console.log(frase.includes(&quot;Python&quot;)); // false</code></pre>
+        <h2><strong>10. Exibir Mensagem na Tela (<code>alert</code>)</strong></h2>
+        <pre><code class="language-js">alert(&quot;Bem-vindo ao site!&quot;);</code></pre>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

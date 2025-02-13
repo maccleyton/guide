@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de CSS: Flexbox e Grid</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/2-css/pag5.html">Próxima</a></li>
+                <li><a href="/2-css/pag3.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <h2>1. Flexbox (Flexible Box Layout)</h2>
+        <p>O <strong>Flexbox</strong> é um modelo de layout unidimensional (linha ou coluna) que facilita a distribuição de
+            elementos dentro de um contêiner.</p>
+        <h3><strong>1.1. Conceitos Básicos do Flexbox</strong></h3>
+        <h4><strong>Contêiner Flex (<code>display: flex;</code>)</strong></h4>
+        <p>Para ativar o Flexbox, aplique <code>display: flex;</code> ao elemento pai (contêiner).</p>
+        <pre><code class="language-css">.container {
+  display: flex;
+}</code></pre>
+        <p>Os itens dentro do <code>.container</code> serão automaticamente distribuídos ao longo de uma linha.</p>
+        <h3><strong>1.2. Propriedades do Contêiner Flex</strong></h3>
+        <h4><strong><code>flex-direction</code> (Direção dos Itens)</strong></h4>
+        <p>Define a direção principal do layout.</p>
+        <pre><code class="language-css">.container {
+  flex-direction: row; /* Padrão (horizontal) */
+  flex-direction: row-reverse; /* Inverte a ordem dos itens */
+  flex-direction: column; /* Vertical */
+  flex-direction: column-reverse; /* Vertical, mas invertido */
+}</code></pre>
+        <h4><strong><code>justify-content</code> (Alinhamento Horizontal - Eixo Principal)</strong></h4>
+        <p>Distribui os itens ao longo do eixo principal.</p>
+        <pre><code class="language-css">.container {
+  justify-content: flex-start;  /* Início (padrão) */
+  justify-content: flex-end;    /* Fim */
+  justify-content: center;      /* Centralizado */
+  justify-content: space-between; /* Espaço entre os itens */
+  justify-content: space-around;  /* Espaço ao redor */
+  justify-content: space-evenly;  /* Espaço igual entre os itens */
+}</code></pre>
+        <h4><strong><code>align-items</code> (Alinhamento Vertical - Eixo Secundário)</strong></h4>
+        <p>Define o alinhamento dos itens dentro do contêiner.</p>
+        <pre><code class="language-css">.container {
+  align-items: flex-start;  /* Alinha no topo */
+  align-items: flex-end;    /* Alinha na base */
+  align-items: center;      /* Alinhamento central */
+  align-items: stretch;     /* Ocupa toda a altura disponível */
+  align-items: baseline;    /* Alinha pelo texto da linha base */
+}</code></pre>
+        <h4><strong><code>flex-wrap</code> (Quebra de Linha)</strong></h4>
+        <p>Controla se os itens podem ou não quebrar para a próxima linha.</p>
+        <pre><code class="language-css">.container {
+  flex-wrap: nowrap;   /* Padrão: sem quebra */
+  flex-wrap: wrap;     /* Permite a quebra */
+  flex-wrap: wrap-reverse; /* Inverte a quebra */
+}</code></pre>
+        <h4><strong><code>align-content</code> (Alinhamento de Múltiplas Linhas)</strong></h4>
+        <p>Usado quando há várias linhas de itens dentro do contêiner.</p>
+        <pre><code class="language-css">.container {
+  align-content: flex-start;  /* No topo */
+  align-content: flex-end;    /* Na base */
+  align-content: center;      /* Centralizado */
+  align-content: space-between; /* Espaço entre linhas */
+  align-content: space-around;  /* Espaço ao redor */
+  align-content: space-evenly;  /* Espaço uniforme */
+}</code></pre>
+        <h3><strong>1.3. Propriedades dos Itens Flexíveis</strong></h3>
+        <h4><strong><code>flex-grow</code> (Expansão do Item)</strong></h4>
+        <p>Define quanto espaço um item pode crescer em relação aos outros.</p>
+        <pre><code class="language-css">.item {
+  flex-grow: 1; /* O item ocupará espaço extra disponível */
+}</code></pre>
+        <h4><strong><code>flex-shrink</code> (Redução do Item)</strong></h4>
+        <p>Define a capacidade de um item diminuir se o espaço for insuficiente.</p>
+        <pre><code class="language-css">.item {
+  flex-shrink: 1; /* Pode reduzir */
+  flex-shrink: 0; /* Não reduz */
+}</code></pre>
+        <h4><strong><code>flex-basis</code> (Tamanho Inicial do Item)</strong></h4>
+        <p>Define o tamanho inicial do item antes de aplicar <code>flex-grow</code> ou <code>flex-shrink</code>.</p>
+        <pre><code class="language-css">.item {
+  flex-basis: 200px;
+}</code></pre>
+        <h4><strong><code>align-self</code> (Alinhamento Individual do Item)</strong></h4>
+        <p>Permite ajustar o alinhamento de um único item.</p>
+        <pre><code class="language-css">.item {
+  align-self: flex-start; /* Alinhado no topo */
+  align-self: flex-end;   /* Alinhado na base */
+  align-self: center;     /* Centralizado */
+  align-self: stretch;    /* Preenche o espaço */
+}</code></pre>
+        <h2>2. CSS Grid</h2>
+        <p>O <strong>CSS Grid</strong> é um modelo de layout bidimensional, permitindo a organização de elementos em linhas e
+            colunas.</p>
+        <h3> <strong>2.1. Criando um Contêiner Grid</strong></h3>
+        <p>Para ativar o Grid, aplique <code>display: grid;</code> ao elemento pai.</p>
+        <pre><code class="language-css">.container {
+  display: grid;
+}</code></pre>
+        <h3><strong>2.2. Definição de Colunas e Linhas</strong></h3>
+        <h4><strong><code>grid-template-columns</code> (Definir
+                Colunas)</strong></h4>
+        <p>Define a estrutura das colunas dentro do grid.</p>
+        <pre><code class="language-css">.container {
+  grid-template-columns: 100px 200px auto; /* 3 colunas */
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+}</code></pre>
+        <h4><strong><code>grid-template-rows</code> (Definir Linhas)</strong></h4>
+        <p>Define a estrutura das linhas.</p>
+        <pre><code class="language-css">.container {
+  grid-template-rows: 100px 200px auto;
+}</code></pre>
+        <h3><strong>2.3. Posicionamento de Itens no Grid</strong></h3>
+        <h4><strong><code>grid-column</code> e <code>grid-row</code></strong></h4>
+        <p>Controla a posição e o tamanho de um item na grade.</p>
+        <pre><code class="language-css">.item {
+  grid-column: 1 / 3; /* Ocupa da coluna 1 à 3 */
+  grid-row: 2 / 4; /* Ocupa da linha 2 à 4 */
+}</code></pre>
+        <h4><strong><code>grid-gap</code> (Espaçamento entre os Itens)</strong></h4>
+        <p>Define espaçamento entre colunas e linhas.</p>
+        <pre><code class="language-css">.container {
+  grid-gap: 10px; /* Espaço uniforme */
+}</code></pre>
+        <h3><strong>2.4. Alinhamento no Grid</strong></h3>
+        <h4><strong><code>justify-items</code> (Alinhamento Horizontal dos Itens)</strong></h4>
+        <p>Controla o alinhamento dentro de cada célula.</p>
+        <pre><code class="language-css">.container {
+  justify-items: start; /* Alinha à esquerda */
+  justify-items: center; /* Centraliza */
+  justify-items: end; /* Alinha à direita */
+}</code></pre>
+        <h4><strong><code>align-items</code> (Alinhamento Vertical dos Itens)</strong></h4>
+        <p>Controla o alinhamento vertical dentro das células.</p>
+        <pre><code class="language-css">.container {
+  align-items: start;
+  align-items: center;
+  align-items: end;
+}</code></pre>
+        <h4><strong><code>justify-content</code> e <code>align-content</code></strong></h4>
+        <p>Alinham o grid dentro do contêiner.</p>
+        <pre><code class="language-css">.container {
+  justify-content: space-between;
+  align-content: center;
+}</code></pre>
+        <h2>3. Exemplo Prático de Flexbox e Grid</h2>
+        <h3><strong> Exemplo de Flexbox</strong></h3>
+        <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;1&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;2&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+        <pre><code class="language-css">.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+                
+.item {
+  width: 50px;
+  height: 50px;
+  background: lightblue;
+  text-align: center;
+  line-height: 50px;
+}</code></pre>
+        <h3><strong> Exemplo de Grid</strong></h3>
+        <pre><code class="language-html">&lt;div class=&quot;grid-container&quot;&gt;
+  &lt;div class=&quot;grid-item&quot;&gt;A&lt;/div&gt;
+  &lt;div class=&quot;grid-item&quot;&gt;B&lt;/div&gt;
+  &lt;div class=&quot;grid-item&quot;&gt;C&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+        <pre><code class="language-css">.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+}
+                
+.grid-item {
+  background: lightcoral;
+  text-align: center;
+  padding: 20px;
+}</code></pre>
+        <hr>
+        <p>Na próxima seção serão abordados os formatos de cores no CSS! 🚀</p>
+    </main>
+    <hr>
+    <footer>
+            &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

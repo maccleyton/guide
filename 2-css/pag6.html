@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+                <stong>Guia Completo de CSS: Modos de Cor no CSS</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/2-css/pag5.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>No design e no desenvolvimento web, o uso correto das cores é essencial para criar interfaces harmoniosas e
+            agradáveis. Abaixo, detalho <strong>diferentes paletas de cores</strong>, suas principais características e exemplos
+            de cada uma.</p>
+        <p>O CSS permite especificar cores em diferentes formatos:</p>
+        <ul>
+            <li><strong>Hexadecimal (<code>#RRGGBB</code> ou <code>#RGB</code>)</strong> → Exemplo: <code>#3498db</code></li>
+            <li><strong>RGB (<code>rgb(R, G, B)</code>)</strong> → Exemplo: <code>rgb(52, 152, 219)</code></li>
+            <li><strong>RGBA (<code>rgba(R, G, B, A)</code>)</strong> → Exemplo: <code>rgba(52, 152, 219, 0.5)</code>
+                (transparência)</li>
+            <li><strong>HSL (<code>hsl(H, S%, L%)</code>)</strong> → Exemplo: <code>hsl(207, 70%, 50%)</code></li>
+            <li><strong>HSLA (<code>hsla(H, S%, L%, A)</code>)</strong> → Exemplo: <code>hsla(207, 70%, 50%, 0.5)</code></li>
+        </ul>
+        <p>Cada modo tem vantagens específicas, dependendo do contexto de uso.</p>
+        <h2><strong>1. Paleta de Cores Padrão do Material Design
+                (Google)</strong></h2>
+        <p>A paleta do <strong>Material Design</strong> foi criada pelo Google para interfaces modernas. Possui cores principais
+            e variações mais claras e mais escuras.</p>
+        <h3><strong>Cores Principais</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Hexadecimal</th>
+                    <th>RGB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vermelho</td>
+                    <td><code>#F44336</code></td>
+                    <td><code>rgb(244, 67, 54)</code></td>
+                </tr>
+                <tr>
+                    <td>Azul</td>
+                    <td><code>#2196F3</code></td>
+                    <td><code>rgb(33, 150, 243)</code></td>
+                </tr>
+                <tr>
+                    <td>Verde</td>
+                    <td><code>#4CAF50</code></td>
+                    <td><code>rgb(76, 175, 80)</code></td>
+                </tr>
+                <tr>
+                    <td>Amarelo</td>
+                    <td><code>#FFEB3B</code></td>
+                    <td><code>rgb(255, 235, 59)</code></td>
+                </tr>
+                <tr>
+                    <td>Laranja</td>
+                    <td><code>#FF9800</code></td>
+                    <td><code>rgb(255, 152, 0)</code></td>
+                </tr>
+                <tr>
+                    <td>Roxo</td>
+                    <td><code>#9C27B0</code></td>
+                    <td><code>rgb(156, 39, 176)</code></td>
+                </tr>
+                <tr>
+                    <td>Cinza Claro</td>
+                    <td><code>#F5F5F5</code></td>
+                    <td><code>rgb(245, 245, 245)</code></td>
+                </tr>
+                <tr>
+                    <td>Cinza Escuro</td>
+                    <td><code>#212121</code></td>
+                    <td><code>rgb(33, 33, 33)</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Ideal para:</strong> interfaces modernas, aplicações web e mobile.</p>
+        <h2><strong>2. Paleta de Cores Flat Design</strong></h2>
+        <p>A paleta <strong>Flat Design</strong> foca em cores vibrantes e sem gradientes. É muito usada em <strong>design
+                minimalista e moderno</strong>.</p>
+        <h3><strong>Cores Principais</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Hexadecimal</th>
+                    <th>RGB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Azul Claro</td>
+                    <td><code>#3498db</code></td>
+                    <td><code>rgb(52, 152, 219)</code></td>
+                </tr>
+                <tr>
+                    <td>Azul Escuro</td>
+                    <td><code>#2980b9</code></td>
+                    <td><code>rgb(41, 128, 185)</code></td>
+                </tr>
+                <tr>
+                    <td>Verde</td>
+                    <td><code>#2ecc71</code></td>
+                    <td><code>rgb(46, 204, 113)</code></td>
+                </tr>
+                <tr>
+                    <td>Vermelho</td>
+                    <td><code>#e74c3c</code></td>
+                    <td><code>rgb(231, 76, 60)</code></td>
+                </tr>
+                <tr>
+                    <td>Amarelo</td>
+                    <td><code>#f1c40f</code></td>
+                    <td><code>rgb(241, 196, 15)</code></td>
+                </tr>
+                <tr>
+                    <td>Roxo</td>
+                    <td><code>#8e44ad</code></td>
+                    <td><code>rgb(142, 68, 173)</code></td>
+                </tr>
+                <tr>
+                    <td>Cinza Claro</td>
+                    <td><code>#ecf0f1</code></td>
+                    <td><code>rgb(236, 240, 241)</code></td>
+                </tr>
+                <tr>
+                    <td>Cinza Escuro</td>
+                    <td><code>#2c3e50</code></td>
+                    <td><code>rgb(44, 62, 80)</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Ideal para:</strong> interfaces minimalistas e modernas, dashboards.</p>
+        <h2><strong>3. Paleta de Cores Pastel</strong></h2>
+        <p>As cores <strong>pastel</strong> são suaves e criam um visual mais delicado e agradável.</p>
+        <h3><strong>Cores Principais</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Hexadecimal</th>
+                    <th>RGB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Azul Bebê</td>
+                    <td><code>#AEC6CF</code></td>
+                    <td><code>rgb(174, 198, 207)</code></td>
+                </tr>
+                <tr>
+                    <td>Verde Menta</td>
+                    <td><code>#98FF98</code></td>
+                    <td><code>rgb(152, 255, 152)</code></td>
+                </tr>
+                <tr>
+                    <td>Rosa Claro</td>
+                    <td><code>#FFB6C1</code></td>
+                    <td><code>rgb(255, 182, 193)</code></td>
+                </tr>
+                <tr>
+                    <td>Roxo Lilás</td>
+                    <td><code>#D8BFD8</code></td>
+                    <td><code>rgb(216, 191, 216)</code></td>
+                </tr>
+                <tr>
+                    <td>Amarelo Suave</td>
+                    <td><code>#FFFACD</code></td>
+                    <td><code>rgb(255, 250, 205)</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Ideal para:</strong> designs infantis, blogs femininos, interfaces suaves.</p>
+        <h2><strong>4. Paleta de Cores Neons</strong></h2>
+        <p>As cores <strong>neon</strong> são vibrantes e chamativas, usadas em efeitos futuristas.</p>
+        <h3><strong>Cores Principais</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Hexadecimal</th>
+                    <th>RGB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Azul Neon</td>
+                    <td><code>#00FFFF</code></td>
+                    <td><code>rgb(0, 255, 255)</code></td>
+                </tr>
+                <tr>
+                    <td>Verde Neon</td>
+                    <td><code>#39FF14</code></td>
+                    <td><code>rgb(57, 255, 20)</code></td>
+                </tr>
+                <tr>
+                    <td>Rosa Neon</td>
+                    <td><code>#FF1493</code></td>
+                    <td><code>rgb(255, 20, 147)</code></td>
+                </tr>
+                <tr>
+                    <td>Roxo Neon</td>
+                    <td><code>#9400D3</code></td>
+                    <td><code>rgb(148, 0, 211)</code></td>
+                </tr>
+                <tr>
+                    <td>Amarelo Neon</td>
+                    <td><code>#FFFF00</code></td>
+                    <td><code>rgb(255, 255, 0)</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Ideal para:</strong> efeitos futuristas, games, sites de tecnologia.</p>
+        <h2><strong>5. Paleta de Cores Monocromáticas</strong></h2>
+        <p>As <strong>cores monocromáticas</strong> utilizam diferentes tons de uma mesma cor.</p>
+        <h3><strong>Exemplo de Azul Monocromático</strong></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Hexadecimal</th>
+                    <th>RGB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Azul Claro</td>
+                    <td><code>#BBDEFB</code></td>
+                    <td><code>rgb(187, 222, 251)</code></td>
+                </tr>
+                <tr>
+                    <td>Azul Médio</td>
+                    <td><code>#64B5F6</code></td>
+                    <td><code>rgb(100, 181, 246)</code></td>
+                </tr>
+                <tr>
+                    <td>Azul Normal</td>
+                    <td><code>#2196F3</code></td>
+                    <td><code>rgb(33, 150, 243)</code></td>
+                </tr>
+                <tr>
+                    <td>Azul Escuro</td>
+                    <td><code>#1976D2</code></td>
+                    <td><code>rgb(25, 118, 210)</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Ideal para:</strong> design clean e profissional, dashboards.</p>
+        <h2 ><strong>6. Como Aplicar Paletas no CSS?</strong></h2>
+        <p>Você pode definir uma paleta de cores no CSS usando <strong>variáveis</strong> para facilitar a reutilização:</p>
+        <pre><code class="language-css">:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #ecf0f1;
+  --text-color: #2c3e50;
+}
+                
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+                
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+                
+button:hover {
+  background-color: var(--secondary-color);
+}</code></pre>
+        <h3><strong>6.1. Sites com Tabelas de Cores</strong></h3>
+        <p><strong>Esses sites permitem explorar cores, converter entre formatos e copiar códigos rapidamente:</strong></p>
+        <p><strong>W3Schools - Cores HTML - disponível em: <em>https://www.w3schools.com/colors/colors_picker.asp"></em></strong><br>➡️
+            Oferece um <strong>seletor de cores interativo</strong>, além de listas de cores por nome, hexadecimal e RGB.</p>
+        <p><strong>HTML Color Codes- disponível em: <em>https://htmlcolorcodes.com/"</em></strong><br>➡️ Permite visualizar e copiar
+            códigos em <strong>hex, RGB, HSL e CMYK</strong>.</p>
+        <p><strong>Color Hunt - disponível em: <em>https://colorhunt.co/"</em></strong><br>➡️ Galeria de <strong>paletas de cores</strong>
+            prontas para design e programação.</p>
+        <p><strong>Coolors - disponível em: <em>https://coolors.co/"</em></strong><br>➡️ Gerador de <strong>paletas de cores</strong>, com
+            possibilidade de ajuste fino e exportação.</p>
+        <h3><strong>6.2. Inspecionar Elementos no Navegador
+                (DevTools)</strong></h3>
+        <p>Você pode ver as cores de qualquer site diretamente no navegador:</p>
+        <p>📌 <strong>Como fazer?</strong><br>1️⃣ <strong>Abra o DevTools</strong> (<code>F12</code> ou
+            <code>Ctrl + Shift + I</code> no Chrome).<br>2️⃣ Vá para a aba <strong>Elements</strong> e clique em um elemento com
+            cor.<br>3️⃣ O navegador mostrará a cor em <strong>HEX, RGB ou HSL</strong>, com um seletor de cores interativo.
+        </p>
+        <h3><strong>6.3. Ferramentas Locais (Windows, Mac, Linux)</strong></h3>
+        <ul>
+            <li><strong>Windows</strong>: O <strong>Paint</strong> mostra cores em RGB.</li>
+            <li><strong>Mac</strong>: O <strong>Digital Color Meter</strong> permite pegar cores da tela.</li>
+            <li><strong>Linux</strong>: Ferramentas como <strong>Gpick</strong> ou <strong>KColorChooser</strong> podem ser
+                usadas.</li>
+        </ul>
+        <h3><strong>6.4. Lista de Cores Padrão do CSS</strong></h3>
+        <p>O CSS suporta <strong>147 cores nomeadas</strong> que podem ser usadas sem precisar de códigos hexadecimais. Exemplo:
+        </p>
+        <pre><code class="language-css">color: red;      /* Vermelho */
+color: blue;     /* Azul */
+color: olive;    /* Verde oliva */
+color: teal;     /* Azul esverdeado */
+color: lavender; /* Lavanda */</code></pre>
+        <p>Você pode ver a lista completa em:<br>➡️ W3Schools - Cores Nomeadas: <em>href="https://www.w3schools.com/colors/colors_names.asp"</em></p>
+        <hr>
+        <h2><strong>Conclusão</strong></h2>
+        <p>Cada paleta de cores tem seu propósito e transmite uma sensação diferente. A escolha depende do objetivo do seu
+            design:</p>
+        <ul>
+            <li><strong>Material Design</strong> → Interfaces modernas e limpas</li>
+            <li><strong>Flat Design</strong> → Minimalismo e elegância</li>
+            <li><strong>Pastel</strong> → Suavidade e delicadeza</li>
+            <li><strong>Neon</strong> → Energia e impacto</li>
+            <li><strong>Monocromático</strong> → Harmonia e simplicidade</li>
+        </ul>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>

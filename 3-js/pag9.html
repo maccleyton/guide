@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de JavaScript</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../prism.js"></script>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="container">
+            <h1>
+               <stong>Guia Avançado de JavaScript: Formatação de Números</stong>
+            </h1>
+            <ul class="glossario">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="/3-js/pag8.html">Voltar</a></li>
+            </ul>
+        </div>
+        <hr>
+        <p>Para formatar números, datas e outros tipos de dados no HTML, você pode usar JavaScript para aplicar a formatação
+            desejada com base nas convenções de diferentes países (como PT-BR e EN). Existem várias abordagens para formatar
+            números e datas de forma apropriada. Vou te mostrar como formatar as seguintes categorias: <strong>CPF</strong>,
+            <strong>CNPJ</strong>, <strong>CEP</strong>, <strong>Data</strong>, <strong>Frações</strong>,
+            <strong>Inteiros</strong>, <strong>Decimais</strong>, <strong>Porcentagens</strong> e como lidar com o formato
+            <strong>PT-BR</strong> e <strong>EN</strong>.</p>
+        <h2>1. <strong>CPF e CNPJ</strong></h2>
+        <p>Para formatar <strong>CPF</strong> e <strong>CNPJ</strong>, você pode usar expressões regulares para inserir os
+            caracteres de formatação como pontos e hífens.</p>
+        <h3>Exemplo de CPF:</h3>
+        <pre><code class="language-javascript">function formatCPF(cpf) {
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, &#39;$1.$2.$3-$4&#39;);
+}
+        
+let cpf = &#39;12345678909&#39;;
+console.log(formatCPF(cpf));  // Saída: 123.456.789-09</code></pre>
+        <h3>Exemplo de CNPJ:</h3>
+        <pre><code class="language-javascript">function formatCNPJ(cnpj) {
+    return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, &#39;$1.$2.$3/$4-$5&#39;);
+}
+        
+let cnpj = &#39;12345678000195&#39;;
+console.log(formatCNPJ(cnpj));  // Saída: 12.345.678/0001-95</code></pre>
+        <h2>2. <strong>CEP</strong></h2>
+        <p>Para formatar o <strong>CEP</strong>, você pode usar a seguinte expressão regular:</p>
+        <pre><code class="language-javascript">function formatCEP(cep) {
+    return cep.replace(/(\d{5})(\d{3})/, &#39;$1-$2&#39;);
+}
+        
+let cep = &#39;12345678&#39;;
+console.log(formatCEP(cep));  // Saída: 12345-678</code></pre>
+        <h2>3. <strong>Data</strong></h2>
+        <p>Para formatar datas no formato <strong>PT-BR</strong> (dd/mm/yyyy) ou <strong>EN</strong> (mm/dd/yyyy), podemos usar
+            a classe <code>Intl.DateTimeFormat</code> do JavaScript.</p>
+        <h3 id="exemplo-de-formatação-de-data">Exemplo de formatação de data:</h3>
+        <pre><code class="language-javascript">// Formato PT-BR
+let dataPTBR = new Date();
+let formatadorPTBR = new Intl.DateTimeFormat(&#39;pt-BR&#39;);
+console.log(formatadorPTBR.format(dataPTBR));  // Saída: 12/02/2025
+        
+// Formato EN
+let dataEN = new Date();
+let formatadorEN = new Intl.DateTimeFormat(&#39;en-US&#39;);
+console.log(formatadorEN.format(dataEN));  // Saída: 2/12/2025</code></pre>
+        <h2>4. <strong>Frações</strong></h2>
+        <p>Para formatar <strong>frações</strong>, você pode usar o método <code>toLocaleString</code> do JavaScript, que ajuda
+            a ajustar a precisão dos números. Por exemplo, se você quer exibir uma fração com duas casas decimais:</p>
+        <pre><code class="language-javascript">let numero = 3.14159;
+console.log(numero.toFixed(2));  // Saída: 3.14 </code></pre>
+        <p>Ou para um formato específico:</p>
+        <pre><code class="language-javascript">let numero = 3.14159;
+let numeroFormatado = numero.toLocaleString(&#39;pt-BR&#39;, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+console.log(numeroFormatado);  // Saída: 3,14 (PT-BR)
+        
+// No formato EN
+let numeroFormatadoEN = numero.toLocaleString(&#39;en-US&#39;, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+console.log(numeroFormatadoEN);  // Saída: 3.14 (EN)</code></pre>
+        <h2>5. <strong>Inteiros e Decimais</strong></h2>
+        <p>Os <strong>inteiros</strong> podem ser formatados diretamente com <code>parseInt()</code>, e os
+            <strong>decimais</strong> podem ser arredondados com <code>toFixed()</code> ou <code>toLocaleString()</code>.</p>
+        <h3 id="exemplo-de-inteiro">Exemplo de Inteiro:</h3>
+        <pre><code class="language-javascript">let numeroInteiro = 1234.567;
+console.log(Math.floor(numeroInteiro));  // Saída: 1234</code></pre>
+        <h3 id="exemplo-de-decimal">Exemplo de Decimal:</h3>
+        <pre><code class="language-javascript">let numeroDecimal = 1234.56789;
+console.log(numeroDecimal.toFixed(2));  // Saída: 1234.57</code></pre>
+        <h2>6. <strong>Porcentagem</strong></h2>
+        <p>Para formatar um número como <strong>porcentagem</strong>, você pode multiplicá-lo por 100 e adicionar o símbolo
+            <code>%</code>. O <code>toLocaleString</code> também pode ser usado para formatar porcentagens corretamente.</p>
+        <pre><code class="language-javascript">let numero = 0.25;  // 25%
+let porcentagem = (numero * 100).toLocaleString(&#39;pt-BR&#39;) + &#39;%&#39;;
+console.log(porcentagem);  // Saída: 25%
+        
+// Para formato EN
+let porcentagemEN = (numero * 100).toLocaleString(&#39;en-US&#39;) + &#39;%&#39;;
+console.log(porcentagemEN);  // Saída: 25%</code></pre>
+        <h2>7. <strong>Numeros no formato PT-BR e EN</strong></h2>
+        <p>Para formatar números no <strong>formato PT-BR</strong> (com vírgula como separador decimal) e <strong>EN</strong>
+            (com ponto como separador decimal), você pode usar <code>toLocaleString</code>.</p>
+        <h3 id="exemplo-de-formatação-de-números">Exemplo de formatação de números:</h3>
+        <pre><code class="language-javascript">let numero = 1234567.89;
+        
+// Formato PT-BR
+let numeroPTBR = numero.toLocaleString(&#39;pt-BR&#39;);
+console.log(numeroPTBR);  // Saída: 1.234.567,89
+        
+// Formato EN
+let numeroEN = numero.toLocaleString(&#39;en-US&#39;);
+console.log(numeroEN);  // Saída: 1,234,567.89</code></pre>
+        <h2 id="conclusão">Conclusão</h2>
+        <p>Com essas técnicas, você pode formatar dados de diversas maneiras de acordo com as necessidades do seu projeto. O
+            JavaScript oferece várias funções e métodos para ajudá-lo a garantir que os números, datas e outros dados estejam
+            corretamente formatados para diferentes regiões (como PT-BR ou EN). Isso ajuda a melhorar a experiência do usuário,
+            garantindo que os dados sejam apresentados de forma clara e consistente.</p>
+        <p>Agora vamos detalhar o significado de cada um dos caracteres presentes nessa expressão regular, explicando como ela
+            funciona, especialmente para o caso de formatação de <strong>CNPJ</strong> (no formato
+            <strong>XX.XXX.XXX/XXXX-XX</strong>).</p>
+        <p>A expressão regular que usaremos como exemplo é:</p>
+        <pre><code class="language-javascript">/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, &#39;$1.$2.$3/$4-$5&#39;</code></pre>
+        <p>Agora, vamos analisar cada parte dessa expressão regular e entender a função dos caracteres.</p>
+        <h3>1. <strong><code>/</code></strong> (Delimitadores da Expressão Regular)
+        </h3>
+        <p>Em JavaScript, a expressão regular é envolvida por <strong>barra <code>/</code></strong> no início e no final. Esses
+            delimitadores indicam onde a expressão regular começa e termina. Tudo o que está entre as barras <code>/</code> é
+            considerado parte da expressão regular.</p>
+        <pre><code class="language-javascript">/expressao_regular/</code></pre>
+        <h3>2. <strong><code>\d</code></strong> (Representa um Dígito)</h3>
+        <p>O <strong><code>\d</code></strong> é uma abreviação para <strong>qualquer dígito numérico</strong> (de 0 a 9). Ele
+            corresponde a <strong>um único número</strong>.</p>
+        <p>Exemplo:</p>
+        <ul>
+            <li><code>\d</code> pode corresponder a 0, 1, 2, 3, ..., 9.</li>
+        </ul>
+        <h3>3. <strong><code>{n}</code></strong> (Quantificador de Ocorrências)</h3>
+        <p>Quando você vê algo como <strong><code>\d{n}</code></strong>, isso significa <strong>&quot;exatamente n
+                repetições&quot;</strong> do caractere anterior (no caso, um dígito).</p>
+        <ul>
+            <li><strong><code>\d{2}</code></strong> corresponde a <strong>dois dígitos consecutivos</strong>.</li>
+            <li><strong><code>\d{3}</code></strong> corresponde a <strong>três dígitos consecutivos</strong>.</li>
+            <li><strong><code>\d{4}</code></strong> corresponde a <strong>quatro dígitos consecutivos</strong>.</li>
+        </ul>
+        <h3>4. <strong><code>()</code></strong> (Grupos de Captura)</h3>
+        <p>Os parênteses <strong><code>()</code></strong> são usados para agrupar partes da expressão regular. <strong>Eles
+                capturam os valores correspondentes</strong> que podem ser referenciados mais tarde.</p>
+        <ul>
+            <li><strong><code>(\d{2})</code></strong> captura os primeiros dois dígitos (por exemplo, o
+                <strong>&quot;12&quot;</strong> em <code>12.345.678/0001-95</code>).</li>
+            <li><strong><code>(\d{3})</code></strong> captura três dígitos subsequentes (ex: <strong>&quot;345&quot;</strong>).
+            </li>
+            <li><strong><code>(\d{4})</code></strong> captura os quatro dígitos do meio (ex: <strong>&quot;0001&quot;</strong>).
+            </li>
+            <li><strong><code>(\d{2})</code></strong> captura os dois últimos dígitos (ex: <strong>&quot;95&quot;</strong>).
+            </li>
+        </ul>
+        <p>Esses grupos são armazenados como <strong>&quot;referências&quot;</strong> para serem reutilizados posteriormente.
+        </p>
+        <h3>5. <strong><code>$</code></strong> (Referência aos Grupos de Captura)</h3>
+        <p>Após a expressão regular, ao usar a <strong>substituição</strong> (como em <code>replace()</code>), você pode fazer
+            referência aos grupos de captura usando o símbolo <strong><code>$</code></strong> seguido do número do grupo.</p>
+        <ul>
+            <li><strong><code>$1</code></strong> se refere ao <strong>primeiro grupo de captura</strong> (a primeira parte da
+                correspondência entre parênteses, que contém os primeiros dois dígitos).</li>
+            <li><strong><code>$2</code></strong> se refere ao <strong>segundo grupo de captura</strong> (os três dígitos
+                seguintes).</li>
+            <li><strong><code>$3</code></strong> se refere ao <strong>terceiro grupo de captura</strong> (os próximos três
+                dígitos).</li>
+            <li><strong><code>$4</code></strong> se refere ao <strong>quarto grupo de captura</strong> (os quatro dígitos).</li>
+            <li><strong><code>$5</code></strong> se refere ao <strong>quinto grupo de captura</strong> (os dois últimos
+                dígitos).</li>
+        </ul>
+        <h3>6. <strong><code>.</code></strong> (Ponto - Caractere Literal)</h3>
+        <p>O ponto <strong><code>.</code></strong> é um <strong>caractere literal</strong> na string de substituição. Em uma
+            expressão regular, o ponto geralmente é um coringa que corresponde a <strong>qualquer caractere</strong>, mas dentro
+            da string de substituição, ele é tratado como um ponto comum (por exemplo, para separar as partes do CNPJ).</p>
+        <ul>
+            <li>No seu caso, <strong><code>$1.$2.$3/$4-$5</code></strong> significa que, após capturar os grupos de dígitos,
+                você vai <strong>inserir pontos</strong> entre o primeiro, segundo e terceiro grupos, e um <strong>barra
+                    (&quot;/&quot;)</strong> entre o terceiro e o quarto grupo, além de um <strong>hífen
+                    (&quot;-&quot;)</strong> no final.</li>
+        </ul>
+        <h3>7. <code>/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/</code> (A Expressão
+            Regular Completa)</h3>
+        <p>A expressão regular <strong><code>/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/</code></strong> é responsável por capturar um
+            CNPJ sem formatação. Ela corresponderá a uma string de <strong>14 números consecutivos</strong> (como
+            <code>12345678000195</code>).</p>
+        <h3>8. <strong><code>&#39;$1.$2.$3/$4-$5&#39;</code></strong> (A String de
+            Substituição)</h3>
+        <p>A string <strong><code>&#39;$1.$2.$3/$4-$5&#39;</code></strong> é a <strong>formatação</strong> para que o CNPJ seja
+            exibido no formato desejado:</p>
+        <ul>
+            <li><strong><code>$1</code></strong>: Insere o primeiro grupo de captura (os dois primeiros dígitos).</li>
+            <li><strong><code>.</code></strong>: Insere um ponto entre o primeiro e o segundo grupo.</li>
+            <li><strong><code>$2</code></strong>: Insere o segundo grupo de captura (os três dígitos seguintes).</li>
+            <li><strong><code>.</code></strong>: Insere outro ponto entre o segundo e o terceiro grupo.</li>
+            <li><strong><code>$3</code></strong>: Insere o terceiro grupo de captura (os três próximos dígitos).</li>
+            <li><strong><code>/</code></strong>: Insere uma barra entre o terceiro e o quarto grupo.</li>
+            <li><strong><code>$4</code></strong>: Insere o quarto grupo de captura (os quatro dígitos seguintes).</li>
+            <li><strong><code>-</code></strong>: Insere um hífen entre o quarto e o quinto grupo.</li>
+            <li><strong><code>$5</code></strong>: Insere o quinto grupo de captura (os dois últimos dígitos).</li>
+        </ul>
+        <h3>Exemplo Completo de Formatação de CNPJ</h3>
+        <p>Aqui está o exemplo completo, para ilustrar como você pode usar essa expressão regular para formatar um CNPJ:</p>
+        <pre><code class="language-javascript">function formatCNPJ(cnpj) {
+    return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, &#39;$1.$2.$3/$4-$5&#39;);
+}
+        
+let cnpj = &#39;12345678000195&#39;;
+console.log(formatCNPJ(cnpj));  // Saída: 12.345.678/0001-95</code></pre>
+        <h3>Resumo dos Componentes</h3>
+        <ul>
+            <li><strong><code>\d{n}</code></strong>: Representa um número de <strong>n dígitos</strong>.</li>
+            <li><strong><code>()</code></strong>: Cria <strong>grupos de captura</strong> para que você possa usar esses valores
+                mais tarde.</li>
+            <li><strong><code>$n</code></strong>: Representa um <strong>grupo de captura</strong> correspondente à posição
+                <code>n</code> (1, 2, 3, etc.).</li>
+            <li><strong><code>/</code> e <code>.</code></strong>: Delimitadores da expressão regular e caracteres literais de
+                formatação.</li>
+        </ul>
+        <p>Essa construção é poderosa porque permite que você extraia partes específicas de uma string e depois formate de
+            acordo com suas necessidades, sem precisar escrever código repetitivo ou manipular manualmente cada parte da string.
+        </p>
+        <p>A função de conversão pode ser chamada automaticamente quando o usuário digitar os números no campo
+            <strong><code>input</code></strong>. Para fazer isso, você pode utilizar o evento <code>input</code> para detectar a
+            digitação do usuário e aplicar a formatação à medida que os números são digitados.</p>
+        <p>Aqui está um exemplo prático de como você pode implementar isso:</p>
+        <h3>Passo a Passo:</h2>
+        <ol start="10">
+            <li><strong>HTML</strong>: Crie um campo <code>input</code> onde o usuário vai digitar o número (por exemplo, um
+                CNPJ).</li>
+            <li><strong>JavaScript</strong>: Use o evento <code>input</code> para capturar o valor digitado e formatá-lo
+                dinamicamente enquanto o usuário digita.</li>
+            <li><strong>CSS</strong>: (Opcional) Estilize o campo de entrada.</li>
+        </ol>
+        <h3>Exemplo de Código:</h3>
+        <h4>1. HTML:</h4>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Formatação de CNPJ&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+        
+    &lt;label for=&quot;cnpj&quot;&gt;CNPJ:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;cnpj&quot; maxlength=&quot;18&quot; placeholder=&quot;00.000.000/0000-00&quot;&gt;
+        
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <h4>2. JavaScript (<code>script.js</code>):</h4>
+        <pre><code class="language-javascript">document.getElementById(&#39;cnpj&#39;).addEventListener(&#39;input&#39;, function(e) {
+    let cnpj = e.target.value;
+        
+    // Remove tudo o que não for número
+    cnpj = cnpj.replace(/\D/g, &#39;&#39;);
+        
+    // Aplica a formatação
+    cnpj = cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, &#39;$1.$2.$3/$4-$5&#39;);
+        
+    // Atualiza o valor do input com a formatação
+    e.target.value = cnpj;
+});</code></pre>
+        <h3>Explicação do Funcionamento:</h3>
+        <ol>
+            <li><strong>Evento <code>input</code></strong>: Sempre que o usuário digitar algo no campo de input, o evento
+                <code>input</code> será disparado. A função anônima associada a esse evento será executada a cada digitação.
+            </li>
+            <li><strong><code>e.target.value</code></strong>: Acessa o valor digitado no campo <code>input</code> e faz a
+                formatação.</li>
+            <li><strong><code>replace(/\D/g, &#39;&#39;)</code></strong>: Esse trecho de código remove todos os caracteres não
+                numéricos (como pontos, barras e espaços) para que a formatação aconteça apenas com os números.</li>
+            <li><strong><code>replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, &#39;$1.$2.$3/$4-$5&#39;)</code></strong>: Aplica a
+                formatação do CNPJ conforme mencionado anteriormente, colocando os pontos, barra e hífen.</li>
+            <li><strong><code>e.target.value = cnpj;</code></strong>: Atualiza o valor do campo <code>input</code> com a string
+                formatada.</li>
+        </ol>
+        <h3>Teste de Funcionamento:</h3>
+        <ul>
+            <li>Se o usuário digitar <strong>&quot;12345678000195&quot;</strong>, o campo de entrada será automaticamente
+                ajustado para <strong>&quot;12.345.678/0001-95&quot;</strong>.</li>
+            <li>O campo de input irá formatar conforme o usuário digita, sem a necessidade de um botão para acionar a
+                formatação.</li>
+        </ul>
+        <h3>Outras Considerações:</h3>
+        <ul>
+            <li><strong><code>maxlength=&quot;18&quot;</code></strong>: Define um limite de 18 caracteres no campo
+                <code>input</code>, que corresponde ao comprimento máximo de um CNPJ formatado (com pontos, barra e hífen).</li>
+            <li>O mesmo conceito pode ser usado para formatação de CPF, CEP, ou outros documentos, ajustando a expressão regular
+                e o formato de saída conforme necessário.</li>
+        </ul>
+        <p>Isso cria uma interação dinâmica no formulário, onde a formatação é feita em tempo real enquanto o usuário digita.</p>
+        <hr>
+    </main>
+    <hr>
+    <footer>
+        &copy; 2025 - Guia de Programação Web - Desenvolvido por Cleyton Duda Macedo.
+    </footer>
+</body>
+</html>
